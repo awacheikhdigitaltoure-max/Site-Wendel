@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import Reveal from '../components/Reveal';
 import SimplifiedBooking from '../components/SimplifiedBooking';
+import { useAuth } from '../context/AuthContext';
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle } from 'lucide-react';
 import './Contact.css';
 
@@ -10,10 +11,23 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const Contact = () => {
   const { language } = useLanguage();
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const { user } = useAuth();
+  const [form, setForm] = useState({ 
+    name: user?.name || '', 
+    email: user?.email || '', 
+    subject: '', 
+    message: '' 
+  });
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState('');
+
+  // Sync with auth state
+  React.useEffect(() => {
+    if (user) {
+      setForm(prev => ({ ...prev, name: user.name, email: user.email }));
+    }
+  }, [user]);
 
   const content = {
     fr: {

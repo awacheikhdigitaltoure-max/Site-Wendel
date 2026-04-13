@@ -1,23 +1,36 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { Sparkles, ShieldCheck, Loader2 } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 import './SimplifiedBooking.css';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const SimplifiedBooking = () => {
   const { language } = useLanguage();
+  const { user } = useAuth();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [form, setForm] = useState({
-    guestName: '',
-    guestEmail: '',
+    guestName: user?.name || '',
+    guestEmail: user?.email || '',
     destination: '',
     departureDate: '',
     travellers: 1,
     message: ''
   });
+
+  // Mettre à jour le formulaire si l'utilisateur se connecte/déconnecte
+  React.useEffect(() => {
+    if (user) {
+      setForm(prev => ({
+        ...prev,
+        guestName: user.name,
+        guestEmail: user.email
+      }));
+    }
+  }, [user]);
 
   const content = {
     fr: {

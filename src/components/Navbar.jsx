@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Globe, Menu, X, Search, User, LogOut, ChevronDown } from 'lucide-react';
+import { Globe, Menu, X, Search, User, LogOut, ChevronDown, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import { translations } from '../i18n/translations';
@@ -139,6 +139,19 @@ const Navbar = () => {
                       <User size={16} />
                       {language === 'fr' ? 'Mon compte' : 'My account'}
                     </Link>
+                    
+                    {user?.role === 'admin' && (
+                      <Link
+                        to={`/${language}/admin`}
+                        className="nav-dropdown-item"
+                        style={{ color: 'var(--primary-gold)' }}
+                        onClick={() => setUserMenuOpen(false)}
+                      >
+                        <ShieldCheck size={16} />
+                        {language === 'fr' ? 'Dashboard Admin' : 'Admin Dashboard'}
+                      </Link>
+                    )}
+
                     <button className="nav-dropdown-item nav-dropdown-logout" onClick={handleLogout}>
                       <LogOut size={16} />
                       {language === 'fr' ? 'Déconnexion' : 'Log out'}
