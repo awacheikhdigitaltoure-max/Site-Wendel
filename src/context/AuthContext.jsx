@@ -38,12 +38,18 @@ export const AuthProvider = ({ children }) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password })
     });
-    const data = await res.json();
-    if (!data.success) throw new Error(data.message);
-    localStorage.setItem('wendelu_token', data.token);
-    setToken(data.token);
-    setUser(data.user);
-    return data.user;
+    
+    const contentType = res.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message || 'Erreur de connexion');
+      localStorage.setItem('wendelu_token', data.token);
+      setToken(data.token);
+      setUser(data.user);
+      return data.user;
+    } else {
+      throw new Error('Le serveur a renvoyé une erreur inattendue. Veuillez vérifier votre connexion ou le déploiement.');
+    }
   };
 
   const register = async (name, email, password, phone) => {
@@ -52,12 +58,18 @@ export const AuthProvider = ({ children }) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, email, password, phone })
     });
-    const data = await res.json();
-    if (!data.success) throw new Error(data.message);
-    localStorage.setItem('wendelu_token', data.token);
-    setToken(data.token);
-    setUser(data.user);
-    return data.user;
+    
+    const contentType = res.headers.get('content-type');
+    if (contentType && contentType.includes('application/json')) {
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message || "Erreur d'inscription");
+      localStorage.setItem('wendelu_token', data.token);
+      setToken(data.token);
+      setUser(data.user);
+      return data.user;
+    } else {
+      throw new Error('Erreur serveur (HTML). Vérifiez que MONGO_URI est bien configuré sur Vercel.');
+    }
   };
 
   const updateProfile = async (name, phone) => {

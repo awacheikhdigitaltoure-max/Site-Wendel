@@ -112,7 +112,7 @@ const Register = () => {
           <div className="auth-field">
             <Phone size={18} className="auth-icon" />
             <input
-              type="tel"
+              type="text"
               placeholder={t.phone}
               value={form.phone}
               onChange={e => setForm({ ...form, phone: e.target.value })}
