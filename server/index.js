@@ -54,10 +54,14 @@ app.use((err, req, res, next) => {
   res.status(500).json({ success: false, message: 'Erreur serveur interne' });
 });
 
-// ─── Démarrage ───────────────────────────────────────────────
+// ─── Démarrage (uniquement en local) ─────────────────────────
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`\n🚀 Serveur Wëndelu démarré`);
-  console.log(`   ➜ API     : http://localhost:${PORT}/api`);
-  console.log(`   ➜ Santé  : http://localhost:${PORT}/api/health\n`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`\n🚀 Serveur Wëndelu démarré`);
+    console.log(`   ➜ API     : http://localhost:${PORT}/api`);
+    console.log(`   ➜ Santé  : http://localhost:${PORT}/api/health\n`);
+  });
+}
+
+module.exports = app;
