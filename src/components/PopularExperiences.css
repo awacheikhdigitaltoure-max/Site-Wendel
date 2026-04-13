@@ -1,0 +1,130 @@
+.popular-section {
+  position: relative;
+  z-index: 2;
+}
+
+.popular-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 60px;
+  margin-top: 80px;
+}
+
+.popular-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+  border-radius: 0; /* Modern architectural square edges */
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+  transition: var(--transition-smooth);
+}
+
+.popular-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border-color: rgba(45, 126, 52, 0.3);
+}
+
+.popular-image-wrapper {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+.popular-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.popular-card:hover .popular-img {
+  transform: scale(1.05);
+}
+
+.popular-content {
+  padding: 30px 25px 25px 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.popular-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+}
+
+.popular-dot {
+  font-size: 1.2rem;
+  color: #ccc;
+  line-height: 1;
+}
+
+.popular-rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.popular-rating strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.star-icon {
+  margin-bottom: 2px;
+}
+
+.popular-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 30px;
+  flex-grow: 1;
+}
+
+.popular-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0;
+  margin-top: auto;
+}
+
+.popular-price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.popular-price .amount {
+  font-size: 1.7rem;
+  font-weight: 700;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+}
+
+.popular-price .currency {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+.compact-btn {
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  border-radius: 8px; /* Square edges for a sleek card button */
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+}

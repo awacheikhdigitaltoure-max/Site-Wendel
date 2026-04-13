@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  /* Clean White Theme (Light) */
+  --primary-green: #246B2A;
+  --secondary-green: #1a4d1f;
+  --primary-orange: #E6760F;
+  --bg-primary: #ffffff;
+  --bg-secondary: #fafafa;
+  --text-primary: #121212;
+  --text-secondary: #5a5a5a;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(0, 0, 0, 0.04);
+  --glass-blur: 16px;
+  --card-bg: #ffffff;
+  --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --accent-gradient: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-orange) 100%);
+  --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.03);
+  --section-spacing: 160px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Glassmorphism */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+}
+
+.glass-card {
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.glass-card:hover::before {
+  left: 100%;
+}
+
+.glass-card:hover {
+  background: var(--glass-bg);
+  border-color: var(--primary-green);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-premium);
+}
+
+/* Buttons */
+.btn {
+  padding: 16px 36px;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.btn-primary {
+  background: var(--primary-green);
+  color: white;
+  box-shadow: 0 4px 15px rgba(45, 126, 52, 0.2);
+}
+
+.btn-primary:hover {
+  background: #369b40;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(45, 126, 52, 0.4);
+}
+
+.btn-secondary {
+  background: var(--primary-orange);
+  color: white;
+  box-shadow: 0 4px 15px rgba(238, 124, 14, 0.2);
+}
+
+.btn-secondary:hover {
+  background: #ff8c1a;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(238, 124, 14, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: white;
+  transform: translateY(-3px);
+}
+
+.btn-outline-orange {
+  background: transparent;
+  border: 1px solid var(--primary-orange);
+  color: var(--primary-orange);
+}
+
+.btn-outline-orange:hover {
+  background: var(--primary-orange);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Utility */
+.text-gradient {
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--text-secondary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-accent {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-padding {
+  padding: var(--section-spacing) 10%;
+}
+
+/* Animations */
+.reveal-wrapper {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-wrapper.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-reveal {
+  animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 100px 5%;
+  }
+  .btn {
+    padding: 14px 28px;
+    font-size: 0.95rem;
+  }
+}

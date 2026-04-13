@@ -1,0 +1,55 @@
+.bento-section {
+  background-color: var(--bg-darker);
+  position: relative;
+}
+
+.section-header {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.sub-title {
+  color: var(--primary-green);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+}
+
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1300px) {
+  .destinations-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 950px) {
+  .destinations-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .destinations-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .section-title {
+    font-size: 2.8rem;
+  }
+}
