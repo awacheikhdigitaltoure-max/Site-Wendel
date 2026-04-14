@@ -38,9 +38,16 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/bookings', require('./routes/bookings'));
 app.use('/api/contact', require('./routes/contact'));
 
-// Route de santé
+// Route de santé & Diagnostic
 app.get('/api/health', (req, res) => {
-  res.json({ success: true, message: '🌍 API Wëndelu opérationnelle', timestamp: new Date() });
+  const mongoose = require('mongoose');
+  res.json({ 
+    success: true, 
+    message: '🌍 API Wëndelu opérationnelle', 
+    uri_exists: !!process.env.MONGO_URI,
+    db_state: mongoose.connection.readyState,
+    status: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
+  });
 });
 
 // Route 404
