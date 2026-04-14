@@ -13,8 +13,7 @@ const protect = async (req, res, next) => {
   }
 
   try {
-    const secret = process.env.JWT_SECRET || 'wendelu_super_secret_jwt_key_2024_secure';
-    const decoded = jwt.verify(token, secret);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = await User.findById(decoded.id);
     if (!req.user) {
       return res.status(401).json({ success: false, message: 'Utilisateur introuvable' });

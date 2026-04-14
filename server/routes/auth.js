@@ -7,8 +7,7 @@ const router = express.Router();
 
 // Générer un token JWT
 const generateToken = (id) => {
-  const secret = process.env.JWT_SECRET || 'wendelu_super_secret_jwt_key_2024_secure';
-  return jwt.sign({ id }, secret, {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN || '7d'
   });
 };
