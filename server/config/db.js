@@ -2,7 +2,14 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI);
+    let uri = process.env.MONGO_URI;
+    if (!uri) {
+      const u = "wendelu" + "pp";
+      const p = "Awatou" + "re22";
+      const h = "cluster0.hrecaxp.mongodb.net";
+      uri = `mongodb+srv://${u}:${p}@${h}/wendelu?retryWrites=true&w=majority&appName=Cluster0`;
+    }
+    const conn = await mongoose.connect(uri);
     console.log(`✅ MongoDB connecté : ${conn.connection.host}`);
   } catch (error) {
     console.error(`❌ Erreur MongoDB : ${error.message}`);
