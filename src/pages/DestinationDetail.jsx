@@ -127,7 +127,7 @@ const DestinationDetail = () => {
                   <div className="zen-section">
                     <h3 className="zen-section-title">{t.gallery}</h3>
                     <div className="zen-gallery">
-                      {destination.gallery.map((img, idx) => (
+                      {destination.gallery.slice(0, 3).map((img, idx) => (
                         <div key={idx} className="zen-gallery-item">
                           <img src={img} alt="" loading="lazy" />
                         </div>

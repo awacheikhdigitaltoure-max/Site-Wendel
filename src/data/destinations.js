@@ -22,9 +22,8 @@ export const destinationsData = {
       description: "Une île empreinte d'histoire et d'émotion, classée au patrimoine mondial de l'UNESCO. Ses ruelles colorées et ses bougainvilliers cachent un passé poignant lié à la mémoire de l'esclavage.",
       detailedDescription: "Située à seulement quelques kilomètres au large de Dakar, l'île de Gorée est un sanctuaire de mémoire. Cette petite île volcanique, dépourvue de voitures, offre un contraste saisissant entre la beauté de ses architectures coloniales aux couleurs ocres et la gravité de son histoire. La Maison des Esclaves, avec sa porte du 'non-retour', reste le symbole le plus puissant de cette époque. Aujourd'hui, Gorée est aussi un centre d'art vibrant où peintres et sculpteurs exposent leurs œuvres dans le labyrinthe des ruelles fleuries.",
       gallery: [
-        "/images/goree_1.png",
-        "/images/goree_2.png",
-        "/images/goree_3.png",
+        "https://images.unsplash.com/photo-1549643276-fdf2fab574f5?q=80&w=1200",
+        "https://images.unsplash.com/photo-1590766940554-634a7ed41450?q=80&w=1200",
         "https://images.unsplash.com/photo-1629117621431-155fd160f249?q=80&w=1200"
       ],
       experiences: [
