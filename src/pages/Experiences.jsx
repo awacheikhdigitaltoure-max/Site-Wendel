@@ -177,7 +177,7 @@ const Experiences = () => {
             <>
               {/* Cards Grid */}
               <div className="exp-grid">
-                {filteredData.map((exp, i) => (
+                {filteredData.slice(0, 20).map((exp, i) => (
                   <Reveal key={exp.id} delay={i * 0.1}>
                     <div
                       className={`exp-card ${activeCard === exp.id ? 'is-active' : ''}`}
