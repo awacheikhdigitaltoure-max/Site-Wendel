@@ -4,7 +4,7 @@ import { Sparkles, ShieldCheck, Loader2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import './SimplifiedBooking.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
 const SimplifiedBooking = () => {
   const { language } = useLanguage();

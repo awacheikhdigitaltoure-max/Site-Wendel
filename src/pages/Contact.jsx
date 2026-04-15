@@ -7,7 +7,7 @@ import { useAuth } from '../context/AuthContext';
 import { Mail, Phone, MapPin, Send, Loader2, CheckCircle } from 'lucide-react';
 import './Contact.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
 const Contact = () => {
   const { language } = useLanguage();

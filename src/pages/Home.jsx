@@ -13,17 +13,33 @@ const Home = () => {
   return (
     <div className="page home-page">
       <Hero />
+      
+      <Reveal>
+        <StatsSection />
+      </Reveal>
+
       <Reveal>
         <div style={{ marginTop: 'var(--section-spacing)' }}>
           <BentoGrid />
         </div>
       </Reveal>
+
       <Reveal>
         <PopularExperiences />
       </Reveal>
+
+      <Reveal>
+        <WhyWendelu />
+      </Reveal>
+
       <Reveal>
         <PromoBanner />
       </Reveal>
+
+      <Reveal>
+        <FAQSection />
+      </Reveal>
+
       <Reveal>
         <Testimonials />
       </Reveal>

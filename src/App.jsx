@@ -19,6 +19,7 @@ import DestinationDetail from './pages/DestinationDetail.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import AdminDashboard from './pages/AdminDashboard.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 // Route protégée : redirige vers /login si non connecté
 const ProtectedRoute = ({ children }) => {
@@ -51,8 +52,8 @@ function AppLayout() {
           <Route path="/experiences" element={<Experiences />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<NotFound />} />
+          <Route path="/register" element={<NotFound />} />
           <Route path="/account" element={
             <ProtectedRoute><Account /></ProtectedRoute>
           } />
@@ -60,6 +61,7 @@ function AppLayout() {
             <AdminRoute><AdminDashboard /></AdminRoute>
           } />
           <Route path="/destinations/:id" element={<DestinationDetail />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
@@ -78,7 +80,11 @@ function App() {
             </AuthProvider>
           </LanguageProvider>
         } />
-        <Route path="*" element={<Navigate to="/fr" replace />} />
+        <Route path="*" element={
+          <LanguageProvider>
+            <NotFound />
+          </LanguageProvider>
+        } />
       </Routes>
     </BrowserRouter>
   )

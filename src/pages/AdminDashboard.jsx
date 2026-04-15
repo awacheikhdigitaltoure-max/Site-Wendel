@@ -5,7 +5,7 @@ import { Package, Users, Calendar, CheckCircle, XCircle, Clock, Loader2, ArrowRi
 import Reveal from '../components/Reveal';
 import './AdminDashboard.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
 const AdminDashboard = () => {
   const { language } = useLanguage();

@@ -53,6 +53,12 @@ export const translations = {
         q3: "Comment réserver un circuit sur mesure ?",
         a3: "Utilisez notre formulaire de réservation ou contactez-nous directement. Un expert local créera votre itinéraire personnalisé sous 24h."
       }
+    },
+    error: {
+      title: "404",
+      subtitle: "Perdu dans la Teranga ?",
+      text: "Il semble que vous ayez quitté les sentiers battus. Cette page est introuvable, mais l'âme du Sénégal vous attend ailleurs.",
+      back: "Retour à l'exploration"
     }
   },
   en: {
@@ -109,6 +115,12 @@ export const translations = {
         q3: "How do I book a tailor-made tour?",
         a3: "Use our booking form or contact us directly. A local expert will create your personalized itinerary within 24h."
       }
+    },
+    error: {
+      title: "404",
+      subtitle: "Lost in the Teranga?",
+      text: "It seems you've wandered off the beaten path. This page cannot be found, but the soul of Senegal awaits you elsewhere.",
+      back: "Back to exploration"
     }
   }
 };

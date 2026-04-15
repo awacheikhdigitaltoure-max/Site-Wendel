@@ -1,0 +1,126 @@
+.notfound-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  position: relative;
+  background-color: #0a0a0a;
+  overflow: hidden;
+  color: #fff;
+}
+
+.notfound-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Image background with overlay */
+.notfound-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+  filter: grayscale(20%) brightness(0.7);
+}
+
+.notfound-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, #0a0a0a 80%);
+  z-index: 2;
+}
+
+.notfound-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  padding: 60px 40px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  animation: notFoundReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes notFoundReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.notfound-code {
+  font-size: clamp(120px, 20vw, 200px);
+  font-weight: 800;
+  line-height: 0.8;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 255, 255, 0.2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.05em;
+}
+
+.notfound-subtitle {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #E6760F; /* primary-orange */
+  font-family: 'Outfit', sans-serif;
+}
+
+.notfound-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.notfound-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Custom glow effect */
+.notfound-content::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 34px;
+  background: linear-gradient(45deg, transparent, rgba(230, 118, 15, 0.3), transparent);
+  z-index: -1;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .notfound-content {
+    padding: 40px 24px;
+  }
+  .notfound-code {
+    font-size: 100px;
+  }
+  .notfound-subtitle {
+    font-size: 1.5rem;
+  }
+}
