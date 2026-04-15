@@ -170,11 +170,10 @@ const Navbar = () => {
                 )}
               </div>
             ) : (
-              null
-              /* <Link to={`/${language}/login`} className="nav-login-btn" onClick={closeMenu}>
+              <Link to={`/${language}/login`} className="nav-login-btn" onClick={closeMenu}>
                 <User size={18} />
                 <span>{language === 'fr' ? 'Connexion' : 'Login'}</span>
-              </Link> */
+              </Link>
             )}
 
             <Link to={`/${language}/contact`} className="btn nav-btn-booking" onClick={closeMenu}>
