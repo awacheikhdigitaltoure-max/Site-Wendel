@@ -16,7 +16,7 @@
   --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   --accent-gradient: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-orange) 100%);
   --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.03);
-  --section-spacing: 100px;
+  --section-spacing: 80px;
 }
 
 * {
@@ -172,6 +172,14 @@ h1, h2, h3, h4, .font-heading {
   padding: var(--section-spacing) 10%;
 }
 
+.no-pt {
+  padding-top: 0 !important;
+}
+
+.no-pb {
+  padding-bottom: 0 !important;
+}
+
 /* Animations */
 .reveal-wrapper {
   opacity: 0;
@@ -203,7 +211,7 @@ h1, h2, h3, h4, .font-heading {
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 60px 5%;
+    padding: 40px 5%;
   }
   .btn {
     padding: 14px 28px;

@@ -6,7 +6,7 @@ import './PromoBanner.css';
 import bgImage from '../assets/hero-bg-premium.png';
 
 
-const PromoBanner = () => {
+const PromoBanner = ({ className = "" }) => {
   const { language } = useLanguage();
 
   const content = language === 'fr' 
@@ -22,7 +22,7 @@ const PromoBanner = () => {
       };
 
   return (
-    <section className="promo-banner-container">
+    <section className={`promo-banner-container ${className}`}>
       <div className="promo-banner" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="promo-overlay"></div>
         <div className="promo-content">

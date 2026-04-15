@@ -4,7 +4,7 @@ import { MapPin, ShieldCheck, Users, Sparkles } from 'lucide-react';
 import casamanceImg from '../assets/casamance.png'; // L'image de la pirogue sur le fleuve (mangrove) correspond parfaitement
 import './WhyWendelu.css';
 
-const WhyWendelu = () => {
+const WhyWendelu = ({ className = "" }) => {
   const { language } = useLanguage();
 
   const data = {
@@ -63,7 +63,7 @@ const WhyWendelu = () => {
   const content = data[language];
 
   return (
-    <section className="section-padding why-section">
+    <section className={`section-padding why-section ${className}`}>
       <div className="why-container">
         <div className="why-content">
           <h2 className="why-title text-gradient">{content.title}</h2>

@@ -23,19 +23,19 @@ const Home = () => {
       </Reveal>
 
       <Reveal>
-        <WhyWendelu />
+        <WhyWendelu className="no-pt" />
       </Reveal>
 
       <Reveal>
-        <PromoBanner />
+        <PromoBanner className="no-pt" />
       </Reveal>
 
       <Reveal>
-        <FAQSection />
+        <FAQSection className="no-pt" />
       </Reveal>
 
       <Reveal>
-        <Testimonials />
+        <Testimonials className="no-pt" />
       </Reveal>
     </div>
   );

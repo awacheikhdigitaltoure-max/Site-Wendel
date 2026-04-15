@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../i18n/translations';
 
-const FAQSection = () => {
+const FAQSection = ({ className = "" }) => {
   const { language } = useLanguage();
   const t = translations[language].footer.faq;
   const [activeIndex, setActiveIndex] = useState(0);
@@ -14,7 +14,7 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="section-padding faq-section" id="faq">
+    <section className={`section-padding faq-section ${className}`} id="faq">
       <div className="text-center mb-16">
         <span className="sub-title" style={{color: 'var(--primary-orange)'}}>Wëndelu Help</span>
         <h2 className="section-title text-gradient">{t.title}</h2>

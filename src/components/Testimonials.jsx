@@ -4,7 +4,7 @@ import { translations } from '../i18n/translations';
 import { Quote, Star } from 'lucide-react';
 import './Testimonials.css';
 
-const Testimonials = () => {
+const Testimonials = ({ className = "" }) => {
   const { language } = useLanguage();
   const t = translations[language].testimonials;
 
@@ -22,7 +22,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="section-padding testimonials-section">
+    <section className={`section-padding testimonials-section ${className}`}>
       <div className="section-header">
         <span className="sub-title">{t.title}</span>
         <h2 className="section-title text-gradient">{t.subtitle}</h2>

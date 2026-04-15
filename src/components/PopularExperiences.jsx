@@ -5,7 +5,7 @@ import { Star } from 'lucide-react';
 import { experiencesData } from '../data/experiences';
 import './PopularExperiences.css';
 
-const PopularExperiences = () => {
+const PopularExperiences = ({ className = "" }) => {
 
   const { language } = useLanguage();
 
@@ -16,7 +16,7 @@ const PopularExperiences = () => {
     : { subtitle: "Must-Do", title: "Popular Experiences" };
 
   return (
-    <section className="section-padding popular-section">
+    <section className={`section-padding popular-section ${className}`}>
       <div className="section-header">
         <span className="sub-title">{t.subtitle}</span>
         <h2 className="section-title text-gradient">{t.title}</h2>
