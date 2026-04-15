@@ -11,7 +11,7 @@
 /* ── Hero ── */
 .exp-hero-header {
   position: relative;
-  padding: 180px 0 120px;
+  padding: 80px 0 60px;
   background: #0f172a;
   color: white;
   overflow: hidden;
@@ -71,7 +71,7 @@
 }
 
 .exp-hero-text h1 {
-  font-size: 4rem;
+  font-size: 2.5rem;
   font-weight: 900;
   color: white;
   margin-bottom: 24px;
@@ -85,11 +85,11 @@
 }
 
 .exp-hero-text p {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   color: rgba(255, 255, 255, 0.95);
-  max-width: 800px;
+  max-width: 700px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .exp-eyebrow {
@@ -103,7 +103,7 @@
   font-size: 0.9rem;
   font-weight: 700;
   color: white;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -261,7 +261,7 @@
 
 .exp-card-img {
   position: relative;
-  height: 220px;
+  height: 160px;
   overflow: hidden;
 }
 
@@ -295,18 +295,18 @@
 }
 
 .exp-card-body {
-  padding: 24px;
+  padding: 15px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .exp-card-title {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 800;
   color: #0f172a;
   line-height: 1.2;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   min-height: 3rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -318,8 +318,8 @@
 .exp-card-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 16px;
+  gap: 8px;
+  margin-bottom: 12px;
 }
 
 .exp-card-meta span {
@@ -341,10 +341,10 @@
 }
 
 .exp-card-desc {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: #475569;
-  line-height: 1.6;
-  margin-bottom: 24px;
+  line-height: 1.5;
+  margin-bottom: 15px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -431,9 +431,9 @@
   background: white;
   border: 1px solid #e2e8f0;
   border-radius: 20px;
-  padding: 60px 40px;
+  padding: 30px 20px;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 40px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
