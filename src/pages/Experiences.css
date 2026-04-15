@@ -307,7 +307,7 @@
   color: #0f172a;
   line-height: 1.2;
   margin-bottom: 8px;
-  min-height: 3rem;
+  min-height: 2.8rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -320,6 +320,7 @@
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 12px;
+  min-height: 70px; /* Aligne les cartes même si le nombre de tags diffère */
 }
 
 .exp-card-meta span {
