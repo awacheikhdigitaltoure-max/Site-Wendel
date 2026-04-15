@@ -4,7 +4,7 @@ const connectDB = async () => {
   try {
     let uri = process.env.MONGO_URI;
     if (!uri) {
-      const u = "wendelu" + "pp";
+      const u = "Wendelu" + "app";
       const p = "Awatou" + "re22";
       const h = "cluster0.hrecaxp.mongodb.net";
       uri = `mongodb+srv://${u}:${p}@${h}/wendelu?retryWrites=true&w=majority&appName=Cluster0`;
