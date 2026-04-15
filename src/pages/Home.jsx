@@ -19,9 +19,7 @@ const Home = () => {
       </Reveal>
 
       <Reveal>
-        <div style={{ marginTop: 'var(--section-spacing)' }}>
-          <BentoGrid />
-        </div>
+        <BentoGrid />
       </Reveal>
 
       <Reveal>

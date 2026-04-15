@@ -9,8 +9,8 @@ const Destinations = () => {
   const allDestinations = destinationsData;
 
   return (
-    <div className="page destinations-page pt-[120px] min-h-screen">
-      <div className="section-padding" style={{paddingTop: '60px'}}>
+    <div className="page destinations-page min-h-screen">
+      <div className="section-padding">
          <Reveal>
            <BentoGrid 
              items={allDestinations[language]} 
