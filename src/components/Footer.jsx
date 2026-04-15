@@ -16,20 +16,20 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-brand">
           <div className="logo-footer">
-            <img src={logo} alt="Wëndelu Logo" className="logo-img-large" style={{ height: '110px', width: 'auto', marginBottom: '20px', filter: 'brightness(0) invert(1)' }} />
+            <img src={logo} alt="Wëndelu Logo" className="logo-img-large" style={{ height: '70px', width: 'auto', marginBottom: '10px', filter: 'brightness(0) invert(1)' }} />
           </div>
           <p style={{ 
             fontSize: '1.4rem', 
             fontWeight: '700', 
             color: '#FF9D00', 
-            margin: '15px 0', 
+            margin: '10px 0', 
             fontFamily: 'Outfit, sans-serif',
             textShadow: '0 2px 4px rgba(0,0,0,0.3)'
           }}>
             "{t.slogan}"
           </p>
           <p>{t.tagline}</p>
-          <div className="social-links" style={{ marginTop: '25px' }}>
+          <div className="social-links" style={{ marginTop: '15px' }}>
             <a href="#" className="social-icon"><Instagram size={20} /></a>
             <a href="#" className="social-icon"><Facebook size={20} /></a>
             <a href="#" className="social-icon"><Linkedin size={20} /></a>
