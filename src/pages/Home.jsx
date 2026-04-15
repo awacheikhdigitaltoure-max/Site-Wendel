@@ -15,10 +15,6 @@ const Home = () => {
       <Hero />
       
       <Reveal>
-        <StatsSection />
-      </Reveal>
-
-      <Reveal>
         <BentoGrid />
       </Reveal>
 
