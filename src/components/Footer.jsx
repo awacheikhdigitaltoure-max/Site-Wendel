@@ -18,7 +18,14 @@ const Footer = () => {
           <div className="logo-footer">
             <img src={logo} alt="Wëndelu Logo" className="logo-img-large" style={{ height: '110px', width: 'auto', marginBottom: '20px', filter: 'brightness(0) invert(1)' }} />
           </div>
-          <p style={{ fontSize: '1.4rem', fontWeight: 'bold', color: 'var(--primary-orange)', margin: '15px 0', fontFamily: 'Outfit, sans-serif' }}>
+          <p style={{ 
+            fontSize: '1.4rem', 
+            fontWeight: '700', 
+            color: '#FF9D00', 
+            margin: '15px 0', 
+            fontFamily: 'Outfit, sans-serif',
+            textShadow: '0 2px 4px rgba(0,0,0,0.3)'
+          }}>
             "{t.slogan}"
           </p>
           <p>{t.tagline}</p>
@@ -35,7 +42,15 @@ const Footer = () => {
           <Link to={`/${language}/destinations`}>{n.destinations}</Link>
           <Link to={`/${language}/experiences`}>{n.services}</Link>
           <Link to={`/${language}/about`}>{n.about}</Link>
-          <a href={`/${language}#faq`}>FAQ</a>
+          <a href="#faq" onClick={(e) => {
+            e.preventDefault();
+            const el = document.getElementById('faq');
+            if (el) {
+              el.scrollIntoView({ behavior: 'smooth' });
+            } else {
+              window.location.href = `/${language}#faq`;
+            }
+          }}>FAQ</a>
         </div>
         
         <div className="footer-newsletter">

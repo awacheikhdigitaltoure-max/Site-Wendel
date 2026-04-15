@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Globe, Menu, X, Search, User, LogOut, ChevronDown, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
@@ -17,9 +17,17 @@ const Navbar = () => {
   const { language, switchLanguage } = useLanguage();
   const { user, isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   
   // Sécuriser l'accès aux traductions
   const t = translations[language]?.nav || translations['fr'].nav;
+
+  // Fermer le menu et la recherche lors d'un changement de page
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setSearchTerm('');
+    setUserMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
