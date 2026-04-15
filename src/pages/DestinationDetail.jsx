@@ -121,22 +121,6 @@ const DestinationDetail = () => {
                 </Reveal>
               )}
 
-              {/* Portfolio Gallery */}
-              {destination.gallery && (
-                <Reveal>
-                  <div className="zen-section">
-                    <h3 className="zen-section-title">{t.gallery}</h3>
-                    <div className="zen-gallery">
-                      {destination.gallery.slice(0, 3).map((img, idx) => (
-                        <div key={idx} className="zen-gallery-item">
-                          <img src={img} alt="" loading="lazy" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </Reveal>
-              )}
-
               {/* Signature Activities */}
               {destination.experiences && (
                 <Reveal>
