@@ -318,21 +318,22 @@
 .exp-card-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
   margin-bottom: 12px;
-  min-height: 70px; /* Aligne les cartes même si le nombre de tags diffère */
+  min-height: 56px; /* Aligne les cartes sur 2 lignes de badges max */
 }
 
 .exp-card-meta span {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.8rem;
+  gap: 4px;
+  font-size: 0.75rem;
   color: #64748b;
   font-weight: 600;
-  background: #f1f5f9;
-  padding: 4px 10px;
-  border-radius: 6px;
+  background: #f8fafc;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid #f1f5f9;
 }
 
 .exp-card-meta svg {
