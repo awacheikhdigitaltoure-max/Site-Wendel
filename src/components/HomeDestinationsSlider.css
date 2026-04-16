@@ -25,8 +25,8 @@
 
 .dest-slide-content {
     display: flex;
-    height: 420px;
-    border-radius: 30px;
+    height: 350px;
+    border-radius: 20px;
     overflow: hidden;
     background: white;
     box-shadow: 0 20px 60px rgba(0,0,0,0.08);
@@ -59,7 +59,7 @@
 
 .dest-slide-info {
     flex: 1;
-    padding: 40px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -70,19 +70,19 @@
 .dest-slide-cat {
     text-transform: uppercase;
     letter-spacing: 4px;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--primary-orange);
     font-weight: 700;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .dest-slide-title {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--text-primary);
     line-height: 1.1;
-    margin-bottom: 18px;
-    letter-spacing: -1.5px;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
 }
 
 .dest-slide-desc {

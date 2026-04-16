@@ -1,8 +1,8 @@
 .experience-card {
   position: relative;
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
-  height: 320px;
+  height: 270px;
   cursor: pointer;
   background-color: var(--bg-primary);
   transition: var(--transition-smooth);
@@ -71,7 +71,7 @@
 }
 
 .card-title {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: white;
   font-weight: 700;
   line-height: 1.2;
@@ -124,21 +124,21 @@
 
 @media (max-width: 768px) {
   .experience-card {
-    height: 220px;
+    height: 180px;
   }
   .card-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
   .card-content {
-    padding: 16px;
+    padding: 12px;
   }
 }
 
 @media (max-width: 480px) {
   .experience-card {
-    height: 190px;
+    height: 170px;
   }
   .card-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }

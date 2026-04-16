@@ -4,20 +4,20 @@
 }
 
 .booking-container {
-  max-width: 1200px;
+  max-width: 1000px; /* Reduced from 1200px */
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  padding: 80px;
+  gap: 50px; /* Reduced from 80px */
+  padding: 50px; /* Reduced from 80px */
   align-items: center;
-  border-radius: 48px;
+  border-radius: 30px;
 }
 
 .booking-info h2 {
-  font-size: 3.5rem;
+  font-size: 2.2rem; /* Reduced from 3.5rem */
   line-height: 1.1;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .booking-text {
