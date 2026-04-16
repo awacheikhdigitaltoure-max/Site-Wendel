@@ -114,9 +114,9 @@
 /* ── Filter Bar ── */
 .dest-filter-zone {
   position: sticky;
-  top: 70px;
+  top: 148px; /* Navbar logo 110px + padding 20px*2 */
   z-index: 100;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(20px);
   padding: 16px 0;
   border-bottom: 1px solid rgba(226, 232, 240, 0.6);
@@ -485,11 +485,16 @@
 }
 
 @media (max-width: 768px) {
+  /* Sur mobile : pas de sticky */
+  .dest-filter-zone {
+    position: relative;
+    top: 0;
+    padding: 14px 0;
+  }
   .dest-hero-header { padding: 70px 0 50px; }
   .dest-hero-text h1 { font-size: 1.9rem; }
   .dest-hero-text p { font-size: 1rem; }
 
-  /* Filter bar → colonne sur mobile */
   .dest-filter-bar {
     flex-direction: column;
     align-items: stretch;
@@ -500,26 +505,14 @@
     flex: 1 1 100%;
     width: 100%;
   }
-  .dest-search-input {
-    width: 100%;
-  }
-  .dest-filter-divider {
-    width: 100%;
-    height: 1px;
-  }
-  .dest-select-wrap.compact {
-    width: 100%;
-  }
-  .dest-select-box select {
-    width: 100%;
-  }
-  .dest-count {
-    margin-left: 0;
-    text-align: center;
-  }
+  .dest-search-input { width: 100%; }
+  .dest-filter-divider { width: 100%; height: 1px; }
+  .dest-select-wrap.compact { width: 100%; }
+  .dest-select-box select { width: 100%; }
+  .dest-count { margin-left: 0; text-align: center; }
 }
 
 @media (max-width: 640px) {
   .destinations-main-grid { grid-template-columns: 1fr; }
-  .dest-filter-zone { top: 60px; }
+  .dest-grid-container { padding: 0; }
 }

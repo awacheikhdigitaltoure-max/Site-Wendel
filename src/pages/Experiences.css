@@ -113,9 +113,9 @@
 /* ── Filter Bar ── */
 .exp-filter-zone {
   position: sticky;
-  top: 70px; /* Hauteur de la navbar */
+  top: 148px; /* Navbar logo 110px + padding 20px*2 */
   z-index: 100;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(20px);
   padding: 16px 0;
   border-bottom: 1px solid rgba(226, 232, 240, 0.6);
@@ -504,10 +504,11 @@
 }
 
 @media (max-width: 768px) {
-  /* Filter bar sticky sous la navbar mobile */
+  /* Sur mobile : pas de sticky (eviyte chevauchemnt avec la navbar) */
   .exp-filter-zone {
-    top: 60px;
-    padding: 12px 0;
+    position: relative;
+    top: 0;
+    padding: 14px 0;
   }
 
   .exp-filter-bar {
@@ -534,7 +535,7 @@
   }
 
   .exp-hero-text h1 { font-size: 1.75rem; }
-  .exp-hero-header { padding: 60px 0 40px; }
+  .exp-hero-header { padding: 60px 0 30px; }
 
   .exp-cta-form {
     flex-direction: column;
@@ -542,13 +543,11 @@
 }
 
 @media (max-width: 640px) {
-  /* 1 carte par ligne sur petit mobile */
   .exp-grid {
     grid-template-columns: 1fr;
     gap: 16px;
   }
 
-  /* Carte plus compacte */
   .exp-card-img { height: 180px; }
   .exp-card-body { padding: 12px; }
   .exp-book-btn { padding: 10px 18px; font-size: 0.85rem; }
@@ -556,4 +555,5 @@
 
   .exp-hero-text h1 { font-size: 1.5rem; }
   .exp-hero-text p { font-size: 0.95rem; }
+  .exp-content-zone { padding: 30px 0; }
 }
