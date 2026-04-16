@@ -2,8 +2,8 @@ import React from 'react';
 import Hero from '../components/Hero';
 import Reveal from '../components/Reveal';
 import Testimonials from '../components/Testimonials';
-import BentoGrid from '../components/BentoGrid';
-import PopularExperiences from '../components/PopularExperiences';
+import HomeDestinationsSlider from '../components/HomeDestinationsSlider';
+import HomeExperiencesSlider from '../components/HomeExperiencesSlider';
 import WhyWendelu from '../components/WhyWendelu';
 import PromoBanner from '../components/PromoBanner';
 import StatsSection from '../components/StatsSection';
@@ -15,11 +15,11 @@ const Home = () => {
       <Hero />
       
       <Reveal>
-        <BentoGrid />
+        <HomeDestinationsSlider />
       </Reveal>
 
       <Reveal>
-        <PopularExperiences />
+        <HomeExperiencesSlider />
       </Reveal>
 
       <Reveal>

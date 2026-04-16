@@ -1,0 +1,122 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
+import { destinationsData } from '../data/destinations';
+import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import './HomeDestinationsSlider.css';
+
+const HomeDestinationsSlider = () => {
+    const { language } = useLanguage();
+    const data = destinationsData[language].slice(0, 8); // Top 8 destinations
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isPaused, setIsPaused] = useState(false);
+    const sliderRef = useRef(null);
+
+    // Auto-slide logic
+    useEffect(() => {
+        if (isPaused) return;
+        const interval = setInterval(() => {
+            nextSlide();
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [currentIndex, isPaused]);
+
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchEnd, setTouchEnd] = useState(null);
+
+    // Minimum swipe distance
+    const minSwipeDistance = 50;
+
+    const onTouchStart = (e) => {
+        setTouchEnd(null);
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+
+    const onTouchMove = (e) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+
+    const onTouchEnd = () => {
+        if (!touchStart || !touchEnd) return;
+        const distance = touchStart - touchEnd;
+        const isLeftSwipe = distance > minSwipeDistance;
+        const isRightSwipe = distance < -minSwipeDistance;
+
+        if (isLeftSwipe) nextSlide();
+        if (isRightSwipe) prevSlide();
+    };
+
+    const nextSlide = () => {
+        setCurrentIndex((prev) => (prev + 1) % data.length);
+    };
+
+    const prevSlide = () => {
+        setCurrentIndex((prev) => (prev - 1 + data.length) % data.length);
+    };
+
+    return (
+        <section className="home-dest-slider-section" id="destinations">
+            <div className="section-header">
+                <span className="sub-title">{language === 'fr' ? 'Le Sénégal à Travers Vos Yeux' : 'Senegal Through Your Eyes'}</span>
+                <h2 className="section-title text-gradient">{language === 'fr' ? 'Destinations Phares' : 'Flagship Destinations'}</h2>
+            </div>
+
+            <div 
+                className="slider-master-wrapper"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+                onTouchStart={onTouchStart}
+                onTouchMove={onTouchMove}
+                onTouchEnd={onTouchEnd}
+            >
+                <div 
+                    className="slider-track"
+                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    ref={sliderRef}
+                >
+                    {data.map((dest, index) => (
+                        <div key={dest.id} className={`dest-slide ${index === currentIndex ? 'active' : ''}`}>
+                            <div className="dest-slide-content glass">
+                                <div className="dest-slide-image">
+                                    <img src={dest.image} alt={dest.title} />
+                                    <div className="dest-slide-overlay"></div>
+                                </div>
+                                <div className="dest-slide-info">
+                                    <span className="dest-slide-cat">{dest.category}</span>
+                                    <h3 className="dest-slide-title">{dest.title}</h3>
+                                    <p className="dest-slide-desc">{dest.description}</p>
+                                    <Link to={`/${language}/destinations/${dest.id}`} className="dest-slide-btn">
+                                        {language === 'fr' ? 'Découvrir' : 'Discover'} <ArrowUpRight size={20} />
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Navigation Controls */}
+                <div className="slider-controls">
+                    <button className="slider-btn prev" onClick={prevSlide} aria-label="Previous">
+                        <ArrowLeft size={24} />
+                    </button>
+                    <button className="slider-btn next" onClick={nextSlide} aria-label="Next">
+                        <ArrowRight size={24} />
+                    </button>
+                </div>
+
+                {/* Pagination Dots */}
+                <div className="slider-pagination">
+                    {data.map((_, i) => (
+                        <button 
+                            key={i} 
+                            className={`pag-dot ${i === currentIndex ? 'active' : ''}`}
+                            onClick={() => setCurrentIndex(i)}
+                        />
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default HomeDestinationsSlider;
