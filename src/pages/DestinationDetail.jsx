@@ -170,10 +170,9 @@ const DestinationDetail = () => {
             {/* Right Column: Floating Concierge Sidebar */}
             <div className="zen-sidebar-col">
               <div className="zen-booking-card">
-                <div className="zen-price">
-                  <label>{t.priceFrom}</label>
-                  <span className="amount">45.000</span>
-                  <span className="currency">CFA</span>
+                <div className="zen-booking-header">
+                  <ShieldCheck size={20} className="trust-icon" />
+                  <span>Expérience Exclusive</span>
                 </div>
                 
                 <Link to={`/${language}/contact`} className="zen-book-btn" style={{ textDecoration: 'none', display: 'block', textAlign: 'center' }}>

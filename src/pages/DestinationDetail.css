@@ -255,30 +255,20 @@
   gap: 30px;
 }
 
-.zen-price {
-  text-align: left;
+.zen-booking-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
-.zen-price label {
-  display: block;
-  font-size: 0.75rem;
+.zen-booking-header span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #94a3b8;
-  margin-bottom: 5px;
-}
-
-.zen-price .amount {
-  font-size: 3rem;
-  font-weight: 300;
-  color: #0f172a;
-  letter-spacing: -2px;
-}
-
-.zen-price .currency {
-  font-size: 1rem;
-  color: #64748b;
-  margin-left: 8px;
 }
 
 .zen-book-btn {

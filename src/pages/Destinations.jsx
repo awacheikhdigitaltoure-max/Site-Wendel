@@ -201,10 +201,7 @@ const Destinations = () => {
                         <p className="info-desc">{dest.description}</p>
                         
                         <div className="info-footer">
-                          <div className="info-price">
-                            <span className="price-val">{dest.price}</span>
-                            <span className="price-unit">{dest.currency}</span>
-                          </div>
+                          <div className="info-placeholder-spacer" />
                           <Link to={`/${language}/login`} className="btn-book-small">
                             {t.cta_book}
                           </Link>
