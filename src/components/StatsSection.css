@@ -26,15 +26,15 @@
 }
 
 .stat-icon-wrapper {
-  width: 70px;
-  height: 70px;
-  border-radius: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
   background: var(--bg-secondary);
   color: var(--primary-green);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   transition: var(--transition-smooth);
 }
 
@@ -51,7 +51,7 @@
 
 .stat-value {
   font-family: 'Outfit', sans-serif;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 8px;

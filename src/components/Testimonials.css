@@ -11,11 +11,11 @@
 }
 
 .testimonial-card {
-  padding: 25px;
+  padding: 35px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-radius: 30px;
+  border-radius: 20px;
   transition: var(--transition-smooth);
 }
 
@@ -35,8 +35,8 @@
 }
 
 .review-text {
-  font-size: 1.1rem;
-  line-height: 1.7;
+  font-size: 1rem;
+  line-height: 1.6;
   font-style: italic;
   color: var(--text-primary);
   flex-grow: 1;

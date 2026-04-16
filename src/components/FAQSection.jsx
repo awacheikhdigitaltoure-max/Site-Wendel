@@ -20,13 +20,13 @@ const FAQSection = ({ className = "" }) => {
         <h2 className="section-title text-gradient">{t.title}</h2>
       </div>
       
-      <div className="max-w-3xl mx-auto space-y-4">
+      <div className="max-w-2xl mx-auto space-y-4">
         {faqs.map((faq, index) => (
           <div 
             key={index} 
-            className={`glass-card p-6 cursor-pointer transition-all duration-300 ${activeIndex === index ? 'active-faq' : ''}`}
+            className={`glass-card p-10 cursor-pointer transition-all duration-300 ${activeIndex === index ? 'active-faq' : ''}`}
             onClick={() => setActiveIndex(activeIndex === index ? -1 : index)}
-            style={{ border: '1px solid var(--glass-border)', background: 'var(--glass-bg)'}}
+            style={{ border: '1px solid var(--glass-border)', background: 'var(--glass-bg)', padding: '35px'}}
           >
             <div className="flex justify-between items-center text-left">
               <h4 className="text-xl font-semibold">{faq.q}</h4>
