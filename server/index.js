@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-const connectDB = require('./config/db');
+const { connectDB, getStatus } = require('./config/db');
 
 // Connexion à la base de données
 connectDB();
@@ -47,6 +47,14 @@ app.get('/api/health', (req, res) => {
     uri_exists: !!process.env.MONGO_URI,
     db_state: mongoose.connection.readyState,
     status: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
+  });
+});
+
+app.get('/api/status', (req, res) => {
+  res.json({
+    success: true,
+    mongodb: getStatus() ? 'connected' : 'disconnected',
+    mode: getStatus() ? 'production' : 'simulation/local'
   });
 });
 

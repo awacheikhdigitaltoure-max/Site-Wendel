@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 
+// Variable globale pour suivre l'état de la connexion
+let isConnected = false;
+
 const connectDB = async () => {
   try {
     let uri = process.env.MONGO_URI;
@@ -9,12 +12,25 @@ const connectDB = async () => {
       const h = "cluster0.hrecaxp.mongodb.net";
       uri = `mongodb+srv://${u}:${p}@${h}/wendelu?retryWrites=true&w=majority&appName=Cluster0`;
     }
-    const conn = await mongoose.connect(uri);
+
+    console.log('⏳ Tentative de connexion à MongoDB...');
+    
+    // Timeout court pour ne pas bloquer le démarrage indéfiniment
+    const conn = await mongoose.connect(uri, {
+      serverSelectionTimeoutMS: 5000 
+    });
+    
+    isConnected = true;
     console.log(`✅ MongoDB connecté : ${conn.connection.host}`);
   } catch (error) {
+    isConnected = false;
     console.error(`❌ Erreur MongoDB : ${error.message}`);
-    if (process.env.NODE_ENV !== 'production') process.exit(1);
+    console.warn('⚠️ Le serveur démarre en MODE DÉCONNECTÉ. Les données seront simulées ou les requêtes échoueront.');
+    
+    // On ne fait plus process.exit(1)
   }
 };
 
-module.exports = connectDB;
+const getStatus = () => isConnected;
+
+module.exports = { connectDB, getStatus };

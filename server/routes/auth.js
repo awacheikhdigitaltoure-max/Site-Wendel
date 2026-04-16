@@ -2,6 +2,8 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const { protect } = require('../middleware/auth');
+const { getStatus } = require('../config/db');
+const mockDB = require('../config/mockDB');
 
 const router = express.Router();
 
@@ -22,6 +24,28 @@ router.post('/register', async (req, res) => {
 
     if (!name || !email || !password) {
       return res.status(400).json({ success: false, message: 'Nom, email et mot de passe requis' });
+    }
+
+    // --- Mode Simulation ---
+    if (!getStatus()) {
+      const existingUser = mockDB.findOne('users', { email });
+      if (existingUser) return res.status(400).json({ success: false, message: 'Cet email est déjà utilisé' });
+      
+      const allUsers = mockDB.get('users');
+      const role = allUsers.length === 0 ? 'admin' : 'user';
+      
+      const user = mockDB.save('users', { 
+        name, email, phone: phone || '', 
+        role: role,
+        password // Dans le mock on ne hashe pas forcément pour simplifier le debug local
+      });
+      
+      return res.status(201).json({
+        success: true,
+        message: `Compte créé (Simulation - ${role})`,
+        token: generateToken(user._id),
+        user
+      });
     }
 
     const existingUser = await User.findOne({ email });
@@ -59,6 +83,20 @@ router.post('/login', async (req, res) => {
 
     if (!email || !password) {
       return res.status(400).json({ success: false, message: 'Email et mot de passe requis' });
+    }
+
+    // --- Mode Simulation ---
+    if (!getStatus()) {
+      const user = mockDB.findOne('users', { email });
+      if (!user || user.password !== password) {
+        return res.status(401).json({ success: false, message: 'Email ou mot de passe incorrect (Simulation)' });
+      }
+      return res.json({
+        success: true,
+        message: 'Connexion réussie (Simulation)',
+        token: generateToken(user._id),
+        user
+      });
     }
 
     const user = await User.findOne({ email }).select('+password');

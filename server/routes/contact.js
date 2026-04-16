@@ -1,6 +1,8 @@
 const express = require('express');
 const Contact = require('../models/Contact');
 const nodemailer = require('nodemailer');
+const { getStatus } = require('../config/db');
+const mockDB = require('../config/mockDB');
 
 const router = express.Router();
 
@@ -26,6 +28,20 @@ router.post('/', async (req, res) => {
       return res.status(400).json({
         success: false,
         message: 'Nom, email et message sont requis'
+      });
+    }
+
+    // --- Mode Simulation ---
+    if (!getStatus()) {
+      const contact = mockDB.save('contacts', { name, email, subject, message });
+      
+      // Notifier l'admin (Simulation de log console)
+      console.log(`📩 [Sim] Nouveau contact de ${name}: ${message}`);
+
+      return res.status(201).json({
+        success: true,
+        message: 'Message envoyé (Simulation) !',
+        contactId: contact._id
       });
     }
 
@@ -73,6 +89,10 @@ const { protect, admin } = require('../middleware/auth');
 // @access  Private/Admin
 router.get('/', protect, admin, async (req, res) => {
   try {
+    if (!getStatus()) {
+      const messages = mockDB.get('contacts').sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      return res.json({ success: true, count: messages.length, messages });
+    }
     const messages = await Contact.find({}).sort({ createdAt: -1 });
     res.json({ success: true, count: messages.length, messages });
   } catch (error) {

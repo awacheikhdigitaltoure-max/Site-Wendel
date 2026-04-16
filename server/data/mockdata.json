@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "name": "Test User",
+      "email": "test@example.com",
+      "phone": "",
+      "role": "user",
+      "password": "password123",
+      "_id": "1776281614548",
+      "createdAt": "2026-04-15T19:33:34.548Z"
+    },
+    {
+      "name": "Admin User",
+      "email": "admin@test.com",
+      "phone": "",
+      "role": "user",
+      "password": "password",
+      "_id": "1776281989990",
+      "createdAt": "2026-04-15T19:39:49.990Z"
+    }
+  ],
+  "bookings": [],
+  "contacts": []
+}

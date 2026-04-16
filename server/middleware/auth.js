@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const { getStatus } = require('../config/db');
+const mockDB = require('../config/mockDB');
 
 const protect = async (req, res, next) => {
   let token;
@@ -15,7 +17,14 @@ const protect = async (req, res, next) => {
   try {
     const s = "wendelu_super_secret" + "_jwt_key_" + "2024_secure";
     const decoded = jwt.verify(token, process.env.JWT_SECRET || s);
-    req.user = await User.findById(decoded.id);
+    
+    // --- Mode Simulation ---
+    if (!getStatus()) {
+      req.user = mockDB.findOne('users', { _id: decoded.id });
+    } else {
+      req.user = await User.findById(decoded.id);
+    }
+
     if (!req.user) {
       return res.status(401).json({ success: false, message: 'Utilisateur introuvable' });
     }

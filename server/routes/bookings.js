@@ -2,6 +2,8 @@ const express = require('express');
 const Booking = require('../models/Booking');
 const { protect } = require('../middleware/auth');
 const nodemailer = require('nodemailer');
+const { getStatus } = require('../config/db');
+const mockDB = require('../config/mockDB');
 
 const router = express.Router();
 
@@ -91,6 +93,26 @@ router.post('/', async (req, res) => {
       }
     }
 
+    // --- Mode Simulation ---
+    if (!getStatus()) {
+      const booking = mockDB.save('bookings', {
+        user: userId,
+        guestName,
+        guestEmail,
+        destination,
+        departureDate,
+        travellers: travellers || 1,
+        message: message || '',
+        status: 'pending'
+      });
+      await sendBookingConfirmation(booking);
+      return res.status(201).json({
+        success: true,
+        message: 'Réservation enregistrée (Simulation) !',
+        booking
+      });
+    }
+
     const booking = await Booking.create({
       user: userId,
       guestName,
@@ -129,6 +151,10 @@ const { admin } = require('../middleware/auth');
 // @access  Private/Admin
 router.get('/', protect, admin, async (req, res) => {
   try {
+    if (!getStatus()) {
+      const bookings = mockDB.get('bookings').sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      return res.json({ success: true, count: bookings.length, bookings });
+    }
     const bookings = await Booking.find({}).sort({ createdAt: -1 });
     res.json({ success: true, count: bookings.length, bookings });
   } catch (error) {

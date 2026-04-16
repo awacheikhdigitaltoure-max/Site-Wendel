@@ -53,42 +53,18 @@ const Destinations = () => {
   }[language];
 
   const allData = destinationsData[language];
+  const [filterCategory, setFilterCategory] = useState('all');
+
   const filteredData = allData.filter(dest => {
     const matchRegion = filterRegion === 'all' || dest.region.toLowerCase() === filterRegion.toLowerCase();
+    const matchCategory = filterCategory === 'all' || dest.category.toLowerCase() === filterCategory.toLowerCase();
     const matchSearch = dest.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                        dest.category.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchRegion && matchSearch;
+    return matchRegion && matchCategory && matchSearch;
   });
-  
-  // Dynamic Grouping Mapping
-  const categoryGroups = {
-    fr: {
-      "Nature & Aventure": ["Aventure", "Lagune & Nature", "Biodiversité", "Ornithologie", "Nature & Loisirs", "Safari & Nature", "Incontournable", "Montagnes"],
-      "Culture & Histoire": ["Histoire", "Élégance Coloniale", "Art & Falaises", "Culture & Vue", "Culture & Coquillages", "Authenticité"],
-      "Plages & Détente": ["Détente", "Surf & Île", "Plage Tropicale"]
-    },
-    en: {
-      "Nature & Adventure": ["Adventure", "Lagoon & Nature", "Biodiversity", "Ornithology", "Nature & Leisure", "Safari & Nature", "Must-See", "Mountains"],
-      "Culture & History": ["History", "Colonial Elegance", "Art & Cliffs", "Culture & View", "Culture & Shells", "Authenticity"],
-      "Beach & Relaxation": ["Relaxation", "Surf & Island", "Tropical Beach"]
-    }
-  }[language];
-
-  const getGroup = (cat) => {
-    for (const [groupName, categories] of Object.entries(categoryGroups)) {
-      if (categories.includes(cat)) return groupName;
-    }
-    return language === 'fr' ? "Autres" : "Others";
-  };
-
-  const groupedData = filteredData.reduce((acc, dest) => {
-    const group = getGroup(dest.category);
-    if (!acc[group]) acc[group] = [];
-    acc[group].push(dest);
-    return acc;
-  }, {});
 
   const regions = ['all', ...new Set(allData.map(e => e.region))];
+  const categories = ['all', ...new Set(allData.map(e => e.category))];
 
   return (
     <div className="destinations-page">
@@ -121,9 +97,10 @@ const Destinations = () => {
         <div className="main-container">
           <Reveal>
             <div className="dest-filter-bar">
-              {/* Search */}
+
+              {/* Search compact */}
               <div className="dest-search-wrap">
-                <Search size={18} className="dest-search-icon" />
+                <Search size={16} className="dest-search-icon" />
                 <input
                   type="text"
                   placeholder={t.filters.search}
@@ -133,9 +110,25 @@ const Destinations = () => {
                 />
               </div>
 
-              {/* Region Select */}
-              <div className="dest-select-wrap">
-                <label className="filter-label">{t.filters.region}</label>
+              {/* Séparateur */}
+              <div className="dest-filter-divider" />
+
+              {/* Catégorie dropdown */}
+              <div className="dest-select-wrap compact">
+                <div className="dest-select-box">
+                  <select value={filterCategory} onChange={e => setFilterCategory(e.target.value)}>
+                    {categories.map(c => (
+                      <option key={c} value={c}>
+                        {c === 'all' ? (language === 'fr' ? 'Toutes catégories' : 'All categories') : c}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown size={14} />
+                </div>
+              </div>
+
+              {/* Région dropdown */}
+              <div className="dest-select-wrap compact">
                 <div className="dest-select-box">
                   <select value={filterRegion} onChange={e => setFilterRegion(e.target.value)}>
                     {regions.map(r => (
@@ -144,76 +137,67 @@ const Destinations = () => {
                       </option>
                     ))}
                   </select>
-                  <ChevronDown size={16} />
+                  <ChevronDown size={14} />
                 </div>
               </div>
 
-              {/* Count */}
               <span className="dest-count">{filteredData.length} {t.results}</span>
             </div>
           </Reveal>
         </div>
       </div>
 
-      {/* ── Categorized Sections ── */}
-      <div className="dest-sections-container">
-        {Object.entries(groupedData).map(([groupName, items], gIdx) => (
-          <section key={groupName} className="dest-category-section">
-            <div className="main-container">
-              <Reveal delay={0.1}>
-                <div className="dest-section-header">
-                  <div className="header-line" />
-                  <h2 className="dest-section-title">{groupName}</h2>
-                  <span className="dest-count-tag">{items.length} {t.results}</span>
-                </div>
-              </Reveal>
-
-              <div className="dest-grid">
-                {items.map((dest, i) => (
-                  <Reveal key={dest.id} delay={i % 4 * 0.1}>
-                    <div className="dest-simple-card">
-                      <div className="dest-card-media">
-                        <img src={dest.image} alt={dest.title} />
-                        <div className="dest-card-overlay">
-                          <Link to={`/${language}/destinations/${dest.id}`} className="btn-simple-discover">
-                            {t.cta_discover} <ArrowUpRight size={18} />
-                          </Link>
-                        </div>
-                        <div className="dest-card-badge">
-                          {dest.category}
+      {/* ── Grid Content ── */}
+      <div className="dest-grid-container">
+        <div className="main-container">
+          {filteredData.length === 0 ? (
+            <div className="dest-empty">
+              <h3>{language === 'fr' ? "Aucune destination trouvée." : "No destinations found."}</h3>
+            </div>
+          ) : (
+            <div className="destinations-main-grid">
+              {filteredData.map((dest, i) => (
+                <Reveal key={dest.id} delay={i % 4 * 0.1}>
+                  <div className="home-style-card">
+                    <div className="card-image-box">
+                      <img src={dest.image} alt={dest.title} />
+                      <div className="card-overlay-gradient"></div>
+                      <div className="card-badge-top">{dest.category}</div>
+                      
+                      <div className="card-hover-content">
+                        <Link to={`/${language}/destinations/${dest.id}`} className="btn-home-discover">
+                          {t.cta_discover} <ArrowUpRight size={18} />
+                        </Link>
+                      </div>
+                    </div>
+                    
+                    <div className="card-info-box">
+                      <div className="info-header-row">
+                        <h3 className="card-dest-title">{dest.title}</h3>
+                        <div className="card-rating">
+                          <Star size={14} fill="#FFB800" stroke="none" />
+                          <span>{dest.rating}</span>
                         </div>
                       </div>
                       
-                      <div className="dest-card-info">
-                        <div className="info-top">
-                          <h3 className="info-title">{dest.title}</h3>
-                          <div className="info-rating">
-                            <Star size={12} fill="#ffc107" strokeWidth={0} />
-                            <span>{dest.rating}</span>
-                          </div>
-                        </div>
-                        
-                        <div className="info-meta">
-                          <span><MapPin size={12} /> {dest.region}</span>
-                          <span><Clock size={12} /> {dest.duration}</span>
-                        </div>
+                      <div className="card-region-tag">
+                        <MapPin size={12} /> {dest.region}
+                      </div>
 
-                        <p className="info-desc">{dest.description}</p>
-                        
-                        <div className="info-footer">
-                          <div className="info-placeholder-spacer" />
-                          <Link to={`/${language}/login`} className="btn-book-small">
-                            {t.cta_book}
-                          </Link>
-                        </div>
+                      <p className="card-dest-desc">{dest.description}</p>
+                      
+                      <div className="card-footer-row">
+                        <Link to={`/${language}/destinations/${dest.id}`} className="btn-discover-full">
+                          {t.cta_discover} <ArrowUpRight size={16} />
+                        </Link>
                       </div>
                     </div>
-                  </Reveal>
-                ))}
-              </div>
+                  </div>
+                </Reveal>
+              ))}
             </div>
-          </section>
-        ))}
+          )}
+        </div>
       </div>
     </div>
   );
