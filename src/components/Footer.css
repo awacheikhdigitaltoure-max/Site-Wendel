@@ -164,6 +164,43 @@
 @media (max-width: 1000px) {
   .footer-container {
     grid-template-columns: 1fr;
-    gap: 60px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 6%;
+  }
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .social-links {
+    justify-content: center;
+  }
+  .footer-links {
+    align-items: center;
+  }
+  .newsletter-form {
+    flex-direction: column;
+  }
+  .newsletter-form input,
+  .newsletter-form button {
+    width: 100%;
+  }
+  .footer-bottom {
+    font-size: 0.85rem;
+  }
+  .local-text {
+    display: block;
+    margin-left: 0;
+    margin-top: 4px;
   }
 }

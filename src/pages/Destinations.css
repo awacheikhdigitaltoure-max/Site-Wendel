@@ -481,11 +481,45 @@
 
 @media (max-width: 1024px) {
   .destinations-main-grid { grid-template-columns: repeat(2, 1fr); }
-  .dest-category-nav { gap: 8px; }
+  .dest-hero-text h1 { font-size: 2.2rem; }
+}
+
+@media (max-width: 768px) {
+  .dest-hero-header { padding: 70px 0 50px; }
+  .dest-hero-text h1 { font-size: 1.9rem; }
+  .dest-hero-text p { font-size: 1rem; }
+
+  /* Filter bar → colonne sur mobile */
+  .dest-filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 16px;
+  }
+  .dest-search-wrap {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  .dest-search-input {
+    width: 100%;
+  }
+  .dest-filter-divider {
+    width: 100%;
+    height: 1px;
+  }
+  .dest-select-wrap.compact {
+    width: 100%;
+  }
+  .dest-select-box select {
+    width: 100%;
+  }
+  .dest-count {
+    margin-left: 0;
+    text-align: center;
+  }
 }
 
 @media (max-width: 640px) {
   .destinations-main-grid { grid-template-columns: 1fr; }
-  .dest-filter-bar { flex-direction: column; align-items: stretch; }
-  .dest-select-wrap.compact { min-width: 100%; }
+  .dest-filter-zone { top: 60px; }
 }
