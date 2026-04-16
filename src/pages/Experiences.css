@@ -113,11 +113,11 @@
 /* ── Filter Bar ── */
 .exp-filter-zone {
   position: sticky;
-  top: 80px;
+  top: 70px; /* Hauteur de la navbar */
   z-index: 100;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
-  padding: 20px 0;
+  padding: 16px 0;
   border-bottom: 1px solid rgba(226, 232, 240, 0.6);
   box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
@@ -490,31 +490,70 @@
 /* ── Responsiveness ── */
 @media (max-width: 1200px) {
   .exp-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
   }
 }
 
+@media (max-width: 900px) {
+  .exp-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .exp-hero-text h1 { font-size: 2rem; }
+}
+
 @media (max-width: 768px) {
+  /* Filter bar sticky sous la navbar mobile */
+  .exp-filter-zone {
+    top: 60px;
+    padding: 12px 0;
+  }
+
   .exp-filter-bar {
     flex-direction: column;
     align-items: stretch;
-    gap: 16px;
+    gap: 12px;
   }
-  
+
   .exp-selects {
     flex-direction: column;
+    gap: 10px;
   }
-  
-  .exp-grid {
-    grid-template-columns: 1fr;
+
+  .exp-select-box {
+    min-width: unset;
+    width: 100%;
   }
-  
-  .exp-hero-text h1 {
-    font-size: 2.2rem;
+
+  .exp-search-wrap { width: 100%; }
+
+  .exp-count {
+    text-align: center;
+    margin-left: 0;
   }
-  
+
+  .exp-hero-text h1 { font-size: 1.75rem; }
+  .exp-hero-header { padding: 60px 0 40px; }
+
   .exp-cta-form {
     flex-direction: column;
   }
+}
+
+@media (max-width: 640px) {
+  /* 1 carte par ligne sur petit mobile */
+  .exp-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Carte plus compacte */
+  .exp-card-img { height: 180px; }
+  .exp-card-body { padding: 12px; }
+  .exp-book-btn { padding: 10px 18px; font-size: 0.85rem; }
+  .exp-price { font-size: 1.2rem; }
+
+  .exp-hero-text h1 { font-size: 1.5rem; }
+  .exp-hero-text p { font-size: 0.95rem; }
 }
