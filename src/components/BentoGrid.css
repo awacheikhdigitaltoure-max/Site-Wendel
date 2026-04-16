@@ -41,15 +41,29 @@
 @media (max-width: 950px) {
   .destinations-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .section-title {
+    font-size: 2.8rem;
   }
 }
 
 @media (max-width: 650px) {
   .destinations-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
   .section-title {
-    font-size: 2.8rem;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .destinations-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .section-title {
+    font-size: 1.8rem;
   }
 }
