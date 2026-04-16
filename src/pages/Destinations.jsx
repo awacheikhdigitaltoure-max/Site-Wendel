@@ -59,6 +59,34 @@ const Destinations = () => {
                        dest.category.toLowerCase().includes(searchTerm.toLowerCase());
     return matchRegion && matchSearch;
   });
+  
+  // Dynamic Grouping Mapping
+  const categoryGroups = {
+    fr: {
+      "Nature & Aventure": ["Aventure", "Lagune & Nature", "Biodiversité", "Ornithologie", "Nature & Loisirs", "Safari & Nature", "Incontournable", "Montagnes"],
+      "Culture & Histoire": ["Histoire", "Élégance Coloniale", "Art & Falaises", "Culture & Vue", "Culture & Coquillages", "Authenticité"],
+      "Plages & Détente": ["Détente", "Surf & Île", "Plage Tropicale"]
+    },
+    en: {
+      "Nature & Adventure": ["Adventure", "Lagoon & Nature", "Biodiversity", "Ornithology", "Nature & Leisure", "Safari & Nature", "Must-See", "Mountains"],
+      "Culture & History": ["History", "Colonial Elegance", "Art & Cliffs", "Culture & View", "Culture & Shells", "Authenticity"],
+      "Beach & Relaxation": ["Relaxation", "Surf & Island", "Tropical Beach"]
+    }
+  }[language];
+
+  const getGroup = (cat) => {
+    for (const [groupName, categories] of Object.entries(categoryGroups)) {
+      if (categories.includes(cat)) return groupName;
+    }
+    return language === 'fr' ? "Autres" : "Others";
+  };
+
+  const groupedData = filteredData.reduce((acc, dest) => {
+    const group = getGroup(dest.category);
+    if (!acc[group]) acc[group] = [];
+    acc[group].push(dest);
+    return acc;
+  }, {});
 
   const regions = ['all', ...new Set(allData.map(e => e.region))];
 
@@ -127,64 +155,68 @@ const Destinations = () => {
         </div>
       </div>
 
-      {/* ── Grid Content ── */}
-      <div className="dest-grid-container">
-        <div className="main-container">
-          {filteredData.length === 0 ? (
-            <div className="dest-empty">
-              <h3>Aucune destination ne correspond à votre recherche.</h3>
-            </div>
-          ) : (
-            <div className="dest-grid">
-              {filteredData.map((dest, i) => (
-                <Reveal key={dest.id} delay={i % 4 * 0.1}>
-                  <div 
-                    className={`dest-card ${activeCard === dest.id ? 'is-active' : ''}`}
-                    onMouseEnter={() => setActiveCard(dest.id)}
-                    onMouseLeave={() => setActiveCard(null)}
-                  >
-                    <div className="dest-card-img">
-                      <img src={dest.image} alt={dest.title} />
-                      <div className="dest-card-badge">
-                        <Star size={12} fill="#ffc107" strokeWidth={0} />
-                        {dest.rating || "4.5"}
-                      </div>
-                    </div>
-                    
-                    <div className="dest-card-body">
-                      <h3 className="dest-card-title">{dest.title}</h3>
-                      
-                      <div className="dest-card-meta">
-                        <span className="dest-meta-tag"><MapPin size={12} /> {dest.region}</span>
-                        <span className="dest-meta-tag"><Clock size={12} /> {dest.duration || "Journée"}</span>
+      {/* ── Categorized Sections ── */}
+      <div className="dest-sections-container">
+        {Object.entries(groupedData).map(([groupName, items], gIdx) => (
+          <section key={groupName} className="dest-category-section">
+            <div className="main-container">
+              <Reveal delay={0.1}>
+                <div className="dest-section-header">
+                  <div className="header-line" />
+                  <h2 className="dest-section-title">{groupName}</h2>
+                  <span className="dest-count-tag">{items.length} {t.results}</span>
+                </div>
+              </Reveal>
+
+              <div className="dest-grid">
+                {items.map((dest, i) => (
+                  <Reveal key={dest.id} delay={i % 4 * 0.1}>
+                    <div className="dest-simple-card">
+                      <div className="dest-card-media">
+                        <img src={dest.image} alt={dest.title} />
+                        <div className="dest-card-overlay">
+                          <Link to={`/${language}/destinations/${dest.id}`} className="btn-simple-discover">
+                            {t.cta_discover} <ArrowUpRight size={18} />
+                          </Link>
+                        </div>
+                        <div className="dest-card-badge">
+                          {dest.category}
+                        </div>
                       </div>
                       
-                      <p className="dest-card-desc">{dest.description}</p>
-                      
-                      <div className="dest-card-footer">
-                        <div className="dest-price-box">
-                          <span className="dest-price-label">{t.stats.from}</span>
-                          <div className="dest-price-amount">
-                            {dest.price || "25.000"} <span>{dest.currency || "CFA"}</span>
+                      <div className="dest-card-info">
+                        <div className="info-top">
+                          <h3 className="info-title">{dest.title}</h3>
+                          <div className="info-rating">
+                            <Star size={12} fill="#ffc107" strokeWidth={0} />
+                            <span>{dest.rating}</span>
                           </div>
                         </div>
                         
-                        <div className="dest-action-btns">
-                          <Link to={`/${language}/destinations/${dest.id}`} className="btn-discover">
-                            {t.cta_discover}
-                          </Link>
-                          <Link to={`/${language}/login`} className="btn-book">
+                        <div className="info-meta">
+                          <span><MapPin size={12} /> {dest.region}</span>
+                          <span><Clock size={12} /> {dest.duration}</span>
+                        </div>
+
+                        <p className="info-desc">{dest.description}</p>
+                        
+                        <div className="info-footer">
+                          <div className="info-price">
+                            <span className="price-val">{dest.price}</span>
+                            <span className="price-unit">{dest.currency}</span>
+                          </div>
+                          <Link to={`/${language}/login`} className="btn-book-small">
                             {t.cta_book}
                           </Link>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </Reveal>
-              ))}
+                  </Reveal>
+                ))}
+              </div>
             </div>
-          )}
-        </div>
+          </section>
+        ))}
       </div>
     </div>
   );
