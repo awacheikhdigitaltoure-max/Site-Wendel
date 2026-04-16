@@ -49,6 +49,10 @@
 }
 
 @media (max-width: 650px) {
+  .bento-section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
   .destinations-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;

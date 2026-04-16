@@ -220,10 +220,22 @@ h1, h2, h3, h4, .font-heading {
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 40px 5%;
+    padding: 40px 4%;
+  }
+  .main-container {
+    width: 96% !important;
   }
   .btn {
     padding: 14px 28px;
     font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-padding {
+    padding: 32px 4%;
+  }
+  .main-container {
+    width: 94% !important;
   }
 }
