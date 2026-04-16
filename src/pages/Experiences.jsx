@@ -92,7 +92,7 @@ const Experiences = () => {
           <div className="exp-hero-overlay" />
         </div>
         
-        <div className="w-full px-6 lg:px-12">
+        <div className="container mx-auto px-8 lg:px-[10%]">
           <Reveal>
             <div className="exp-hero-text">
               <span className="exp-eyebrow">
