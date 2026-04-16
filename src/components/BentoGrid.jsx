@@ -46,7 +46,7 @@ const BentoGrid = ({ items, title, subtitle }) => {
   const displaySubtitle = subtitle || (language === 'fr' ? "Le Sénégal à Travers Vos Yeux" : "Senegal Through Your Eyes");
 
   return (
-    <section className="section-padding bento-section" id="destinations">
+    <section className="bento-section" id="destinations">
       <div className="section-header">
         <span className="sub-title">{displaySubtitle}</span>
         <h2 className="section-title text-gradient">{displayTitle}</h2>

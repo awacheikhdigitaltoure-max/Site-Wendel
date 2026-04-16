@@ -10,7 +10,7 @@ const Destinations = () => {
 
   return (
     <div className="page destinations-page min-h-screen">
-      <div className="section-padding">
+      <div className="main-container py-20">
          <Reveal>
            <BentoGrid 
              items={allDestinations[language]} 

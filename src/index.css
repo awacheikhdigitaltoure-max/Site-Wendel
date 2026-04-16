@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
+/* ── Global Layout Containers ── */
+.main-container {
+  width: 92% !important;
+  max-width: 1320px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 !important;
+}
+
 :root {
   /* Clean White Theme (Light) */
   --primary-green: #246B2A;

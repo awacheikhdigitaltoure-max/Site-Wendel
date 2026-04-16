@@ -92,7 +92,7 @@ const Experiences = () => {
           <div className="exp-hero-overlay" />
         </div>
         
-        <div className="exp-container">
+        <div className="main-container">
           <Reveal>
             <div className="exp-hero-text">
               <span className="exp-eyebrow">
@@ -110,7 +110,7 @@ const Experiences = () => {
 
       {/* ── Filter Bar ── */}
       <div className="exp-filter-zone">
-        <div className="exp-container">
+        <div className="main-container">
           <Reveal>
             <div className="exp-filter-bar">
               {/* Search */}
@@ -169,7 +169,7 @@ const Experiences = () => {
 
       {/* ── Content ── */}
       <div className="exp-content-zone">
-        <div className="exp-container">
+        <div className="main-container">
 
           {filteredData.length === 0 ? (
             <div className="exp-empty">Aucune expérience ne correspond à vos critères.</div>
