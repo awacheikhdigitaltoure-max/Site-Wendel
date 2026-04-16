@@ -4,7 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { destinationsData } from '../data/destinations';
 import { experiencesData } from '../data/experiences';
 import Reveal from '../components/Reveal';
-import { Star, MapPin, ArrowLeft, Clock, Navigation, ShieldCheck, Zap } from 'lucide-react';
+import { Star, MapPin, ArrowLeft, Clock, Navigation, ShieldCheck, Zap, CheckCircle } from 'lucide-react';
 import './DestinationDetail.css';
 
 const DestinationDetail = () => {
@@ -43,7 +43,11 @@ const DestinationDetail = () => {
       highlights: "Points Forts",
       nearby: "À découvrir à proximité",
       priceFrom: "À partir de",
-      trust: "Paiement sécurisé • Support 24/7"
+      trust: "Paiement sécurisé • Support 24/7",
+      included: "Ce qui est inclus",
+      excluded: "Non inclus",
+      duration: "Durée",
+      group: "Groupe"
     },
     en: {
       back: "Back",
@@ -54,7 +58,11 @@ const DestinationDetail = () => {
       highlights: "Highlights",
       nearby: "Discover Nearby",
       priceFrom: "Starting from",
-      trust: "Secure Payment • 24/7 Support"
+      trust: "Secure Payment • 24/7 Support",
+      included: "What's included",
+      excluded: "Not included",
+      duration: "Duration",
+      group: "Group"
     }
   }[language];
 
@@ -74,13 +82,21 @@ const DestinationDetail = () => {
           
           <Reveal>
             <div className="hero-text-zen">
+              <span className="cat-tag-float">{destination.category}</span>
               <h1 className="detail-title-zen">{destination.title}</h1>
-              <div className="hero-meta-zen">
-                <span className="cat-tag">{destination.category}</span>
-                <span className="dot">•</span>
-                <div className="rating-mini">
-                  <Star fill="#EF7C0F" stroke="none" size={18} />
-                  <span>{destination.rating}</span>
+              
+              <div className="hero-quick-meta">
+                <div className="meta-item">
+                  <Clock size={16} />
+                  <span>{destination.duration || "Demi-journée"}</span>
+                </div>
+                <div className="meta-item">
+                  <Navigation size={16} />
+                  <span>{destination.region}</span>
+                </div>
+                <div className="meta-item">
+                  <Star fill="#EF7C0F" stroke="none" size={16} />
+                  <span>{destination.rating} ({destination.reviews} avis)</span>
                 </div>
               </div>
             </div>
@@ -138,6 +154,46 @@ const DestinationDetail = () => {
                               {exp.duration}
                             </span>
                           </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
+              )}
+
+              {/* Inclusions / Exclusions */}
+              {(destination.included || destination.excluded) && (
+                <Reveal>
+                  <div className="zen-section inclusions-wrap">
+                    <div className="inc-col">
+                      <h3 className="zen-section-title small">{t.included}</h3>
+                      <ul className="inc-list">
+                        {destination.included?.map((item, i) => (
+                          <li key={i}><CheckCircle size={14} className="text-primary-green" /> {item}</li>
+                        )) || <li>Détails sur demande</li>}
+                      </ul>
+                    </div>
+                    <div className="inc-col">
+                      <h3 className="zen-section-title small">{t.excluded}</h3>
+                      <ul className="inc-list excluded">
+                        {destination.excluded?.map((item, i) => (
+                          <li key={i}>✕ {item}</li>
+                        )) || <li>Détails sur demande</li>}
+                      </ul>
+                    </div>
+                  </div>
+                </Reveal>
+              )}
+
+              {/* Enhanced Visual Portfolio */}
+              {destination.gallery && destination.gallery.length > 0 && (
+                <Reveal>
+                  <div className="zen-section">
+                    <h3 className="zen-section-title">{t.gallery}</h3>
+                    <div className="premium-gallery-grid">
+                      {destination.gallery.map((img, idx) => (
+                        <div key={idx} className={`gallery-shot shot-${idx % 5}`}>
+                          <img src={img} alt={`Gallery ${idx}`} loading="lazy" />
                         </div>
                       ))}
                     </div>

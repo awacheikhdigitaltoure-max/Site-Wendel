@@ -32,9 +32,13 @@ export const destinationsData = {
       description: "Une île empreinte d'histoire et d'émotion, classée au patrimoine mondial de l'UNESCO. Ses ruelles colorées et ses bougainvilliers cachent un passé poignant lié à la mémoire de l'esclavage.",
       detailedDescription: "Située à seulement quelques kilomètres au large de Dakar, l'île de Gorée est un sanctuaire de mémoire. Cette petite île volcanique, dépourvue de voitures, offre un contraste saisissant entre la beauté de ses architectures coloniales aux couleurs ocres et la gravité de son histoire. La Maison des Esclaves, avec sa porte du 'non-retour', reste le symbole le plus puissant de cette époque. Aujourd'hui, Gorée est aussi un centre d'art vibrant où peintres et sculpteurs exposent leurs œuvres dans le labyrinthe des ruelles fleuries.",
       gallery: [
+        goree,
         "https://images.unsplash.com/photo-1549643276-fdf2fab574f5?q=80&w=1200",
-        "https://images.unsplash.com/photo-1590766940554-634a7ed41450?q=80&w=1200"
+        "https://images.unsplash.com/photo-1590766940554-634a7ed41450?q=80&w=1200",
+        "https://images.unsplash.com/photo-1512813195386-6cf811ad3542?q=80&w=1200"
       ],
+      included: ["Pirogue Dakar-Gorée", "Guide certifié", "Entrées musées", "Eau minérale"],
+      excluded: ["Déjeuner", "Souvenirs", "Transport hôtel-Dakar"],
       experiences: [
         { title: "Maison des Esclaves", desc: "Visite guidée du lieu de mémoire le plus emblématique d'Afrique.", duration: "1h30" },
         { title: "Le Castel", desc: "Une marche vers le sommet pour une vue panoramique sur Dakar et l'océan.", duration: "45min" }
@@ -55,8 +59,12 @@ export const destinationsData = {
       description: "L'ancienne capitale du Sénégal, Saint-Louis (Ndar), est une cité de caractère au charme colonial unique. Connectée par le pont Faidherbe, elle est le berceau du jazz et de l'élégance sénégalaise.",
       detailedDescription: "Saint-Louis du Sénégal, classée au patrimoine mondial de l'UNESCO, est une ville où le temps semble s'être arrêté. Située à l'embouchure du fleuve Sénégal, elle se divise entre l'île historique aux maisons coloniales colorées et le quartier des pêcheurs de Guet Ndar, vibrant d'activité.",
       gallery: [
-        "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?q=80&w=1200"
+        stlouis,
+        "https://images.unsplash.com/photo-1518391846015-55a9cc003b25?q=80&w=1200",
+        "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1200"
       ],
+      included: ["Transport A/R Dakar", "Hébergement 1 nuit", "Petit déjeuner", "Tour en calèche"],
+      excluded: ["Repas midi et soir", "Activités optionnelles", "Pourboires"],
       experiences: [
         { title: "Tour en calèche", desc: "Découvrez l'histoire de l'île au rythme des chevaux.", duration: "1h" },
         { title: "Guet Ndar", desc: "Immersion dans l'effervescence du quartier des pêcheurs.", duration: "2h" }
@@ -77,8 +85,12 @@ export const destinationsData = {
       description: "Célèbre pour sa couleur rose unique due à une algue, le Lac Retba est un site spectaculaire situé entre les dunes et l'océan.",
       detailedDescription: "Le Lac Retba, plus connu sous le nom de Lac Rose, est une merveille géologique unique. Sa forte salinité et la présence d'une algue particulière lui donnent des teintes allant du mauve au rose vif.",
       gallery: [
-        "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?q=80&w=1200"
+        lacrose,
+        "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?q=80&w=1200",
+        "https://images.unsplash.com/photo-1512100356132-d4b59529b434?q=80&w=1200"
       ],
+      included: ["Transport 4x4", "Guide touristique", "Douche après flottaison"],
+      excluded: ["Déjeuner", "Dégustation de sel"],
       experiences: [
         { title: "Baptême de flottaison", desc: "Baignade unique où l'on flotte sans aucun effort.", duration: "45min" },
         { title: "Rallye des Dunes", desc: "Circuit en 4x4 sur les traces du Paris-Dakar.", duration: "2h" }
