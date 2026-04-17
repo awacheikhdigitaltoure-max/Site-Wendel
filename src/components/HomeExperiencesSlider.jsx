@@ -58,29 +58,30 @@ const HomeExperiencesSlider = () => {
                 >
                     {data.map((exp, index) => (
                         <div key={exp.id} className="exp-slide">
-                            <div className="exp-slide-card glass-card">
-                                <div className="exp-slide-img">
+                            <div className="dest-home-card">
+                                <div className="dest-card-image">
                                     <img src={exp.image} alt={exp.title} />
-                                    <div className="exp-badge">
-                                        <Star size={12} fill="#ffc107" strokeWidth={0} />
-                                        {exp.rating}
-                                    </div>
+                                    <div className="dest-card-badge">{exp.category}</div>
                                 </div>
-                                <div className="exp-slide-body">
-                                    <div className="exp-slide-meta">
-                                        <span><MapPin size={14} /> {exp.region}</span>
-                                        <span><Clock size={14} /> {exp.duration}</span>
-                                    </div>
-                                    <h3 className="exp-slide-title">{exp.title}</h3>
-                                    <p className="exp-slide-desc">{exp.description}</p>
-                                    
-                                    <div className="exp-slide-footer">
-                                        <div className="exp-slide-price">
-                                            <span className="from">{language === 'fr' ? 'À partir de' : 'From'}</span>
-                                            <span className="amount">{exp.price} {exp.currency}</span>
+                                
+                                <div className="dest-card-content">
+                                    <div className="dest-card-header">
+                                        <h3 className="dest-card-title">{exp.title}</h3>
+                                        <div className="dest-card-rating">
+                                            <Star size={14} fill="#FFB800" stroke="none" />
+                                            <span>{exp.rating}</span>
                                         </div>
-                                        <Link to={`/${language}/contact`} className="exp-slide-btn">
-                                            {language === 'fr' ? 'Réserver' : 'Book Now'}
+                                    </div>
+
+                                    <div className="dest-card-location">
+                                        <MapPin size={14} /> <span>{exp.region}</span>
+                                    </div>
+
+                                    <p className="dest-card-description">{exp.description}</p>
+                                    
+                                    <div className="dest-card-footer">
+                                        <Link to={`/${language}/destinations/${exp.id}`} className="dest-card-btn">
+                                            {language === 'fr' ? 'Découvrir' : 'Discover'} <ArrowUpRight size={18} />
                                         </Link>
                                     </div>
                                 </div>

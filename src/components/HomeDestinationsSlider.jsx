@@ -76,18 +76,32 @@ const HomeDestinationsSlider = () => {
                 >
                     {data.map((dest, index) => (
                         <div key={dest.id} className={`dest-slide ${index === currentIndex ? 'active' : ''}`}>
-                            <div className="dest-slide-content glass">
-                                <div className="dest-slide-image">
+                            <div className="dest-home-card">
+                                <div className="dest-card-image">
                                     <img src={dest.image} alt={dest.title} />
-                                    <div className="dest-slide-overlay"></div>
+                                    <div className="dest-card-badge">{dest.category}</div>
                                 </div>
-                                <div className="dest-slide-info">
-                                    <span className="dest-slide-cat">{dest.category}</span>
-                                    <h3 className="dest-slide-title">{dest.title}</h3>
-                                    <p className="dest-slide-desc">{dest.description}</p>
-                                    <Link to={`/${language}/destinations/${dest.id}`} className="dest-slide-btn">
-                                        {language === 'fr' ? 'Découvrir' : 'Discover'} <ArrowUpRight size={20} />
-                                    </Link>
+                                
+                                <div className="dest-card-content">
+                                    <div className="dest-card-header">
+                                        <h3 className="dest-card-title">{dest.title}</h3>
+                                        <div className="dest-card-rating">
+                                            <Star size={14} fill="#FFB800" stroke="none" />
+                                            <span>{dest.rating}</span>
+                                        </div>
+                                    </div>
+
+                                    <div className="dest-card-location">
+                                        <MapPin size={14} /> <span>{dest.region}</span>
+                                    </div>
+
+                                    <p className="dest-card-description">{dest.description}</p>
+                                    
+                                    <div className="dest-card-footer">
+                                        <Link to={`/${language}/destinations/${dest.id}`} className="dest-card-btn">
+                                            {language === 'fr' ? 'Découvrir' : 'Discover'} <ArrowUpRight size={18} />
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
