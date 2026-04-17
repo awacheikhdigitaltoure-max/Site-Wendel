@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../i18n/translations';
-import { ChevronRight, ArrowDown } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import heroImg from '../assets/nouveau-monument.jpg.png';
 import './Hero.css';
 
@@ -37,10 +37,20 @@ const Hero = () => {
          </div>
        </div>
       
-      <div className="hero-scroll-indicator">
-        <span>{t.scroll}</span>
-        <div className="scroll-arrow">
-          <ArrowDown size={20} />
+      <div className="hero-stats-bar">
+        <div className="stat-item">
+          <span className="stat-num">50+</span>
+          <span className="stat-label">{language === 'fr' ? 'Destinations' : 'Destinations'}</span>
+        </div>
+        <div className="stat-divider" />
+        <div className="stat-item">
+          <span className="stat-num">15</span>
+          <span className="stat-label">{language === 'fr' ? 'Experts Locaux' : 'Local Experts'}</span>
+        </div>
+        <div className="stat-divider" />
+        <div className="stat-item">
+          <span className="stat-num">14</span>
+          <span className="stat-label">{language === 'fr' ? 'Régions du Sénégal' : 'Senegal Regions'}</span>
         </div>
       </div>
     </section>
