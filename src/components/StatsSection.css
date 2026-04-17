@@ -40,8 +40,8 @@
 }
 
 .stat-icon {
-    width: 20px;
-    height: 20px;
+    width: 14px;
+    height: 14px;
 }
 
 .stat-info {
@@ -51,7 +51,7 @@
 }
 
 .stat-big-num {
-    font-size: 1.15rem;
+    font-size: 1.4rem;
     font-weight: 800;
     color: #1e293b;
     line-height: 1;
@@ -59,7 +59,7 @@
 }
 
 .stat-desc {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-weight: 700;
     color: #64748b;
     text-transform: uppercase;
@@ -80,28 +80,28 @@
         padding: 5px 0;
     }
     .stats-container {
-        gap: 12px;
+        gap: 15px;
         flex-wrap: nowrap;
         padding: 0 10px;
     }
     .stat-card {
         min-width: unset;
-        gap: 3px;
+        gap: 2px;
         padding: 2px;
     }
     .stat-big-num {
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
     .stat-icon-wrapper {
         width: auto;
         height: auto;
     }
     .stat-icon {
-        width: 12px;
-        height: 12px;
+        width: 10px;
+        height: 10px;
     }
     .stat-desc {
-        font-size: 0.45rem;
+        font-size: 0.5rem;
         letter-spacing: 0.3px;
     }
 }
