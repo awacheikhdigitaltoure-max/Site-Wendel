@@ -25,16 +25,11 @@
 }
 
 .stat-icon-wrapper {
-    width: 44px;
-    height: 44px;
-    background: #f8fafc;
-    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--primary-green);
     transition: all 0.3s ease;
-    border: 1px solid #f1f5f9;
 }
 
 .stat-card:hover .stat-icon-wrapper {
@@ -45,8 +40,8 @@
 }
 
 .stat-icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 
 .stat-info {
@@ -56,19 +51,19 @@
 }
 
 .stat-big-num {
-    font-size: 1.4rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: #1e293b;
     line-height: 1;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
 }
 
 .stat-desc {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     font-weight: 700;
     color: #64748b;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     white-space: nowrap;
 }
 
@@ -85,29 +80,28 @@
         padding: 5px 0;
     }
     .stats-container {
-        gap: 6px;
+        gap: 12px;
         flex-wrap: nowrap;
-        padding: 0 5px;
+        padding: 0 10px;
     }
     .stat-card {
         min-width: unset;
-        gap: 2px;
-        padding: 1px;
+        gap: 4px;
+        padding: 2px;
     }
     .stat-big-num {
-        font-size: 0.65rem;
+        font-size: 0.85rem;
     }
     .stat-icon-wrapper {
-        width: 18px;
-        height: 18px;
-        border-radius: 4px;
+        width: auto;
+        height: auto;
     }
     .stat-icon {
-        width: 10px;
-        height: 10px;
+        width: 15px;
+        height: 15px;
     }
     .stat-desc {
-        font-size: 0.35rem;
-        letter-spacing: 0.2px;
+        font-size: 0.45rem;
+        letter-spacing: 0.3px;
     }
 }
