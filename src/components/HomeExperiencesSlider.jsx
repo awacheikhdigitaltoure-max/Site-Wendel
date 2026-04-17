@@ -115,6 +115,16 @@ const HomeExperiencesSlider = () => {
                         />
                     ))}
                 </div>
+
+                {/* Navigation Controls */}
+                <div className="slider-controls">
+                    <button className="slider-btn prev" onClick={prevSlide} aria-label="Previous">
+                        <ArrowLeft size={24} />
+                    </button>
+                    <button className="slider-btn next" onClick={nextSlide} aria-label="Next">
+                        <ArrowRight size={24} />
+                    </button>
+                </div>
             </div>
         </section>
     );
