@@ -7,14 +7,14 @@
 .why-container {
   max-width: 1000px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
   align-items: center;
 }
 
 .why-content {
-  padding-right: 20px;
+  width: 100%;
 }
 
 .why-title {
@@ -30,7 +30,9 @@
 .features-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 30px;
+  max-width: 700px;
+  margin: 0 auto;
 }
 
 .feature-item {
@@ -91,9 +93,10 @@
 }
 
 .why-image-wrapper {
-  height: 300px;
-  max-width: 320px;
-  margin: 0 auto;
+  height: 250px;
+  max-width: 400px;
+  width: 100%;
+  margin: 20px auto 0;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow-premium);
@@ -126,15 +129,15 @@
 @media (max-width: 768px) {
   .features-list {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 20px;
   }
   
-  .feature-icon {
-    width: 40px;
-    height: 40px;
+  .why-image-wrapper {
+    height: 200px;
+    max-width: 100%;
   }
 
   .why-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
