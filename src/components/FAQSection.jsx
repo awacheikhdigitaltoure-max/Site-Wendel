@@ -34,9 +34,10 @@ const FAQSection = ({ className = "" }) => {
               textAlign: 'center'
             }}
           >
-            <div className="flex flex-col items-center">
-              <h4 className="text-base font-semibold" style={{ marginBottom: '4px' }}>{faq.q}</h4>
-              <span className="text-sm font-bold" style={{ color: 'var(--primary-orange)', display: 'block' }}>
+            <div className="flex justify-between items-center text-center">
+              <div style={{ width: '20px' }}></div> {/* Symmetry spacer */}
+              <h4 className="text-base font-semibold" style={{ flex: 1 }}>{faq.q}</h4>
+              <span className="text-lg font-bold" style={{ color: 'var(--primary-orange)', width: '20px' }}>
                 {activeIndex === index ? '−' : '+'}
               </span>
             </div>
