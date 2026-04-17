@@ -12,22 +12,22 @@ const WhyWendelu = ({ className = "" }) => {
       title: "Pourquoi Wëndelu ?",
       features: [
         {
-          icon: <MapPin size={26} />,
+          icon: <MapPin size={22} />,
           title: "Destinations authentiques",
           text: "Découvrez le Sénégal hors des sentiers battus"
         },
         {
-          icon: <ShieldCheck size={26} />,
+          icon: <ShieldCheck size={22} />,
           title: "Réservation sécurisée",
           text: "Paiement 100% sécurisé et service réactif"
         },
         {
-          icon: <Users size={26} />,
+          icon: <Users size={22} />,
           title: "Guides locaux experts",
           text: "Accompagnement par des professionnels passionnés"
         },
         {
-          icon: <Sparkles size={26} />,
+          icon: <Sparkles size={22} />,
           title: "Expériences sur mesure",
           text: "Activités adaptées à tous les voyageurs"
         }
