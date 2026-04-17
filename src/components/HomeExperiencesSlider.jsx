@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { experiencesData } from '../data/experiences';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Star, MapPin } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Star, MapPin, Clock, Users } from 'lucide-react';
 import './HomeExperiencesSlider.css';
 
 const HomeExperiencesSlider = () => {
@@ -110,9 +110,9 @@ const HomeExperiencesSlider = () => {
 
                                     {/* Additional Metadata Badges from user image */}
                                     <div className="dest-card-meta-badges">
-                                        <span><Clock size={12} /> {exp.duration}</span>
-                                        <span>{exp.category}</span>
-                                        <span><Users size={12} /> {exp.groupSize}</span>
+                                        {exp.duration && <span><Clock size={12} /> {exp.duration}</span>}
+                                        {exp.category && <span>{exp.category}</span>}
+                                        {exp.groupSize && <span><Users size={12} /> {exp.groupSize}</span>}
                                     </div>
  
                                     <p className="dest-card-description">{exp.description}</p>

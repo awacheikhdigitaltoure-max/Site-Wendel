@@ -114,9 +114,9 @@ const HomeDestinationsSlider = () => {
 
                                     {/* Metadata Badges for consistency */}
                                     <div className="dest-card-meta-badges">
-                                        <span><Clock size={12} /> {dest.duration}</span>
-                                        <span>{dest.category}</span>
-                                        <span><Users size={12} /> {dest.groupSize}</span>
+                                        {dest.duration && <span><Clock size={12} /> {dest.duration}</span>}
+                                        {dest.category && <span>{dest.category}</span>}
+                                        {dest.groupSize && <span><Users size={12} /> {dest.groupSize}</span>}
                                     </div>
 
                                     <p className="dest-card-description">{dest.description}</p>
