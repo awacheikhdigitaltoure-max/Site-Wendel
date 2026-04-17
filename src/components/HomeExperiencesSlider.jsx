@@ -2,35 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { experiencesData } from '../data/experiences';
-import { ArrowLeft, ArrowRight, Star, Clock, MapPin, Users } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Star, MapPin } from 'lucide-react';
 import './HomeExperiencesSlider.css';
 
 const HomeExperiencesSlider = () => {
     const { language } = useLanguage();
-    const data = experiencesData[language].slice(0, 6);
+    const data = experiencesData[language].slice(0, 8); // Top 8 experiences
     const [currentIndex, setCurrentIndex] = useState(0);
     const [itemsPerView, setItemsPerView] = useState(3);
     const [isPaused, setIsPaused] = useState(false);
-    const [touchStart, setTouchStart] = useState(null);
-    const [touchEnd, setTouchEnd] = useState(null);
-    const minSwipeDistance = 50;
-
-    const t = {
-        fr: {
-            eyebrow: "Incontournables",
-            title: "Expériences Populaires",
-            from: "À partir de",
-            reviews: "avis",
-            cta: "Réserver"
-        },
-        en: {
-            eyebrow: "Must-Do",
-            title: "Popular Experiences",
-            from: "Starting at",
-            reviews: "reviews",
-            cta: "Book"
-        }
-    }[language];
+    const sliderRef = useRef(null);
 
     // Dynamic items per view detection
     useEffect(() => {
@@ -56,13 +37,9 @@ const HomeExperiencesSlider = () => {
         return () => clearInterval(interval);
     }, [currentIndex, isPaused, itemsPerView]);
 
-    const nextSlide = () => {
-        setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-    };
-
-    const prevSlide = () => {
-        setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-    };
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchEnd, setTouchEnd] = useState(null);
+    const minSwipeDistance = 50;
 
     const onTouchStart = (e) => {
         setTouchEnd(null);
@@ -82,15 +59,23 @@ const HomeExperiencesSlider = () => {
         if (isRightSwipe) prevSlide();
     };
 
+    const nextSlide = () => {
+        setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+    };
+
+    const prevSlide = () => {
+        setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
+    };
+
     return (
         <section className="home-exp-slider-section">
             <div className="section-header">
-                <span className="sub-title">{t.eyebrow}</span>
-                <h2 className="section-title text-gradient">{t.title}</h2>
+                <span className="sub-title">{language === 'fr' ? 'Incontournables' : 'Must-Do'}</span>
+                <h2 className="section-title text-gradient">{language === 'fr' ? 'Expériences Populaires' : 'Popular Experiences'}</h2>
             </div>
 
             <div 
-                className="exp-slider-master-wrapper"
+                className="slider-master-wrapper"
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
                 onTouchStart={onTouchStart}
@@ -98,44 +83,37 @@ const HomeExperiencesSlider = () => {
                 onTouchEnd={onTouchEnd}
             >
                 <div 
-                    className="exp-slider-track"
+                    className="slider-track"
                     style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
+                    ref={sliderRef}
                 >
                     {data.map((exp, index) => (
-                        <div key={exp.id} className={`exp-slide ${index === currentIndex ? 'active' : ''}`}>
-                            {/* Unified Experience Card Design */}
-                            <div className="exp-card">
-                                <div className="exp-card-img">
+                        <div key={exp.id} className={`dest-slide ${index === currentIndex ? 'active' : ''}`}>
+                            <div className="dest-home-card">
+                                <div className="dest-card-image">
                                     <img src={exp.image} alt={exp.title} />
-                                    <div className="exp-card-badge">
-                                        <Star size={12} fill="#ffc107" strokeWidth={0} />
-                                        {exp.rating}
-                                    </div>
+                                    <div className="dest-card-badge">{exp.category}</div>
                                 </div>
-                                <div className="exp-card-body">
-                                    <h3 className="exp-card-title">{exp.title}</h3>
-                                    
-                                    <div className="exp-card-meta">
-                                        <span><MapPin size={14} /> {exp.region}</span>
-                                        <span><Clock size={14} /> {exp.duration}</span>
-                                        <span className="exp-category-tag">{exp.category}</span>
-                                        <span className="exp-group-size"><Users size={14} /> {exp.groupSize}</span>
-                                    </div>
-                                    
-                                    {/* Description removed for Boutique/Mini look */}
-                                    
-                                    <div className="exp-card-rating">
-                                        <Star size={11} fill="#FFB800" strokeWidth={0} />
-                                        <strong>{exp.rating}</strong>
-                                    </div>
-                                    
-                                    <div className="exp-card-footer">
-                                        <div className="exp-price-wrap">
-                                            <span className="exp-from-label">{t.from}</span>
-                                            <div className="exp-price">{exp.price} <span>{exp.currency}</span></div>
+                                
+                                <div className="dest-card-content">
+                                    <div className="dest-card-header">
+                                        <h3 className="dest-card-title">{exp.title}</h3>
+                                        <div className="dest-card-rating">
+                                            <Star size={14} fill="#FFB800" stroke="none" />
+                                            <span>{exp.rating}</span>
                                         </div>
-                                        <Link to={`/${language}/contact`} className="exp-book-btn">
-                                            {t.cta}
+                                    </div>
+ 
+                                    <div className="dest-card-location">
+                                        <MapPin size={14} /> <span>{exp.region}</span>
+                                    </div>
+                                    
+                                    {/* Description consistent with Destination Slider */}
+                                    <p className="dest-card-description">{exp.description}</p>
+                                    
+                                    <div className="dest-card-footer">
+                                        <Link to={`/${language}/experiences`} className="dest-card-btn">
+                                            {language === 'fr' ? 'Réserver' : 'Book'} <ArrowUpRight size={18} />
                                         </Link>
                                     </div>
                                 </div>
@@ -144,17 +122,7 @@ const HomeExperiencesSlider = () => {
                     ))}
                 </div>
 
-                <div className="slider-pagination-mini">
-                    {data.map((_, i) => (
-                        <button 
-                            key={i} 
-                            className={`pag-dot-mini ${i === currentIndex ? 'active' : ''}`}
-                            onClick={() => setCurrentIndex(i)}
-                        />
-                    ))}
-                </div>
-
-                {/* Navigation Controls */}
+                {/* Navigation Controls matched to Destination Slider */}
                 <div className="slider-controls">
                     <button className="slider-btn prev" onClick={prevSlide} aria-label="Previous">
                         <ArrowLeft size={24} />
@@ -162,6 +130,17 @@ const HomeExperiencesSlider = () => {
                     <button className="slider-btn next" onClick={nextSlide} aria-label="Next">
                         <ArrowRight size={24} />
                     </button>
+                </div>
+
+                {/* Pagination Dots matched to Destination Slider */}
+                <div className="slider-pagination">
+                    {data.map((_, i) => (
+                        <button 
+                            key={i} 
+                            className={`pag-dot ${i === currentIndex ? 'active' : ''}`}
+                            onClick={() => setCurrentIndex(i)}
+                        />
+                    ))}
                 </div>
             </div>
         </section>
