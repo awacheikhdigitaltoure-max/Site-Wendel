@@ -31,9 +31,9 @@ const Testimonials = ({ className = "" }) => {
       <div className="testimonials-grid">
         {data[language].map((item, index) => (
           <div key={index} className="testimonial-card glass">
-            <Quote className="quote-icon" size={40} />
+            <Quote className="quote-icon" size={28} />
             <div className="stars">
-              {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="var(--primary-orange)" color="var(--primary-orange)" />)}
+              {[...Array(5)].map((_, i) => <Star key={i} size={12} fill="var(--primary-orange)" color="var(--primary-orange)" />)}
             </div>
             <p className="review-text">"{item.review}"</p>
             <div className="reviewer-info">
