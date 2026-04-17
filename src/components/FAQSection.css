@@ -7,18 +7,16 @@
   max-width: 1000px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
+  grid-template-columns: 0.8fr 1.2fr;
   gap: 50px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .faq-image-wrapper {
-  height: 400px;
+  height: 320px;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: var(--shadow-premium);
-  position: sticky;
-  top: 100px;
 }
 
 .faq-image {
