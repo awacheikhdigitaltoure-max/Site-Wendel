@@ -72,16 +72,13 @@ const WhyWendelu = ({ className = "" }) => {
         <div className="why-content">
           <h2 className="why-title text-gradient">{content.title}</h2>
           
-          <div className="features-list">
+          <div className="features-grid">
             {content.features.map((feature, index) => (
-              <div key={index} className="feature-item">
-                <div className="feature-icon">
+              <div key={index} className="feature-mini-card">
+                <div className="feature-icon-mini">
                   {feature.icon}
                 </div>
-                <div className="feature-text">
-                  <h3>{feature.title}</h3>
-                  <p>{feature.text}</p>
-                </div>
+                <h4 className="feature-title-mini">{feature.title}</h4>
               </div>
             ))}
           </div>
