@@ -107,12 +107,22 @@ const HomeExperiencesSlider = () => {
                                     <div className="dest-card-location">
                                         <MapPin size={14} /> <span>{exp.region}</span>
                                     </div>
-                                    
-                                    {/* Description consistent with Destination Slider */}
+
+                                    {/* Additional Metadata Badges from user image */}
+                                    <div className="dest-card-meta-badges">
+                                        <span><Clock size={12} /> {exp.duration}</span>
+                                        <span>{exp.category}</span>
+                                        <span><Users size={12} /> {exp.groupSize}</span>
+                                    </div>
+ 
                                     <p className="dest-card-description">{exp.description}</p>
                                     
                                     <div className="dest-card-footer">
-                                        <Link to={`/${language}/experiences`} className="dest-card-btn">
+                                        <div className="dest-price-tag">
+                                            <span className="from-label">{language === 'fr' ? 'À partir de' : 'From'}</span>
+                                            <span className="price-value">{exp.price} {exp.currency}</span>
+                                        </div>
+                                        <Link to={`/${language}/contact`} className="dest-card-btn">
                                             {language === 'fr' ? 'Réserver' : 'Book'} <ArrowUpRight size={18} />
                                         </Link>
                                     </div>
