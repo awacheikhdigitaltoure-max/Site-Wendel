@@ -315,33 +315,8 @@ h1, h2, h3, h4, .font-heading {
   gap: 6px;
   font-size: 0.9rem;
   color: #64748b;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   font-weight: 600;
-}
-
-/* Metadata Badges from User Image */
-.home-page .dest-card-meta-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin: 10px 0 16px 0;
-}
-
-.home-page .dest-card-meta-badges span {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.7rem;
-  color: #64748b;
-  font-weight: 700;
-  background: #f8fafc;
-  padding: 4px 10px;
-  border-radius: 6px;
-  border: 1px solid #f1f5f9;
-}
-
-.home-page .dest-card-meta-badges svg {
-  color: var(--primary-green);
 }
 
 .home-page .dest-card-description {
@@ -358,47 +333,17 @@ h1, h2, h3, h4, .font-heading {
 
 .home-page .dest-card-footer {
   margin-top: auto;
-  padding-top: 15px;
+  padding-top: 20px;
   border-top: 1px solid #f1f5f9;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-}
-
-/* Price Styling */
-.home-page .dest-price-tag {
-  display: flex;
-  flex-direction: column;
-  min-width: fit-content;
-}
-
-.home-page .from-label {
-  font-size: 0.6rem;
-  color: #94a3b8;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1;
-  margin-bottom: 2px;
-}
-
-.home-page .price-value {
-  font-size: 1.1rem;
-  font-weight: 900;
-  color: var(--primary-green);
-  line-height: 1;
-  white-space: nowrap;
 }
 
 .home-page .dest-card-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  width: auto; /* Smaller button to allow price to breathe */
-  flex: 1;
-  padding: 12px 20px;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
   background: #E6760F;
   color: white;
   border-radius: 12px;

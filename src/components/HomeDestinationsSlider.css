@@ -21,16 +21,17 @@
     flex: 0 0 calc(100% / var(--items-per-view));
     padding: 0 15px;
     min-width: 0;
+    --items-per-view: 3;
 }
 
 @media (max-width: 1024px) {
-    .home-dest-slider-section {
+    .dest-slide {
         --items-per-view: 2;
     }
 }
 
 @media (max-width: 768px) {
-    .home-dest-slider-section {
+    .dest-slide {
         --items-per-view: 1;
     }
 }
@@ -94,54 +95,6 @@
     border-radius: 10px;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .dest-slide-content {
-        height: auto;
-        flex-direction: column;
-        border-radius: 20px;
-    }
-    .dest-slide-image {
-        height: 220px;
-    }
-    .dest-slide-info {
-        padding: 25px;
-    }
-    .dest-slide-title {
-        font-size: 1.8rem;
-    }
-}
-
-/* Price Styling */
-.dest-card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(0,0,0,0.05);
-}
-
-.dest-price-tag {
-    display: flex;
-    flex-direction: column;
-}
-
-.from-label {
-    font-size: 0.65rem;
-    color: #94a3b8;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 2px;
-}
-
-.price-value {
-    font-size: 1.1rem;
-    font-weight: 900;
-    color: var(--primary-green);
-}
-
 @media (max-width: 768px) {
     .home-dest-slider-section {
         padding: 60px 0;
@@ -152,15 +105,5 @@
     /* Sur mobile, on enlève les flèches pour laisser place au swipe tactile */
     .slider-controls {
         display: none;
-    }
-    .dest-slide-title {
-        font-size: 2rem;
-    }
-    .dest-slide-info {
-        padding: 30px;
-    }
-    .slider-track {
-        /* On affiche 90% du slide pour rÃ©vÃ©ler le dÃ©but du suivant (Peek-ahead) */
-        /* Note: require adjust logic for peak ahead in pure css track or use swiper */
     }
 }

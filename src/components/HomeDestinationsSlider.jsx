@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { destinationsData } from '../data/destinations';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Star, MapPin, Clock, Users } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Star, MapPin } from 'lucide-react';
 import './HomeDestinationsSlider.css';
 
 const HomeDestinationsSlider = () => {
@@ -112,20 +112,9 @@ const HomeDestinationsSlider = () => {
                                         <MapPin size={14} /> <span>{dest.region}</span>
                                     </div>
 
-                                    {/* Metadata Badges for consistency */}
-                                    <div className="dest-card-meta-badges">
-                                        {dest.duration && <span><Clock size={12} /> {dest.duration}</span>}
-                                        {dest.category && <span>{dest.category}</span>}
-                                        {dest.groupSize && <span><Users size={12} /> {dest.groupSize}</span>}
-                                    </div>
-
                                     <p className="dest-card-description">{dest.description}</p>
                                     
                                     <div className="dest-card-footer">
-                                        <div className="dest-price-tag">
-                                            <span className="from-label">{language === 'fr' ? 'À partir de' : 'From'}</span>
-                                            <span className="price-value">{dest.price} {dest.currency}</span>
-                                        </div>
                                         <Link to={`/${language}/destinations/${dest.id}`} className="dest-card-btn">
                                             {language === 'fr' ? 'Découvrir' : 'Discover'} <ArrowUpRight size={18} />
                                         </Link>

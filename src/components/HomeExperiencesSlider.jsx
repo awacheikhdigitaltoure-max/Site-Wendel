@@ -13,14 +13,29 @@ const HomeExperiencesSlider = () => {
     const [isPaused, setIsPaused] = useState(false);
     const sliderRef = useRef(null);
 
-    // Dynamic items per view detection
+    const t = {
+        fr: {
+            title: "Expériences Populaires",
+            subtitle: "Incontournables",
+            from: "À partir de",
+            reviews: "avis",
+            cta: "Réserver"
+        },
+        en: {
+            title: "Popular Experiences",
+            subtitle: "Must-Do",
+            from: "Starting at",
+            reviews: "reviews",
+            cta: "Book"
+        }
+    }[language];
+
     useEffect(() => {
         const updateItemsPerView = () => {
             if (window.innerWidth <= 768) setItemsPerView(1);
             else if (window.innerWidth <= 1024) setItemsPerView(2);
             else setItemsPerView(3);
         };
-        
         updateItemsPerView();
         window.addEventListener('resize', updateItemsPerView);
         return () => window.removeEventListener('resize', updateItemsPerView);
@@ -28,7 +43,6 @@ const HomeExperiencesSlider = () => {
 
     const maxIndex = data.length - itemsPerView;
 
-    // Auto-slide logic
     useEffect(() => {
         if (isPaused) return;
         const interval = setInterval(() => {
@@ -70,8 +84,8 @@ const HomeExperiencesSlider = () => {
     return (
         <section className="home-exp-slider-section">
             <div className="section-header">
-                <span className="sub-title">{language === 'fr' ? 'Incontournables' : 'Must-Do'}</span>
-                <h2 className="section-title text-gradient">{language === 'fr' ? 'Expériences Populaires' : 'Popular Experiences'}</h2>
+                <span className="sub-title">{t.subtitle}</span>
+                <h2 className="section-title text-gradient">{t.title}</h2>
             </div>
 
             <div 
@@ -88,42 +102,40 @@ const HomeExperiencesSlider = () => {
                     ref={sliderRef}
                 >
                     {data.map((exp, index) => (
-                        <div key={exp.id} className={`dest-slide ${index === currentIndex ? 'active' : ''}`}>
-                            <div className="dest-home-card">
-                                <div className="dest-card-image">
+                        <div key={exp.id} className={`exp-slide ${index === currentIndex ? 'active' : ''}`}>
+                            <div className="exp-card">
+                                <div className="exp-card-img">
                                     <img src={exp.image} alt={exp.title} />
-                                    <div className="dest-card-badge">{exp.category}</div>
+                                    <div className="exp-card-badge">
+                                        <Star size={12} fill="#ffc107" strokeWidth={0} />
+                                        {exp.rating}
+                                    </div>
                                 </div>
-                                
-                                <div className="dest-card-content">
-                                    <div className="dest-card-header">
-                                        <h3 className="dest-card-title">{exp.title}</h3>
-                                        <div className="dest-card-rating">
-                                            <Star size={14} fill="#FFB800" stroke="none" />
-                                            <span>{exp.rating}</span>
-                                        </div>
-                                    </div>
- 
-                                    <div className="dest-card-location">
-                                        <MapPin size={14} /> <span>{exp.region}</span>
-                                    </div>
-
-                                    {/* Additional Metadata Badges from user image */}
-                                    <div className="dest-card-meta-badges">
-                                        {exp.duration && <span><Clock size={12} /> {exp.duration}</span>}
-                                        {exp.category && <span>{exp.category}</span>}
-                                        {exp.groupSize && <span><Users size={12} /> {exp.groupSize}</span>}
-                                    </div>
- 
-                                    <p className="dest-card-description">{exp.description}</p>
+                                <div className="exp-card-body">
+                                    <h3 className="exp-card-title">{exp.title}</h3>
                                     
-                                    <div className="dest-card-footer">
-                                        <div className="dest-price-tag">
-                                            <span className="from-label">{language === 'fr' ? 'À partir de' : 'From'}</span>
-                                            <span className="price-value">{exp.price} {exp.currency}</span>
+                                    <div className="exp-card-meta">
+                                        {exp.region && <span><MapPin size={14} /> {exp.region}</span>}
+                                        {exp.duration && <span><Clock size={14} /> {exp.duration}</span>}
+                                        {exp.category && <span className="exp-category-tag">{exp.category}</span>}
+                                        {exp.groupSize && <span className="exp-group-size"><Users size={14} /> {exp.groupSize}</span>}
+                                    </div>
+                                    
+                                    <p className="exp-card-desc">{exp.description}</p>
+                                    
+                                    <div className="exp-card-rating">
+                                        <Star size={13} fill="#FFB800" strokeWidth={0} />
+                                        <strong>{exp.rating}</strong>
+                                        <span>({exp.reviews} {t.reviews})</span>
+                                    </div>
+                                    
+                                    <div className="exp-card-footer">
+                                        <div className="exp-price-wrap">
+                                            <span className="exp-from-label">{t.from}</span>
+                                            <div className="exp-price">{exp.price} <span>{exp.currency}</span></div>
                                         </div>
-                                        <Link to={`/${language}/contact`} className="dest-card-btn">
-                                            {language === 'fr' ? 'Réserver' : 'Book'} <ArrowUpRight size={18} />
+                                        <Link to={`/${language}/contact`} className="exp-book-btn">
+                                            {t.cta}
                                         </Link>
                                     </div>
                                 </div>
@@ -132,7 +144,6 @@ const HomeExperiencesSlider = () => {
                     ))}
                 </div>
 
-                {/* Navigation Controls matched to Destination Slider */}
                 <div className="slider-controls">
                     <button className="slider-btn prev" onClick={prevSlide} aria-label="Previous">
                         <ArrowLeft size={24} />
@@ -142,7 +153,6 @@ const HomeExperiencesSlider = () => {
                     </button>
                 </div>
 
-                {/* Pagination Dots matched to Destination Slider */}
                 <div className="slider-pagination">
                     {data.map((_, i) => (
                         <button 

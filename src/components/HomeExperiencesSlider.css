@@ -1,5 +1,5 @@
 .home-exp-slider-section {
-    padding: 30px 0; /* Mini boutique padding */
+    padding: 60px 0;
     background-color: var(--bg-primary);
     overflow: hidden;
 }
@@ -7,7 +7,7 @@
 .slider-master-wrapper {
     position: relative;
     max-width: 1400px;
-    margin: 20px auto 0;
+    margin: 40px auto 0;
     padding: 0 4%;
 }
 
@@ -17,29 +17,216 @@
     will-change: transform;
 }
 
-.dest-slide {
+.exp-slide {
     flex: 0 0 calc(100% / var(--items-per-view));
-    padding: 0 10px;
+    padding: 0 15px;
     min-width: 0;
     --items-per-view: 3;
 }
 
 @media (max-width: 1024px) {
-    .dest-slide {
+    .exp-slide {
         --items-per-view: 2;
     }
 }
 
 @media (max-width: 768px) {
-    .dest-slide {
+    .exp-slide {
         --items-per-view: 1;
     }
 }
 
-/* Controls - Matched to Destinations */
+/* ── Card Styles (Synced with Experiences.css) ── */
+.exp-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    position: relative;
+    height: 100%;
+}
+
+.exp-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    border-color: rgba(45, 126, 52, 0.2);
+}
+
+.exp-card-img {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.exp-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.exp-card:hover .exp-card-img img {
+    transform: scale(1.1);
+}
+
+.exp-card-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(4px);
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    color: #1e293b;
+    z-index: 5;
+}
+
+.exp-card-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.exp-card-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    min-height: 2.8rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: left;
+}
+
+.exp-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+    min-height: 52px;
+}
+
+.exp-card-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    color: #64748b;
+    font-weight: 600;
+    background: #f8fafc;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid #f1f5f9;
+}
+
+.exp-card-meta svg {
+    color: var(--primary-green);
+    width: 14px;
+    height: 14px;
+}
+
+.exp-card-desc {
+    font-size: 0.9rem;
+    color: #475569;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: left;
+}
+
+.exp-card-rating {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.exp-card-rating strong {
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.exp-card-rating span {
+    color: #94a3b8;
+}
+
+.exp-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.exp-price-wrap {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.exp-from-label {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2px;
+}
+
+.exp-price {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--primary-green);
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.exp-price span {
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.exp-book-btn {
+    background: var(--primary-orange);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 800;
+    text-decoration: none;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 12px rgba(230, 118, 15, 0.2);
+    transition: all 0.3s ease;
+}
+
+.exp-book-btn:hover {
+    background: #ff8c1a;
+    transform: scale(1.05);
+}
+
+/* Controls */
 .slider-controls {
     position: absolute;
-    top: 40%;
+    top: 50%;
     transform: translateY(-50%);
     width: 100%;
     left: 0;
@@ -50,53 +237,9 @@
     z-index: 10;
 }
 
-.dest-card-meta-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin: 10px 0;
-}
-
-.dest-card-meta-badges span {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 0.7rem;
-    color: #64748b;
-    font-weight: 600;
-    background: #f8fafc;
-    padding: 3px 8px;
-    border-radius: 4px;
-    border: 1px solid #f1f5f9;
-}
-
-.dest-card-meta-badges svg {
-    color: var(--primary-green);
-}
-
-/* Price styling */
-.dest-price-tag {
-    display: flex;
-    flex-direction: column;
-}
-
-.from-label {
-    font-size: 0.65rem;
-    color: #94a3b8;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.price-value {
-    font-size: 1.1rem;
-    font-weight: 900;
-    color: var(--primary-green);
-}
-
 .slider-btn {
-    width: 40px; /* Mini controls */
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background: white;
     border: 1px solid rgba(0,0,0,0.05);
@@ -106,7 +249,7 @@
     cursor: pointer;
     pointer-events: auto;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .slider-btn:hover {
@@ -115,17 +258,17 @@
     transform: scale(1.1);
 }
 
-/* Pagination - Matched to Destinations */
+/* Pagination */
 .slider-pagination {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    margin-top: 25px;
+    gap: 12px;
+    margin-top: 40px;
 }
 
 .pag-dot {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     background: rgba(0,0,0,0.1);
     border: none;
@@ -135,18 +278,18 @@
 
 .pag-dot.active {
     background: var(--primary-green);
-    width: 24px;
+    width: 30px;
     border-radius: 10px;
 }
 
 @media (max-width: 768px) {
     .home-exp-slider-section {
-        padding: 30px 0;
-    }
-    .slider-master-wrapper {
-        padding: 0 5%;
+        padding: 40px 0;
     }
     .slider-controls {
         display: none;
+    }
+    .exp-card-title {
+        font-size: 1.1rem;
     }
 }
