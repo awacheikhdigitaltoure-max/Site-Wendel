@@ -65,6 +65,10 @@ const WhyWendelu = ({ className = "" }) => {
   return (
     <section className={`section-padding why-section ${className}`}>
       <div className="why-container">
+        <div className="why-image-wrapper">
+          <img src={casamanceImg} alt="Pourquoi Wëndelu" className="why-image" />
+        </div>
+
         <div className="why-content">
           <h2 className="why-title text-gradient">{content.title}</h2>
           
@@ -81,10 +85,6 @@ const WhyWendelu = ({ className = "" }) => {
               </div>
             ))}
           </div>
-        </div>
-        
-        <div className="why-image-wrapper">
-          <img src={casamanceImg} alt="Pourquoi Wëndelu" className="why-image" />
         </div>
       </div>
     </section>
