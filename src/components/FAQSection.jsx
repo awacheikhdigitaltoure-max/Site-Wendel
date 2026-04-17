@@ -20,20 +20,28 @@ const FAQSection = ({ className = "" }) => {
         <h2 className="section-title text-gradient">{t.title}</h2>
       </div>
       
-      <div className="max-w-2xl mx-auto space-y-4">
+      <div className="mx-auto space-y-3" style={{ maxWidth: '800px' }}>
         {faqs.map((faq, index) => (
           <div 
             key={index} 
-            className={`glass-card p-10 cursor-pointer transition-all duration-300 ${activeIndex === index ? 'active-faq' : ''}`}
+            className={`glass-card cursor-pointer transition-all duration-300 ${activeIndex === index ? 'active-faq' : ''}`}
             onClick={() => setActiveIndex(activeIndex === index ? -1 : index)}
-            style={{ border: '1px solid var(--glass-border)', background: 'var(--glass-bg)', padding: '35px'}}
+            style={{ 
+              border: '1px solid var(--glass-border)', 
+              background: 'var(--glass-bg)', 
+              padding: '20px 30px',
+              borderRadius: '20px'
+            }}
           >
-            <div className="flex justify-between items-center text-left">
-              <h4 className="text-xl font-semibold">{faq.q}</h4>
-              <span className="text-2xl">{activeIndex === index ? '−' : '+'}</span>
+            <div className="flex justify-between items-center text-center">
+              <div style={{ width: '24px' }}></div> {/* Spacer for symmetry */}
+              <h4 className="text-lg font-semibold" style={{ flex: 1 }}>{faq.q}</h4>
+              <span className="text-xl" style={{ color: 'var(--primary-orange)', width: '24px' }}>
+                {activeIndex === index ? '−' : '+'}
+              </span>
             </div>
              {activeIndex === index && (
-               <p className="mt-4 opacity-80 leading-relaxed text-left" style={{ color: 'var(--text-secondary)' }}>
+               <p className="mt-3 opacity-80 leading-relaxed text-center" style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
                  {faq.a}
                </p>
              )}
