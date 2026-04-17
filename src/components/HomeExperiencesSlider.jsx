@@ -122,12 +122,11 @@ const HomeExperiencesSlider = () => {
                                         <span className="exp-group-size"><Users size={14} /> {exp.groupSize}</span>
                                     </div>
                                     
-                                    <p className="exp-card-desc">{exp.description}</p>
+                                    {/* Description removed for Boutique/Mini look */}
                                     
                                     <div className="exp-card-rating">
-                                        <Star size={13} fill="#FFB800" strokeWidth={0} />
+                                        <Star size={11} fill="#FFB800" strokeWidth={0} />
                                         <strong>{exp.rating}</strong>
-                                        <span>({exp.reviews} {t.reviews})</span>
                                     </div>
                                     
                                     <div className="exp-card-footer">

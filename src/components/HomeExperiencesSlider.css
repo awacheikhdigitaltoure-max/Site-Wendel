@@ -17,9 +17,9 @@
 
 .exp-slide {
     flex: 0 0 33.333%;
-    padding: 15px;
+    padding: 10px; /* Reduced padding */
     opacity: 0.5;
-    transform: scale(0.9);
+    transform: scale(0.95);
     transition: all 0.6s ease;
 }
 
@@ -28,24 +28,23 @@
     transform: scale(1);
 }
 
-/* ── Harmonized Card CSS ── */
 .exp-card {
     background: white;
-    border-radius: 16px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
     display: flex;
     flex-direction: column;
     height: 100%;
-    border: 1px solid rgba(226, 232, 240, 0.8);
+    border: 1px solid var(--glass-border);
     position: relative;
-    text-align: left; /* Reset from home page defaults */
+    text-align: left;
 }
 
 .exp-card-img {
     position: relative;
-    height: 180px;
+    height: 130px; /* Mini height */
     overflow: hidden;
 }
 
@@ -53,45 +52,44 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.8s ease;
 }
 
 .exp-card-badge {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 10px;
+    right: 10px;
     background: rgba(255, 255, 255, 0.95);
-    padding: 4px 10px;
+    padding: 3px 8px;
     border-radius: 100px;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     font-weight: 800;
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     color: #1e293b;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .exp-card-body {
-    padding: 15px;
+    padding: 12px; /* Tight padding */
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
 .exp-card-title {
-    font-size: 1.05rem;
+    font-size: 0.9rem; /* Small boutique title */
     font-weight: 800;
     color: #0f172a;
     line-height: 1.2;
-    margin-bottom: 8px;
-    min-height: 2.5rem;
+    margin-bottom: 6px;
+    min-height: 2.2rem;
 }
 
 .exp-card-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 4px;
     margin-bottom: 10px;
 }
 
@@ -99,50 +97,38 @@
     display: flex;
     align-items: center;
     gap: 3px;
-    font-size: 0.7rem;
+    font-size: 0.6rem; /* Micro tags */
     color: #64748b;
-    font-weight: 600;
+    font-weight: 700;
     background: #f8fafc;
-    padding: 2px 6px;
+    padding: 2px 5px;
     border-radius: 4px;
     border: 1px solid #f1f5f9;
 }
 
 .exp-card-meta svg {
     color: var(--primary-green);
-    width: 12px;
-    height: 12px;
-}
-
-.exp-card-desc {
-    font-size: 0.8rem;
-    color: #475569;
-    line-height: 1.5;
-    margin-bottom: 12px;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    width: 10px;
+    height: 10px;
 }
 
 .exp-card-rating {
     margin-top: auto;
     display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 0.8rem;
-    margin-bottom: 15px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #f1f5f9;
+    gap: 4px;
+    font-size: 0.75rem;
+    margin-bottom: 12px;
 }
 
 .exp-card-rating strong { color: #1e293b; }
-.exp-card-rating span { color: #94a3b8; }
 
 .exp-card-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid #f1f5f9;
 }
 
 .exp-price-wrap {
@@ -151,15 +137,14 @@
 }
 
 .exp-from-label {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: #94a3b8;
     font-weight: 600;
     text-transform: uppercase;
-    margin-bottom: 2px;
 }
 
 .exp-price {
-    font-size: 1.2rem;
+    font-size: 1rem; /* Mini price */
     font-weight: 900;
     color: var(--primary-green);
     display: flex;
@@ -167,36 +152,35 @@
     gap: 2px;
 }
 
-.exp-price span { font-size: 0.75rem; }
+.exp-price span { font-size: 0.7rem; }
 
 .exp-book-btn {
     background: var(--primary-orange);
     color: white;
-    padding: 10px 18px;
-    border-radius: 8px;
+    padding: 8px 15px; /* Compact btn */
+    border-radius: 6px;
     font-weight: 800;
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     transition: all 0.3s ease;
 }
 
-/* Pagination */
+/* Slider Controls & Pagination */
 .slider-pagination-mini {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    margin-top: 20px;
+    gap: 5px;
+    margin-top: 15px;
 }
 
 .pag-dot-mini {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
     border-radius: 50%;
     background: #cbd5e1;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    padding: 0;
 }
 
 .pag-dot-mini.active {
@@ -204,10 +188,9 @@
     transform: scale(1.4);
 }
 
-/* Controls */
 .slider-controls {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 0;
     right: 0;
     transform: translateY(-50%);
@@ -215,12 +198,11 @@
     justify-content: space-between;
     padding: 0 10px;
     pointer-events: none;
-    z-index: 10;
 }
 
 .slider-btn {
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     background: white;
     border: 1px solid var(--glass-border);
@@ -230,14 +212,7 @@
     justify-content: center;
     cursor: pointer;
     pointer-events: auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
-
-.slider-btn:hover {
-    background: var(--primary-green);
-    color: white;
-    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
 }
 
 @media (max-width: 1024px) {
@@ -245,8 +220,9 @@
 }
 
 @media (max-width: 768px) {
-    .exp-slide { flex: 0 0 100%; padding: 10px; }
-    .exp-slider-master-wrapper { padding: 0 20px; }
+    .exp-slide { flex: 0 0 100%; padding: 5px; }
+    .exp-slider-master-wrapper { padding: 0 15px; }
     .slider-controls { display: none; }
-    .exp-card-img { height: 160px; }
+    .exp-card-img { height: 140px; }
+    .exp-card-title { font-size: 0.85rem; }
 }
