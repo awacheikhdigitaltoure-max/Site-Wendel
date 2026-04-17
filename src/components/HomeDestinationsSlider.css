@@ -18,11 +18,21 @@
 }
 
 .dest-slide {
-    flex: 0 0 100%;
-    padding: 0 10px;
+    flex: 0 0 calc(100% / var(--items-per-view));
+    padding: 0 15px;
     min-width: 0;
-    display: flex;
-    justify-content: center;
+}
+
+@media (max-width: 1024px) {
+    .home-dest-slider-section {
+        --items-per-view: 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-dest-slider-section {
+        --items-per-view: 1;
+    }
 }
 
 /* Controls */

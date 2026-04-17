@@ -31,6 +31,8 @@
   --accent-gradient: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-orange) 100%);
   --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.03);
   --section-spacing: 80px;
+  --items-per-view: 3;
+  --slider-gap: 30px;
 }
 
 * {

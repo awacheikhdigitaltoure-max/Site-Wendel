@@ -9,16 +9,32 @@ const HomeExperiencesSlider = () => {
     const { language } = useLanguage();
     const data = experiencesData[language].slice(0, 6);
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [itemsPerView, setItemsPerView] = useState(3);
     const [touchStart, setTouchStart] = useState(null);
     const [touchEnd, setTouchEnd] = useState(null);
     const minSwipeDistance = 50;
 
+    // Dynamic items per view detection
+    useEffect(() => {
+        const updateItemsPerView = () => {
+            if (window.innerWidth <= 768) setItemsPerView(1);
+            else if (window.innerWidth <= 1024) setItemsPerView(2);
+            else setItemsPerView(3);
+        };
+        
+        updateItemsPerView();
+        window.addEventListener('resize', updateItemsPerView);
+        return () => window.removeEventListener('resize', updateItemsPerView);
+    }, []);
+
+    const maxIndex = data.length - itemsPerView;
+
     const nextSlide = () => {
-        setCurrentIndex((prev) => (prev + 1) % data.length);
+        setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
     };
 
     const prevSlide = () => {
-        setCurrentIndex((prev) => (prev - 1 + data.length) % data.length);
+        setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
     };
 
     const onTouchStart = (e) => {
@@ -54,7 +70,7 @@ const HomeExperiencesSlider = () => {
             >
                 <div 
                     className="exp-slider-track"
-                    style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                    style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
                 >
                     {data.map((exp, index) => (
                         <div key={exp.id} className="exp-slide">
