@@ -13,6 +13,7 @@ const Home = () => {
   return (
     <div className="page home-page">
       <Hero />
+      <StatsSection />
       
       <Reveal>
         <HomeDestinationsSlider />

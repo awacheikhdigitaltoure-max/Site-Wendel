@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { MapPin, Compass, Users } from 'lucide-react';
+import { MapPin, Users, Globe } from 'lucide-react';
 import './StatsSection.css';
 
 const StatsSection = () => {
@@ -15,27 +15,27 @@ const StatsSection = () => {
     },
     {
       id: 2,
-      icon: <Compass className="stat-icon" />,
-      value: "100+",
-      label: language === 'fr' ? "Expériences" : "Experiences"
+      icon: <Users className="stat-icon" />,
+      value: "20+",
+      label: language === 'fr' ? "Experts Locaux" : "Local Experts"
     },
     {
       id: 3,
-      icon: <Users className="stat-icon" />,
-      value: language === 'fr' ? "Illimitée" : "Unlimited",
-      label: language === 'fr' ? "Communauté" : "Community"
+      icon: <Globe className="stat-icon" />,
+      value: "14",
+      label: language === 'fr' ? "Régions du Sénégal" : "Senegal Regions"
     }
   ];
 
   return (
-    <section className="stats-section section-padding">
+    <section className="stats-section">
       <div className="stats-container">
         {stats.map((stat) => (
-          <div key={stat.id} className="stat-item">
+          <div key={stat.id} className="stat-card">
             <div className="stat-icon-wrapper">{stat.icon}</div>
-            <div className="stat-text">
-              <h3 className="stat-value">{stat.value}</h3>
-              <p className="stat-label">{stat.label}</p>
+            <div className="stat-info">
+              <h3 className="stat-big-num">{stat.value}</h3>
+              <p className="stat-desc">{stat.label}</p>
             </div>
           </div>
         ))}

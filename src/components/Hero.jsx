@@ -37,22 +37,6 @@ const Hero = () => {
          </div>
        </div>
       
-      <div className="hero-stats-bar">
-        <div className="stat-item">
-          <span className="stat-num">50+</span>
-          <span className="stat-label">{language === 'fr' ? 'Destinations' : 'Destinations'}</span>
-        </div>
-        <div className="stat-divider" />
-        <div className="stat-item">
-          <span className="stat-num">15</span>
-          <span className="stat-label">{language === 'fr' ? 'Experts Locaux' : 'Local Experts'}</span>
-        </div>
-        <div className="stat-divider" />
-        <div className="stat-item">
-          <span className="stat-num">14</span>
-          <span className="stat-label">{language === 'fr' ? 'Régions du Sénégal' : 'Senegal Regions'}</span>
-        </div>
-      </div>
     </section>
   );
 };
