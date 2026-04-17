@@ -19,9 +19,9 @@
 
 .why-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 1.1;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 20px auto;
   font-weight: 700;
   max-width: 600px;
   text-align: center;
@@ -38,7 +38,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 12px;
+  gap: 8px;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: default;
 }
@@ -48,8 +48,8 @@
 }
 
 .feature-icon {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   background: var(--primary-green);
   color: white;
   display: flex;
@@ -73,9 +73,9 @@
 
 .feature-text h3 {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.15rem;
+  font-size: 1rem;
   color: var(--text-primary);
-  margin-bottom: 4px;
+  margin-bottom: 2px;
   font-weight: 600;
   transition: color 0.3s ease;
 }
@@ -86,15 +86,15 @@
 
 .feature-text p {
   color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  font-size: 0.85rem;
+  line-height: 1.4;
 }
 
 .why-image-wrapper {
-  height: 350px;
-  max-width: 350px;
+  height: 300px;
+  max-width: 320px;
   margin: 0 auto;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   box-shadow: var(--shadow-premium);
   position: relative;
