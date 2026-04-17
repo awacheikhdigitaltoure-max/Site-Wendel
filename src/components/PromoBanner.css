@@ -93,16 +93,31 @@
 
 @media (max-width: 768px) {
   .promo-banner-container {
-    padding: 40px 6%;
+    padding: 20px 5% !important;
   }
   .promo-banner {
-    height: 400px;
-    border-radius: 30px;
+    height: 220px !important; /* Extremely compact height */
+    border-radius: 20px;
+  }
+  .promo-content {
+    padding: 0 15px;
+  }
+  .promo-badge {
+    padding: 4px 10px;
+    font-size: 0.65rem;
+    margin-bottom: 8px;
   }
   .promo-title {
-    font-size: 2rem;
+    font-size: 1.2rem !important;
+    margin-bottom: 8px;
   }
   .promo-subtitle {
-    font-size: 1rem;
+    font-size: 0.8rem !important;
+    margin-bottom: 12px;
+  }
+  .promo-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    gap: 8px;
   }
 }
