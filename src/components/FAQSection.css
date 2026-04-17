@@ -98,26 +98,40 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
+  .faq-section {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
+
   .section-header.mb-12 {
-    margin-bottom: 20px !important;
+    margin-bottom: 15px !important;
   }
   
-  .faq-section .section-title {
-    font-size: 1.3rem !important;
+  .faq-section h2.section-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 5px !important;
   }
 
   .faq-image-wrapper {
-    height: 120px;
+    height: 100px !important;
+    margin-bottom: 10px !important;
   }
 
   .faq-q-row h4 {
-    font-size: 0.8rem;
+    font-size: 0.75rem !important;
   }
+  
   .faq-item-card {
-    padding: 8px 12px;
+    padding: 6px 10px !important;
+    border-radius: 10px !important;
   }
+  
   .faq-a-content p {
-    font-size: 0.75rem;
+    font-size: 0.7rem !important;
+  }
+
+  .faq-list {
+    gap: 8px !important;
   }
 }
