@@ -141,21 +141,21 @@ const SimplifiedBooking = () => {
   return (
     <section className="section-padding booking-section" id="booking">
       <div className="booking-container glass reveal">
-        <div className="booking-info">
-          <span className="sub-title" style={{color: 'var(--primary-orange)'}}>{t.subtitle}</span>
-          <h2 className="section-title text-gradient">{t.title}</h2>
-          <p className="booking-text">{t.text}</p>
+        <div className="booking-info" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 40px auto' }}>
+          <span className="sub-title" style={{color: 'var(--primary-orange)', textAlign: 'center'}}>{t.subtitle}</span>
+          <h2 className="section-title text-gradient" style={{ textAlign: 'center' }}>{t.title}</h2>
+          <p className="booking-text" style={{ textAlign: 'center' }}>{t.text}</p>
 
-          <div className="trust-grid">
-            <div className="trust-item">
-              <div className="trust-icon"><Sparkles size={24} color="var(--primary-green)" /></div>
+          <div className="trust-grid" style={{ display: 'flex', justifyContent: 'center', gap: '40px', marginTop: '30px' }}>
+            <div className="trust-item" style={{ textAlign: 'center' }}>
+              <div className="trust-icon" style={{ margin: '0 auto 15px auto' }}><Sparkles size={24} color="var(--primary-green)" /></div>
               <div>
                 <h4>{t.expertise}</h4>
                 <p>{t.expertiseDesc}</p>
               </div>
             </div>
-            <div className="trust-item">
-              <div className="trust-icon"><ShieldCheck size={24} color="var(--primary-green)" /></div>
+            <div className="trust-item" style={{ textAlign: 'center' }}>
+              <div className="trust-icon" style={{ margin: '0 auto 15px auto' }}><ShieldCheck size={24} color="var(--primary-green)" /></div>
               <div>
                 <h4>{t.serenity}</h4>
                 <p>{t.serenityDesc}</p>
