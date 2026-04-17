@@ -54,12 +54,8 @@ h1, h2, h3, h4, .font-heading {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.1;
-  text-align: left; /* Restored to default */
-}
-
-.home-page h1, .home-page h2, .home-page h3, .home-page h4 {
-  text-align: center;
+  line-height: 1.3; /* Increased for breathing room */
+  text-align: left;
 }
 
 #root {
@@ -232,7 +228,7 @@ h1, h2, h3, h4, .font-heading {
 
 .home-page .section-header {
   max-width: 800px;
-  margin: 0 auto 50px auto;
+  margin: 0 auto 30px auto; /* Reduced margin to keep it compact */
 }
 
 /* ── Boutique Home Card Layout ── */
@@ -403,22 +399,44 @@ h1, h2, h3, h4, .font-heading {
 
 @media (max-width: 768px) {
   .section-padding {
-    padding: 30px 0;
+    padding: 70px 0 !important; /* Forces breathing room between sections */
   }
+  
+  .home-page .section-padding {
+    padding: 60px 0 !important;
+  }
+
+  .section-title {
+    font-size: 1.5rem !important; /* Even smaller for magazine look */
+    line-height: 1.2 !important;
+  }
+
+  .sub-title {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.1em !important;
+    margin-bottom: 8px !important;
+  }
+
+  .section-header {
+    margin-bottom: 25px !important;
+  }
+
   .main-container {
     width: 92% !important;
   }
+  
   .btn {
-    padding: 14px 28px;
-    font-size: 0.95rem;
+    padding: 10px 20px;
+    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
   .section-padding {
-    padding: 24px 4%;
+    padding: 60px 5% !important;
   }
-  .main-container {
-    width: 90% !important;
+  
+  body {
+    font-size: 0.95rem; /* Slightly smaller global text on very small screens */
   }
 }
