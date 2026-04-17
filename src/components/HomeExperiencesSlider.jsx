@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { experiencesData } from '../data/experiences';
-import { ArrowLeft, ArrowRight, Star, Clock, MapPin, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Star, Clock, MapPin, Users } from 'lucide-react';
 import './HomeExperiencesSlider.css';
 
 const HomeExperiencesSlider = () => {
@@ -14,6 +14,23 @@ const HomeExperiencesSlider = () => {
     const [touchStart, setTouchStart] = useState(null);
     const [touchEnd, setTouchEnd] = useState(null);
     const minSwipeDistance = 50;
+
+    const t = {
+        fr: {
+            eyebrow: "Incontournables",
+            title: "Expériences Populaires",
+            from: "À partir de",
+            reviews: "avis",
+            cta: "Réserver"
+        },
+        en: {
+            eyebrow: "Must-Do",
+            title: "Popular Experiences",
+            from: "Starting at",
+            reviews: "reviews",
+            cta: "Book"
+        }
+    }[language];
 
     // Dynamic items per view detection
     useEffect(() => {
@@ -68,8 +85,8 @@ const HomeExperiencesSlider = () => {
     return (
         <section className="home-exp-slider-section">
             <div className="section-header">
-                <span className="sub-title">{language === 'fr' ? 'Incontournables' : 'Must-Do'}</span>
-                <h2 className="section-title text-gradient">{language === 'fr' ? 'Expériences Populaires' : 'Popular Experiences'}</h2>
+                <span className="sub-title">{t.eyebrow}</span>
+                <h2 className="section-title text-gradient">{t.title}</h2>
             </div>
 
             <div 
@@ -86,30 +103,40 @@ const HomeExperiencesSlider = () => {
                 >
                     {data.map((exp, index) => (
                         <div key={exp.id} className={`exp-slide ${index === currentIndex ? 'active' : ''}`}>
-                            <div className="dest-home-card">
-                                <div className="dest-card-image">
+                            {/* Unified Experience Card Design */}
+                            <div className="exp-card">
+                                <div className="exp-card-img">
                                     <img src={exp.image} alt={exp.title} />
-                                    <div className="dest-card-badge">{exp.category}</div>
+                                    <div className="exp-card-badge">
+                                        <Star size={12} fill="#ffc107" strokeWidth={0} />
+                                        {exp.rating}
+                                    </div>
                                 </div>
-                                
-                                <div className="dest-card-content">
-                                    <div className="dest-card-header">
-                                        <h3 className="dest-card-title">{exp.title}</h3>
-                                        <div className="dest-card-rating">
-                                            <Star size={14} fill="#FFB800" stroke="none" />
-                                            <span>{exp.rating}</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="dest-card-location">
-                                        <MapPin size={14} /> <span>{exp.region}</span>
-                                    </div>
-
-                                    <p className="dest-card-description">{exp.description}</p>
+                                <div className="exp-card-body">
+                                    <h3 className="exp-card-title">{exp.title}</h3>
                                     
-                                    <div className="dest-card-footer">
-                                        <Link to={`/${language}/destinations/${exp.id}`} className="dest-card-btn">
-                                            {language === 'fr' ? 'Découvrir' : 'Discover'} <ArrowUpRight size={18} />
+                                    <div className="exp-card-meta">
+                                        <span><MapPin size={14} /> {exp.region}</span>
+                                        <span><Clock size={14} /> {exp.duration}</span>
+                                        <span className="exp-category-tag">{exp.category}</span>
+                                        <span className="exp-group-size"><Users size={14} /> {exp.groupSize}</span>
+                                    </div>
+                                    
+                                    <p className="exp-card-desc">{exp.description}</p>
+                                    
+                                    <div className="exp-card-rating">
+                                        <Star size={13} fill="#FFB800" strokeWidth={0} />
+                                        <strong>{exp.rating}</strong>
+                                        <span>({exp.reviews} {t.reviews})</span>
+                                    </div>
+                                    
+                                    <div className="exp-card-footer">
+                                        <div className="exp-price-wrap">
+                                            <span className="exp-from-label">{t.from}</span>
+                                            <div className="exp-price">{exp.price} <span>{exp.currency}</span></div>
+                                        </div>
+                                        <Link to={`/${language}/contact`} className="exp-book-btn">
+                                            {t.cta}
                                         </Link>
                                     </div>
                                 </div>
