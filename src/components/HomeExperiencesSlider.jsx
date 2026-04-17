@@ -10,6 +10,7 @@ const HomeExperiencesSlider = () => {
     const data = experiencesData[language].slice(0, 6);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [itemsPerView, setItemsPerView] = useState(3);
+    const [isPaused, setIsPaused] = useState(false);
     const [touchStart, setTouchStart] = useState(null);
     const [touchEnd, setTouchEnd] = useState(null);
     const minSwipeDistance = 50;
@@ -28,6 +29,15 @@ const HomeExperiencesSlider = () => {
     }, []);
 
     const maxIndex = data.length - itemsPerView;
+
+    // Auto-slide logic
+    useEffect(() => {
+        if (isPaused) return;
+        const interval = setInterval(() => {
+            nextSlide();
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [currentIndex, isPaused, itemsPerView]);
 
     const nextSlide = () => {
         setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
@@ -64,6 +74,8 @@ const HomeExperiencesSlider = () => {
 
             <div 
                 className="exp-slider-master-wrapper"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
                 onTouchStart={onTouchStart}
                 onTouchMove={onTouchMove}
                 onTouchEnd={onTouchEnd}
@@ -73,7 +85,7 @@ const HomeExperiencesSlider = () => {
                     style={{ transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)` }}
                 >
                     {data.map((exp, index) => (
-                        <div key={exp.id} className="exp-slide">
+                        <div key={exp.id} className={`exp-slide ${index === currentIndex ? 'active' : ''}`}>
                             <div className="dest-home-card">
                                 <div className="dest-card-image">
                                     <img src={exp.image} alt={exp.title} />
