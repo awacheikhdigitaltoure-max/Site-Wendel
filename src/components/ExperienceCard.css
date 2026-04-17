@@ -3,6 +3,8 @@
   border-radius: 20px;
   overflow: hidden;
   height: 270px;
+  max-width: 330px;
+  margin: 0 auto;
   cursor: pointer;
   background-color: var(--bg-primary);
   transition: var(--transition-smooth);
