@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../i18n/translations';
-import saintlouisImg from '../assets/saint-louis.png';
+import saintlouisImg from '../assets/Saint louis.png';
 import './FAQSection.css';
 
 const FAQSection = ({ className = "" }) => {
