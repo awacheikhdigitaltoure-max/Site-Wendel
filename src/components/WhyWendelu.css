@@ -56,8 +56,7 @@
 }
 
 .feature-mini-card:hover .feature-icon-mini {
-  background: rgba(230, 118, 15, 0.12); /* Orange on hover */
-  color: var(--primary-orange);
+  background: rgba(45, 126, 52, 0.12); /* Slightly darker green on hover */
   transform: scale(1.1);
 }
 
