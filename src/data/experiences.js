@@ -16,6 +16,11 @@ import premiumBg from '../assets/hero-bg-premium.png';
  import bassariImg from '../assets/bassari.png';
  import capSkirringImg from '../assets/cap_skirring.png';
  import stLouisCalecheImg from '../assets/saint_louis_caleche.png';
+ import toubaImg from '../assets/touba_mosque.png';
+ import popenguineImg from '../assets/popenguine_cliffs.png';
+ import somoneImg from '../assets/somone_lagoon.png';
+ import ndanganeImg from '../assets/ndangane_sunset.png';
+ import toubabDialawImg from '../assets/toubab_dialaw.png';
  
  export const experiencesData = {
    fr: [
@@ -272,7 +277,7 @@ import premiumBg from '../assets/hero-bg-premium.png';
       category: "Nature",
       budget: "Économique",
       description: "Balade entre mer et falaises dans ce village pittoresque et son sanctuaire marial.",
-      image: salyImg
+      image: popenguineImg
     },
     {
       id: 18,
@@ -287,7 +292,7 @@ import premiumBg from '../assets/hero-bg-premium.png';
       category: "Nature",
       budget: "Abordable",
       description: "Observation des oiseaux en pirogue dans cette réserve naturelle préservée.",
-      image: saloumImg
+      image: somoneImg
     },
     {
       id: 19,
@@ -302,7 +307,7 @@ import premiumBg from '../assets/hero-bg-premium.png';
       category: "Culture",
       budget: "Abordable",
       description: "Visite de l'une des plus grandes et belles mosquées d'Afrique de l'Ouest.",
-      image: monumentNew
+      image: toubaImg
     },
     {
       id: 20,
@@ -317,7 +322,7 @@ import premiumBg from '../assets/hero-bg-premium.png';
       category: "Nature",
       budget: "Abordable",
       description: "Admirez le spectaculaire coucher de soleil sur les eaux calmes du fleuve Saloum.",
-      image: saloumImg
+      image: ndanganeImg
     }
   ],
   en: [
@@ -574,7 +579,7 @@ import premiumBg from '../assets/hero-bg-premium.png';
       category: "Nature",
       budget: "Economy",
       description: "Walk between sea and cliffs in this picturesque village and its shrine.",
-      image: salyImg
+      image: popenguineImg
     },
     {
       id: 18,
@@ -589,7 +594,7 @@ import premiumBg from '../assets/hero-bg-premium.png';
       category: "Nature",
       budget: "Budget",
       description: "Bird watching by pirogue in this preserved natural reserve.",
-      image: saloumImg
+      image: somoneImg
     },
     {
       id: 19,
@@ -604,7 +609,7 @@ import premiumBg from '../assets/hero-bg-premium.png';
       category: "Culture",
       budget: "Budget",
       description: "Visit one of the largest and most beautiful mosques in West Africa.",
-      image: monumentNew
+      image: toubaImg
     },
     {
       id: 20,
@@ -619,7 +624,7 @@ import premiumBg from '../assets/hero-bg-premium.png';
       category: "Nature",
       budget: "Budget",
       description: "Admire the spectacular sunset over the calm waters of the Saloum river.",
-      image: saloumImg
+      image: ndanganeImg
     }
   ]
 };

@@ -15,6 +15,11 @@ import cap_skirring from '../assets/cap_skirring.png';
 import niokolo_koba from '../assets/niokolo_koba.png';
 import bassari from '../assets/bassari.png';
 import caleche from '../assets/saint_louis_caleche.png';
+import touba from '../assets/touba_mosque.png';
+import popenguine from '../assets/popenguine_cliffs.png';
+import somone from '../assets/somone_lagoon.png';
+import ndangane from '../assets/ndangane_sunset.png';
+import toubabDialaw from '../assets/toubab_dialaw.png';
 
 export const destinationsData = {
   fr: [
@@ -145,7 +150,7 @@ export const destinationsData = {
       id: 4, 
       title: "Somone", 
       category: "Lagune & Nature", 
-      image: mangrove,
+      image: somone,
       rating: 4.8,
       reviews: 95,
       price: "20.000",
@@ -166,7 +171,7 @@ export const destinationsData = {
       id: 5, 
       title: "Toubab Dialaw", 
       category: "Art & Falaises", 
-      image: nature,
+      image: toubabDialaw,
       rating: 4.7,
       reviews: 112,
       price: "18.000",
@@ -469,7 +474,7 @@ export const destinationsData = {
       id: 4, 
       title: "Somone", 
       category: "Lagoon & Nature", 
-      image: mangrove,
+      image: somone,
       rating: 4.8,
       description: "A biodiversity haven where the lagoon meets the ocean. Somone is famous for its reserve.",
       detailedDescription: "The Somone lagoon is a true sanctuary of peace. Between intertwined mangroves.",
@@ -486,7 +491,7 @@ export const destinationsData = {
       id: 5, 
       title: "Toubab Dialaw", 
       category: "Art & Cliffs", 
-      image: nature,
+      image: toubabDialaw,
       rating: 4.7,
       description: "A village of artists nestled between ochre cliffs and the sea. Famous for its organic architecture.",
       detailedDescription: "Toubab Dialaw is a rare gem located where the red earth cliffs plunge into the Atlantic.",
