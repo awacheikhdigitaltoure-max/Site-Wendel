@@ -44,12 +44,12 @@
 .feature-icon-mini {
   width: 36px;
   height: 36px;
-  background: rgba(45, 126, 52, 0.08);
+  background: rgba(230, 118, 15, 0.08); /* Light Orange */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-green);
+  color: var(--primary-orange);
   box-shadow: 0 4px 15px rgba(0,0,0,0.03);
   animation: floatIcon 3s ease-in-out infinite;
 }
