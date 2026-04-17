@@ -48,13 +48,14 @@
   height: 36px;
   background: rgba(45, 126, 52, 0.08); /* Green Default */
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   color: var(--primary-green);
   box-shadow: 0 4px 15px rgba(0,0,0,0.03);
   animation: floatIcon 3s ease-in-out infinite;
-  transition: all 0.4s ease; /* Smooth transition for color change */
+  transition: all 0.4s ease;
+  margin: 0 auto 12px auto !important; /* Forces horizontal centering and adds gap */
 }
 
 .feature-mini-card:hover .feature-icon-mini {
