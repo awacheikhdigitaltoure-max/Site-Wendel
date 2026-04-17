@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { destinationsData } from '../data/destinations';
-import { ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Star, MapPin } from 'lucide-react';
 import './HomeDestinationsSlider.css';
 
 const HomeDestinationsSlider = () => {
