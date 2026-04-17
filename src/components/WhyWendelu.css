@@ -32,8 +32,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* Added for vertical/horizontal strictness */
   gap: 12px;
   width: 140px;
+  text-align: center; /* Apply to the whole card */
   transition: transform 0.3s ease;
 }
 
@@ -81,7 +83,8 @@
   color: var(--text-primary);
   margin: 0;
   line-height: 1.2;
-  text-align: center; /* Ensures multi-line text is centered */
+  text-align: center !important;
+  width: 100%; /* Ensure it spans full card width to center text lines */
 }
 
 @media (max-width: 768px) {
