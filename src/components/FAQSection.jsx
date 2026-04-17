@@ -20,7 +20,7 @@ const FAQSection = ({ className = "" }) => {
         <h2 className="section-title text-gradient">{t.title}</h2>
       </div>
       
-      <div className="mx-auto space-y-3" style={{ maxWidth: '800px' }}>
+      <div className="mx-auto space-y-2" style={{ maxWidth: '600px' }}>
         {faqs.map((faq, index) => (
           <div 
             key={index} 
@@ -29,19 +29,19 @@ const FAQSection = ({ className = "" }) => {
             style={{ 
               border: '1px solid var(--glass-border)', 
               background: 'var(--glass-bg)', 
-              padding: '20px 30px',
-              borderRadius: '20px'
+              padding: '12px 20px',
+              borderRadius: '15px',
+              textAlign: 'center'
             }}
           >
-            <div className="flex justify-between items-center text-center">
-              <div style={{ width: '24px' }}></div> {/* Spacer for symmetry */}
-              <h4 className="text-lg font-semibold" style={{ flex: 1 }}>{faq.q}</h4>
-              <span className="text-xl" style={{ color: 'var(--primary-orange)', width: '24px' }}>
+            <div className="flex flex-col items-center">
+              <h4 className="text-base font-semibold" style={{ marginBottom: '4px' }}>{faq.q}</h4>
+              <span className="text-sm font-bold" style={{ color: 'var(--primary-orange)', display: 'block' }}>
                 {activeIndex === index ? '−' : '+'}
               </span>
             </div>
              {activeIndex === index && (
-               <p className="mt-3 opacity-80 leading-relaxed text-center" style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
+               <p className="mt-2 opacity-80 leading-relaxed text-center" style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
                  {faq.a}
                </p>
              )}
