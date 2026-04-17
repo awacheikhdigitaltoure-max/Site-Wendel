@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { destinationsData } from '../data/destinations';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Star, MapPin } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Star, MapPin, Clock, Users } from 'lucide-react';
 import './HomeDestinationsSlider.css';
 
 const HomeDestinationsSlider = () => {
@@ -110,6 +110,13 @@ const HomeDestinationsSlider = () => {
 
                                     <div className="dest-card-location">
                                         <MapPin size={14} /> <span>{dest.region}</span>
+                                    </div>
+
+                                    {/* Metadata Badges for consistency */}
+                                    <div className="dest-card-meta-badges">
+                                        <span><Clock size={12} /> {dest.duration}</span>
+                                        <span>{dest.category}</span>
+                                        <span><Users size={12} /> {dest.groupSize}</span>
                                     </div>
 
                                     <p className="dest-card-description">{dest.description}</p>
