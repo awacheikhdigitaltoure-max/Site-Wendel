@@ -99,13 +99,25 @@
 }
 
 @media (max-width: 768px) {
+  .section-header.mb-12 {
+    margin-bottom: 20px !important;
+  }
+  
+  .faq-section .section-title {
+    font-size: 1.3rem !important;
+  }
+
+  .faq-image-wrapper {
+    height: 120px;
+  }
+
   .faq-q-row h4 {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
   .faq-item-card {
-    padding: 12px 15px;
+    padding: 8px 12px;
   }
   .faq-a-content p {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 }
