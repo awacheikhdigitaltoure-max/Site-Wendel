@@ -112,6 +112,36 @@
     }
 }
 
+/* Price Styling */
+.dest-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.dest-price-tag {
+    display: flex;
+    flex-direction: column;
+}
+
+.from-label {
+    font-size: 0.65rem;
+    color: #94a3b8;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2px;
+}
+
+.price-value {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--primary-green);
+}
+
 @media (max-width: 768px) {
     .home-dest-slider-section {
         padding: 60px 0;

@@ -115,6 +115,10 @@ const HomeDestinationsSlider = () => {
                                     <p className="dest-card-description">{dest.description}</p>
                                     
                                     <div className="dest-card-footer">
+                                        <div className="dest-price-tag">
+                                            <span className="from-label">{language === 'fr' ? 'À partir de' : 'From'}</span>
+                                            <span className="price-value">{dest.price} {dest.currency}</span>
+                                        </div>
                                         <Link to={`/${language}/destinations/${dest.id}`} className="dest-card-btn">
                                             {language === 'fr' ? 'Découvrir' : 'Discover'} <ArrowUpRight size={18} />
                                         </Link>
