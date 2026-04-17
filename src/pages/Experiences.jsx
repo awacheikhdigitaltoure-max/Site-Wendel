@@ -3,6 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { experiencesData } from '../data/experiences';
 import { Star, MapPin, Clock, ChevronDown, Search, ArrowRight, Sparkles, Users } from 'lucide-react';
 import Reveal from '../components/Reveal';
+import Pagination from '../components/Pagination';
 import heroBanner from '../assets/mangrove.png';
 import './Experiences.css';
 
@@ -13,6 +14,8 @@ const Experiences = () => {
   const [filterCategory, setFilterCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCard, setActiveCard] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   const t = {
     fr: {
@@ -78,6 +81,21 @@ const Experiences = () => {
     return matchRegion && matchBudget && matchCategory && matchSearch;
   });
 
+  // Pagination Logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 400, behavior: 'smooth' });
+  };
+
+  const handleFilterChange = (setter, value) => {
+    setter(value);
+    setCurrentPage(1);
+  };
+
   const regions = ['all', ...new Set(allData.map(e => e.region))];
   const budgets = ['all', ...new Set(allData.map(e => e.budget))];
   const categories = ['all', ...new Set(allData.map(e => e.category))];
@@ -120,7 +138,7 @@ const Experiences = () => {
                   type="text"
                   placeholder={t.filters.search}
                   value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
+                  onChange={e => handleFilterChange(setSearchTerm, e.target.value)}
                   className="exp-search-input"
                 />
               </div>
@@ -132,7 +150,7 @@ const Experiences = () => {
                   <div className="exp-select-wrap">
                     <label className="filter-label">{t.filters.budget}</label>
                     <div className="exp-select-box">
-                      <select value={filterBudget} onChange={e => setFilterBudget(e.target.value)}>
+                      <select value={filterBudget} onChange={e => handleFilterChange(setFilterBudget, e.target.value)}>
                         {budgets.map(b => <option key={b} value={b}>{b === 'all' ? t.filters.allBudgets : b}</option>)}
                       </select>
                       <ChevronDown size={14} />
@@ -142,7 +160,7 @@ const Experiences = () => {
                   <div className="exp-select-wrap">
                     <label className="filter-label">{t.filters.region}</label>
                     <div className="exp-select-box">
-                      <select value={filterRegion} onChange={e => setFilterRegion(e.target.value)}>
+                      <select value={filterRegion} onChange={e => handleFilterChange(setFilterRegion, e.target.value)}>
                         {regions.map(r => <option key={r} value={r}>{r === 'all' ? t.filters.allRegions : r}</option>)}
                       </select>
                       <ChevronDown size={14} />
@@ -152,7 +170,7 @@ const Experiences = () => {
                   <div className="exp-select-wrap">
                     <label className="filter-label">{t.filters.category}</label>
                     <div className="exp-select-box">
-                      <select value={filterCategory} onChange={e => setFilterCategory(e.target.value)}>
+                      <select value={filterCategory} onChange={e => handleFilterChange(setFilterCategory, e.target.value)}>
                         {categories.map(c => <option key={c} value={c}>{c === 'all' ? t.filters.allCategories : c}</option>)}
                       </select>
                       <ChevronDown size={14} />
@@ -177,7 +195,7 @@ const Experiences = () => {
             <>
               {/* Cards Grid */}
               <div className="exp-grid">
-                {filteredData.slice(0, 16).map((exp, i) => (
+                {currentItems.map((exp, i) => (
                   <Reveal key={exp.id} delay={i * 0.1}>
                     <div
                       className={`exp-card ${activeCard === exp.id ? 'is-active' : ''}`}
@@ -223,6 +241,13 @@ const Experiences = () => {
                   </Reveal>
                 ))}
               </div>
+
+              <Pagination 
+                currentPage={currentPage}
+                totalItems={filteredData.length}
+                itemsPerPage={itemsPerPage}
+                onPageChange={handlePageChange}
+              />
 
               {/* Newsletter / CTA Section */}
               <Reveal delay={0.4}>

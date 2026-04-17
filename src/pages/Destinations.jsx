@@ -4,6 +4,7 @@ import { destinationsData } from '../data/destinations';
 import { Star, MapPin, Clock, ChevronDown, Search, ArrowUpRight, Sparkles, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
+import Pagination from '../components/Pagination';
 import heroBanner from '../assets/senegal-hero-banner.png';
 import './Destinations.css';
 
@@ -12,6 +13,8 @@ const Destinations = () => {
   const [filterRegion, setFilterRegion] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCard, setActiveCard] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
 
   const t = {
     fr: {
@@ -63,6 +66,22 @@ const Destinations = () => {
     return matchRegion && matchCategory && matchSearch;
   });
 
+  // Pagination Logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 400, behavior: 'smooth' }); // Scroll to grid start
+  };
+
+  // Reset to page 1 on filter change
+  const handleFilterChange = (setter, value) => {
+    setter(value);
+    setCurrentPage(1);
+  };
+
   const regions = ['all', ...new Set(allData.map(e => e.region))];
   const categories = ['all', ...new Set(allData.map(e => e.category))];
 
@@ -105,7 +124,10 @@ const Destinations = () => {
                   type="text"
                   placeholder={t.filters.search}
                   value={searchTerm}
-                  onChange={e => setSearchTerm(e.target.value)}
+                  onChange={e => {
+                    setSearchTerm(e.target.value);
+                    setCurrentPage(1);
+                  }}
                   className="dest-search-input"
                 />
               </div>
@@ -116,7 +138,7 @@ const Destinations = () => {
               {/* Catégorie dropdown */}
               <div className="dest-select-wrap compact">
                 <div className="dest-select-box">
-                  <select value={filterCategory} onChange={e => setFilterCategory(e.target.value)}>
+                  <select value={filterCategory} onChange={e => handleFilterChange(setFilterCategory, e.target.value)}>
                     {categories.map(c => (
                       <option key={c} value={c}>
                         {c === 'all' ? (language === 'fr' ? 'Toutes catégories' : 'All categories') : c}
@@ -130,7 +152,7 @@ const Destinations = () => {
               {/* Région dropdown */}
               <div className="dest-select-wrap compact">
                 <div className="dest-select-box">
-                  <select value={filterRegion} onChange={e => setFilterRegion(e.target.value)}>
+                  <select value={filterRegion} onChange={e => handleFilterChange(setFilterRegion, e.target.value)}>
                     {regions.map(r => (
                       <option key={r} value={r}>
                         {r === 'all' ? t.filters.allRegions : r}
@@ -156,7 +178,7 @@ const Destinations = () => {
             </div>
           ) : (
             <div className="destinations-main-grid">
-              {filteredData.map((dest, i) => (
+              {currentItems.map((dest, i) => (
                 <Reveal key={dest.id} delay={i % 4 * 0.1}>
                   <div className="home-style-card">
                     <div className="card-image-box">
@@ -197,6 +219,13 @@ const Destinations = () => {
               ))}
             </div>
           )}
+
+          <Pagination 
+            currentPage={currentPage}
+            totalItems={filteredData.length}
+            itemsPerPage={itemsPerPage}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </div>
