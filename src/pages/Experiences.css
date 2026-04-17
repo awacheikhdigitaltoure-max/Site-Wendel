@@ -112,8 +112,7 @@
 
 /* ── Filter Bar ── */
 .exp-filter-zone {
-  position: sticky;
-  top: 148px; /* Navbar logo 110px + padding 20px*2 */
+  position: relative;
   z-index: 100;
   background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(20px);
