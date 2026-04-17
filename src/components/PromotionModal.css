@@ -141,20 +141,46 @@
 
 @media (max-width: 800px) {
   .promo-container {
-    max-width: 90%;
+    max-width: 90% !important;
     flex-direction: column;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
   .promo-image-side, .promo-content-side {
     width: 100%;
   }
   .promo-image-side {
-    min-height: 250px;
+    min-height: 160px !important; /* Significantly shorter image */
+    height: 160px;
+  }
+  .promo-tag {
+    top: 15px;
+    left: 15px;
+    padding: 4px 10px;
+    font-size: 0.65rem;
   }
   .promo-content-side {
-    padding: 35px;
+    padding: 20px !important; /* Compressed padding */
     text-align: center;
+    gap: 10px;
   }
   .promo-content-side h2 {
-    font-size: 1.8rem;
+    font-size: 1.2rem !important; /* Smaller title */
+    margin-bottom: 5px;
+  }
+  .promo-content-side p {
+    font-size: 0.85rem !important; /* Fine text */
+    margin-bottom: 5px;
+  }
+  .promo-btn {
+    padding: 12px 20px;
+    font-size: 0.85rem;
+    margin-top: 10px;
+  }
+  .promo-close {
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
   }
 }
