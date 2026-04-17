@@ -16,9 +16,11 @@
 
 .stat-card {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     padding: 5px 15px;
+    text-align: center;
 }
 
 .stat-icon-wrapper {
@@ -49,6 +51,7 @@
 .stat-info {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .stat-big-num {
