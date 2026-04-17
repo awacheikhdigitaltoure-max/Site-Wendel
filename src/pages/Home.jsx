@@ -7,7 +7,7 @@ import HomeExperiencesSlider from '../components/HomeExperiencesSlider';
 import WhyWendelu from '../components/WhyWendelu';
 import PromoBanner from '../components/PromoBanner';
 import StatsSection from '../components/StatsSection';
-import FAQSection from '../components/FAQSection';
+
 
 const Home = () => {
   return (
@@ -30,9 +30,7 @@ const Home = () => {
         <PromoBanner className="no-pt" />
       </Reveal>
 
-      <Reveal>
-        <FAQSection className="no-pt" />
-      </Reveal>
+
 
       <Reveal>
         <Testimonials className="no-pt" />
