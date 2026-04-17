@@ -6,69 +6,67 @@
 .why-container {
   max-width: 900px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 0.7fr 1.3fr;
-  gap: 30px;
-  align-items: center;
-}
-
-.why-image-wrapper {
-  height: 250px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: var(--shadow-premium);
-}
-
-.why-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s ease;
+  display: flex;
+  justify-content: center;
 }
 
 .why-content {
+  width: 100%;
   text-align: center;
 }
 
 .why-title {
   font-size: 1.4rem;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   text-align: center !important;
 }
 
 .features-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 
 .feature-mini-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  padding: 10px;
+  gap: 12px;
+  width: 140px;
   transition: transform 0.3s ease;
 }
 
 .feature-mini-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
 }
 
 .feature-icon-mini {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   background: rgba(45, 126, 52, 0.08);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary-green);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  animation: floatIcon 3s ease-in-out infinite;
+}
+
+/* staggered animations */
+.feature-mini-card:nth-child(2) .feature-icon-mini { animation-delay: 0.5s; }
+.feature-mini-card:nth-child(3) .feature-icon-mini { animation-delay: 1s; }
+.feature-mini-card:nth-child(4) .feature-icon-mini { animation-delay: 1.5s; }
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 .feature-icon-mini svg {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
 }
 
 .feature-title-mini {
@@ -80,36 +78,32 @@
 }
 
 @media (max-width: 768px) {
-  .why-container {
-    grid-template-columns: 1fr;
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
   
-  .why-image-wrapper {
-    height: 150px;
-    width: 100%;
+  .feature-mini-card {
+    width: auto;
   }
 
   .why-title {
     font-size: 1.1rem !important;
-    margin-bottom: 12px;
-  }
-
-  .features-grid {
-    gap: 10px;
+    margin-bottom: 20px;
   }
 
   .feature-icon-mini {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
   }
 
   .feature-icon-mini svg {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
   }
 
   .feature-title-mini {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
 }
