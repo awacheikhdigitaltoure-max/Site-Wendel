@@ -91,6 +91,7 @@ const Testimonials = ({ className = "" }) => {
                       <Star key={i} size={12} fill="var(--primary-orange)" color="var(--primary-orange)" />
                     ))}
                   </div>
+
                   <p className="review-text">"{item.review}"</p>
                   <div className="reviewer-info">
                     <div className="reviewer-avatar">{item.name[0]}</div>

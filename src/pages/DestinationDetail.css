@@ -73,6 +73,7 @@
   box-shadow: 0 10px 20px rgba(230, 118, 15, 0.3);
 }
 
+
 .hero-quick-meta {
   display: flex;
   flex-wrap: wrap;
@@ -219,15 +220,7 @@
   transform: translateX(10px);
 }
 
-.zen-exp-dot {
-  width: 10px;
-  height: 10px;
-  background: var(--primary-green);
-  border-radius: 50%;
-  margin-top: 10px;
-  flex-shrink: 0;
-  box-shadow: 0 0 15px rgba(239, 124, 15, 0.3);
-}
+
 
 .zen-exp-text {
   display: flex;

@@ -26,7 +26,6 @@ const PromoBanner = ({ className = "" }) => {
       <div className="promo-banner" style={{ backgroundImage: `url(${bgImage})` }}>
         <div className="promo-overlay"></div>
         <div className="promo-content">
-          <div className="promo-badge">Offre Spéciale</div>
           <h2 className="promo-title">{content.title}</h2>
           <p className="promo-subtitle">{content.subtitle}</p>
           <Link to={`/${language}/destinations`} className="promo-btn" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { destinationsData } from '../data/destinations';
-import { Star, MapPin, Clock, ChevronDown, Search, ArrowUpRight, Sparkles, Users } from 'lucide-react';
+import { Star, MapPin, Clock, ChevronDown, Search, ArrowUpRight, Users, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
 import Pagination from '../components/Pagination';
@@ -32,8 +32,7 @@ const Destinations = () => {
       },
       cta_discover: "Découvrir",
       cta_book: "Réserver",
-      results: "destination(s) trouvée(s)",
-      eyebrow: "Catalogue Complet"
+      results: "destination(s) trouvée(s)"
     },
     en: {
       title: "Explore",
@@ -50,8 +49,7 @@ const Destinations = () => {
       },
       cta_discover: "Discover",
       cta_book: "Book Now",
-      results: "destination(s) found",
-      eyebrow: "Full Catalog"
+      results: "destination(s) found"
     }
   }[language];
 
@@ -98,10 +96,6 @@ const Destinations = () => {
         <div className="main-container">
           <Reveal>
             <div className="dest-hero-text">
-              <span className="dest-eyebrow">
-                <Sparkles size={14} />
-                {t.eyebrow}
-              </span>
               <h1>
                 {t.title} <span className="dest-title-accent">{t.titleAccent}</span>
               </h1>
@@ -184,7 +178,7 @@ const Destinations = () => {
                     <div className="card-image-box">
                       <img src={dest.image} alt={dest.title} />
                       <div className="card-overlay-gradient"></div>
-                      <div className="card-badge-top">{dest.category}</div>
+
                       
                       <div className="card-hover-content">
                         <Link to={`/${language}/destinations/${dest.id}`} className="btn-home-discover">
@@ -200,6 +194,7 @@ const Destinations = () => {
                           <Star size={14} fill="#FFB800" stroke="none" />
                           <span>{dest.rating}</span>
                         </div>
+
                       </div>
                       
                       <div className="card-region-tag">

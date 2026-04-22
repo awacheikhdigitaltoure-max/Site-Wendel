@@ -24,25 +24,7 @@
     text-align: center;
 }
 
-.stat-icon-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-green);
-    transition: all 0.3s ease;
-}
 
-.stat-card:hover .stat-icon-wrapper {
-    background: var(--primary-green);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 15px rgba(45, 126, 52, 0.1);
-}
-
-.stat-icon {
-    width: 14px;
-    height: 14px;
-}
 
 .stat-info {
     display: flex;
@@ -51,19 +33,19 @@
 }
 
 .stat-big-num {
-    font-size: 1.4rem;
+    font-size: 2.2rem;
     font-weight: 800;
     color: #1e293b;
     line-height: 1;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
 }
 
 .stat-desc {
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: #64748b;
     text-transform: uppercase;
-    letter-spacing: 0.8px;
+    letter-spacing: 1.5px;
     white-space: nowrap;
 }
 
@@ -90,18 +72,10 @@
         padding: 2px;
     }
     .stat-big-num {
-        font-size: 1rem;
-    }
-    .stat-icon-wrapper {
-        width: auto;
-        height: auto;
-    }
-    .stat-icon {
-        width: 10px;
-        height: 10px;
+        font-size: 1.6rem;
     }
     .stat-desc {
-        font-size: 0.5rem;
-        letter-spacing: 0.3px;
+        font-size: 0.65rem;
+        letter-spacing: 1px;
     }
 }

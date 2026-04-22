@@ -38,7 +38,6 @@ const StorySection = () => {
   return (
     <section className="section-padding story-section" id="story">
       <div className="story-content reveal">
-        <span className="sub-title">{t.subtitle}</span>
         <h2 className="section-title text-gradient">{t.title}</h2>
         <p className="story-description">
           {t.description}

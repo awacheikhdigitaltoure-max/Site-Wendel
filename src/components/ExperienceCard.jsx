@@ -15,7 +15,7 @@ const ExperienceCard = ({ id, title, category, image }) => {
         <div className="card-overlay"></div>
       </div>
       <div className="card-content">
-        <span className="card-category">{category}</span>
+
         <h3 className="card-title">{title}</h3>
         <Link to={`/${language}/destinations/${id || 1}`} className="card-btn">
           {btnText} <ArrowUpRight size={20} strokeWidth={2.5} />

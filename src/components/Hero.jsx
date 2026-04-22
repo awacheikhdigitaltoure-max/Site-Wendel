@@ -18,9 +18,6 @@ const Hero = () => {
        </div>
        
        <div className="hero-content hero-reveal">
-         <span className="hero-category">
-           {t.title}
-         </span>
          <h1 className="hero-title">
            {t.slogan}
          </h1>

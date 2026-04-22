@@ -18,7 +18,6 @@ const PopularExperiences = ({ className = "" }) => {
   return (
     <section className={`section-padding popular-section ${className}`}>
       <div className="section-header">
-        <span className="sub-title">{t.subtitle}</span>
         <h2 className="section-title text-gradient">{t.title}</h2>
       </div>
 

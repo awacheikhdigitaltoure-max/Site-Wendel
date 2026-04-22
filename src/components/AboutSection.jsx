@@ -13,7 +13,6 @@ const AboutSection = () => {
     <section className="section-padding about-section" id="about">
       <div className="about-container">
         <div className="about-content">
-          <span className="sub-title">{t.title}</span>
           <h2 className="section-title text-gradient">L'Authenticité au Cœur de la Teranga</h2>
           <p className="storytelling-text">
             {t.storytelling}

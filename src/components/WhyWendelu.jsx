@@ -52,7 +52,6 @@ const WhyWendelu = ({ className = "" }) => {
           text: "Accompaniment by passionate professionals"
         },
         {
-          icon: <Sparkles size={26} />,
           title: "Tailor-made Experiences",
           text: "Activities adapted for all travelers"
         }
@@ -72,7 +71,7 @@ const WhyWendelu = ({ className = "" }) => {
             {content.features.map((feature, index) => (
               <div key={index} className="feature-mini-card">
                 <div className="feature-icon-mini">
-                  {feature.icon}
+                  {feature.icon || <MapPin size={20} />} 
                 </div>
                 <h4 className="feature-title-mini">{feature.title}</h4>
               </div>

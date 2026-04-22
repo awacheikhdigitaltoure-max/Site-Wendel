@@ -18,7 +18,6 @@ const FAQSection = ({ className = "" }) => {
   return (
     <section className={`section-padding faq-section ${className}`} id="faq">
       <div className="section-header text-center mb-12">
-        <span className="sub-title" style={{color: 'var(--primary-orange)'}}>Wëndelu Help</span>
         <h2 className="section-title text-gradient">{t.title}</h2>
       </div>
       

@@ -55,10 +55,6 @@ const PromotionModal = () => {
         
         <div className="promo-image-side">
           <img src={lompoul} alt="Lompoul" />
-          <div className="promo-tag">
-            <Sparkles size={14} />
-            <span>{t.tag}</span>
-          </div>
         </div>
         
         <div className="promo-content-side">

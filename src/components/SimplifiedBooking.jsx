@@ -142,7 +142,6 @@ const SimplifiedBooking = () => {
     <section className="section-padding booking-section" id="booking">
       <div className="booking-container glass reveal">
         <div className="booking-info" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 40px auto' }}>
-          <span className="sub-title" style={{color: 'var(--primary-orange)', textAlign: 'center'}}>{t.subtitle}</span>
           <h2 className="section-title text-gradient" style={{ textAlign: 'center' }}>{t.title}</h2>
           <p className="booking-text" style={{ textAlign: 'center' }}>{t.text}</p>
 

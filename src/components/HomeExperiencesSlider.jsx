@@ -106,10 +106,6 @@ const HomeExperiencesSlider = () => {
                             <div className="exp-card">
                                 <div className="exp-card-img">
                                     <img src={exp.image} alt={exp.title} />
-                                    <div className="exp-card-badge">
-                                        <Star size={12} fill="#ffc107" strokeWidth={0} />
-                                        {exp.rating}
-                                    </div>
                                 </div>
                                 <div className="exp-card-body">
                                     <h3 className="exp-card-title">{exp.title}</h3>
@@ -117,7 +113,6 @@ const HomeExperiencesSlider = () => {
                                     <div className="exp-card-meta">
                                         {exp.region && <span><MapPin size={14} /> {exp.region}</span>}
                                         {exp.duration && <span><Clock size={14} /> {exp.duration}</span>}
-                                        {exp.category && <span className="exp-category-tag">{exp.category}</span>}
                                         {exp.groupSize && <span className="exp-group-size"><Users size={14} /> {exp.groupSize}</span>}
                                     </div>
                                     

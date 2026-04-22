@@ -88,7 +88,6 @@ const ServicesSection = () => {
   return (
     <section className="section-padding services-section" id="services">
       <div className="section-header">
-        <span className="sub-title">{t.title}</span>
         <h2 className="section-title text-gradient">{t.subtitle}</h2>
       </div>
       
@@ -97,7 +96,6 @@ const ServicesSection = () => {
           <div key={index} className="service-card glass-card">
             <div className="service-image-wrapper">
               <img src={exp.image} alt={exp.title} className="service-img" />
-              <div className="service-icon-badge">{exp.icon}</div>
             </div>
             <div className="service-content">
               <h3>{exp.title}</h3>

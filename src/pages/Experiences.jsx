@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { experiencesData } from '../data/experiences';
-import { Star, MapPin, Clock, ChevronDown, Search, ArrowRight, Sparkles, Users } from 'lucide-react';
+import { Star, MapPin, Clock, ChevronDown, Search, ArrowRight, Users, Sparkles } from 'lucide-react';
 import Reveal from '../components/Reveal';
 import Pagination from '../components/Pagination';
 import heroBanner from '../assets/mangrove.png';
@@ -19,8 +19,7 @@ const Experiences = () => {
 
   const t = {
     fr: {
-      title: "Expériences",
-      titleAccent: "Authentiques",
+      title: "Expériences Authentiques",
       subtitle: "Partez à la découverte des merveilles du Sénégal",
       filters: {
         region: "Région",
@@ -45,8 +44,7 @@ const Experiences = () => {
       subscribe: "S'abonner"
     },
     en: {
-      title: "Authentic",
-      titleAccent: "Experiences",
+      title: "Authentic Experiences",
       subtitle: "Discover the wonders of Senegal",
       filters: {
         region: "Region",
@@ -104,6 +102,9 @@ const Experiences = () => {
     <div className="exp-page">
 
       {/* ── Hero Header ── */}
+      <div className="section-header">
+        <h2 className="section-title text-gradient">{t.title}</h2>
+      </div>
       <div className="exp-hero-header">
         <div className="exp-hero-banner">
           <img src={heroBanner} alt="Experiences Wëndelu" />
@@ -113,12 +114,8 @@ const Experiences = () => {
         <div className="main-container">
           <Reveal>
             <div className="exp-hero-text">
-              <span className="exp-eyebrow">
-                <Sparkles size={14} />
-                Wëndelu Experiences
-              </span>
               <h1>
-                {t.title} <span className="exp-title-accent">{t.titleAccent}</span>
+                {t.title}
               </h1>
               <p>{t.subtitle}</p>
             </div>
@@ -204,10 +201,7 @@ const Experiences = () => {
                     >
                       <div className="exp-card-img">
                         <img src={exp.image} alt={exp.title} />
-                        <div className="exp-card-badge">
-                          <Star size={12} fill="#ffc107" strokeWidth={0} />
-                          {exp.rating}
-                        </div>
+
                       </div>
                       <div className="exp-card-body">
                         <h3 className="exp-card-title">{exp.title}</h3>
@@ -215,7 +209,6 @@ const Experiences = () => {
                         <div className="exp-card-meta">
                           <span><MapPin size={14} /> {exp.region}</span>
                           <span><Clock size={14} /> {exp.duration}</span>
-                          <span className="exp-category-tag">{exp.category}</span>
                           <span className="exp-group-size"><Users size={14} /> {exp.groupSize}</span>
                         </div>
                         
@@ -226,6 +219,8 @@ const Experiences = () => {
                           <strong>{exp.rating}</strong>
                           <span>({exp.reviews} {t.stats.reviews})</span>
                         </div>
+                        
+
                         
                         <div className="exp-card-footer">
                           <div className="exp-price-wrap">
@@ -249,19 +244,7 @@ const Experiences = () => {
                 onPageChange={handlePageChange}
               />
 
-              {/* Newsletter / CTA Section */}
-              <Reveal delay={0.4}>
-                <div className="exp-footer-cta">
-                  <div className="exp-cta-content">
-                    <h3>{t.newsletter_title}</h3>
-                    <p>{t.newsletter_desc}</p>
-                    <div className="exp-cta-form">
-                      <input type="email" placeholder="votre@email.com" />
-                      <button>{t.subscribe}</button>
-                    </div>
-                  </div>
-                </div>
-              </Reveal>
+
             </>
           )}
         </div>

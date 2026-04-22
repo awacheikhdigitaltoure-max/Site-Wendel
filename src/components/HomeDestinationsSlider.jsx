@@ -96,7 +96,7 @@ const HomeDestinationsSlider = () => {
                             <div className="dest-home-card">
                                 <div className="dest-card-image">
                                     <img src={dest.image} alt={dest.title} />
-                                    <div className="dest-card-badge">{dest.category}</div>
+
                                 </div>
                                 
                                 <div className="dest-card-content">

@@ -48,7 +48,6 @@ const BentoGrid = ({ items, title, subtitle }) => {
   return (
     <section className="bento-section" id="destinations">
       <div className="section-header">
-        <span className="sub-title">{displaySubtitle}</span>
         <h2 className="section-title text-gradient">{displayTitle}</h2>
       </div>
       

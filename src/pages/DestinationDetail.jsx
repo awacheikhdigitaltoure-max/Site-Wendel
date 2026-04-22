@@ -4,7 +4,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { destinationsData } from '../data/destinations';
 import { experiencesData } from '../data/experiences';
 import Reveal from '../components/Reveal';
-import { Star, MapPin, ArrowLeft, Clock, Navigation, ShieldCheck, Zap, CheckCircle } from 'lucide-react';
+import { Star, MapPin, ArrowLeft, Clock, Navigation, Zap, CheckCircle } from 'lucide-react';
 import './DestinationDetail.css';
 
 const DestinationDetail = () => {
@@ -82,7 +82,7 @@ const DestinationDetail = () => {
           
           <Reveal>
             <div className="hero-text-zen">
-              <span className="cat-tag-float">{destination.category}</span>
+
               <h1 className="detail-title-zen">{destination.title}</h1>
               
               <div className="hero-quick-meta">
@@ -96,9 +96,11 @@ const DestinationDetail = () => {
                 </div>
                 <div className="meta-item">
                   <Star fill="#EF7C0F" stroke="none" size={16} />
-                  <span>{destination.rating} ({destination.reviews} avis)</span>
+                  <span>{destination.rating} ({destination.reviews} {language === 'fr' ? 'avis' : 'reviews'})</span>
                 </div>
               </div>
+              
+
             </div>
           </Reveal>
         </div>
@@ -145,7 +147,7 @@ const DestinationDetail = () => {
                     <div className="zen-experiences">
                       {destination.experiences.map((exp, idx) => (
                         <div key={idx} className="zen-exp-item">
-                          <div className="zen-exp-dot"></div>
+
                           <div className="zen-exp-text">
                             <strong>{exp.title}</strong>
                             <p className="zen-exp-desc">{exp.desc}</p>
@@ -227,18 +229,13 @@ const DestinationDetail = () => {
             <div className="zen-sidebar-col">
               <div className="zen-booking-card">
                 <div className="zen-booking-header">
-                  <ShieldCheck size={20} className="trust-icon" />
-                  <span>Expérience Exclusive</span>
                 </div>
                 
                 <Link to={`/${language}/contact`} className="zen-book-btn" style={{ textDecoration: 'none', display: 'block', textAlign: 'center' }}>
                   {t.book}
                 </Link>
                 
-                <div className="zen-trust-badge">
-                   <ShieldCheck size={20} className="trust-icon" />
-                   <span>{t.trust}</span>
-                </div>
+
                 
                 <p className="zen-trust" style={{marginTop: '0', textAlign: 'center'}}>Sénégal • Teranga Experience</p>
               </div>
