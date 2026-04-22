@@ -21,6 +21,7 @@ import somone from '../assets/somone_lagoon.png';
 import ndangane from '../assets/ndangane_sunset.png';
 import toubabDialaw from '../assets/toubab_dialaw.png';
 
+// Initialisation des données de destinations (FR/EN)
 export const destinationsData = {
   fr: [
     { 
