@@ -11,13 +11,13 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  height: 65vh;
-  min-height: 500px;
+  height: 60vh;
+  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-top: -85px;
+  background: #000;
 }
 
 .hero-banner-img {
