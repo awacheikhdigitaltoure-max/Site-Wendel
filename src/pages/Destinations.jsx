@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { destinationsData } from '../data/destinations';
-import { Star, MapPin, Clock, ChevronDown, Search, ArrowUpRight, Users, Sparkles } from 'lucide-react';
+import { Star, MapPin, Search, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
 import Pagination from '../components/Pagination';
@@ -11,164 +11,123 @@ import './Destinations.css';
 const Destinations = () => {
   const { language } = useLanguage();
   const [filterRegion, setFilterRegion] = useState('all');
+  const [filterCategory, setFilterCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeCard, setActiveCard] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
   const t = {
     fr: {
-      title: "Explorez le",
-      titleAccent: "Sénégal",
+      title: "Explorez le Sénégal",
       subtitle: "Des savanes dorées aux lagunes azur, découvrez chaque facette de la Terre de la Teranga.",
-      filters: {
-        region: "Région",
-        allRegions: "Toutes les régions",
-        search: "Rechercher une destination..."
-      },
-      stats: {
-        from: "À partir de",
-        reviews: "avis"
-      },
-      cta_discover: "Découvrir",
-      cta_book: "Réserver",
-      results: "destination(s) trouvée(s)"
+      searchPlaceholder: "Rechercher une destination...",
+      allCategories: "Toutes les catégories",
+      allRegions: "Toutes les régions",
+      resultsFound: "destination(s) trouvée(s)",
+      noResults: "Aucune destination trouvée.",
+      cta: "Découvrir"
     },
     en: {
-      title: "Explore",
-      titleAccent: "Senegal",
+      title: "Explore Senegal",
       subtitle: "From golden savannas to azure lagoons, discover every facet of the Land of Teranga.",
-      filters: {
-        region: "Region",
-        allRegions: "All Regions",
-        search: "Search a destination..."
-      },
-      stats: {
-        from: "Starting at",
-        reviews: "reviews"
-      },
-      cta_discover: "Discover",
-      cta_book: "Book Now",
-      results: "destination(s) found"
+      searchPlaceholder: "Search a destination...",
+      allCategories: "All Categories",
+      allRegions: "All Regions",
+      resultsFound: "destination(s) found",
+      noResults: "No destinations found.",
+      cta: "Discover"
     }
   }[language];
 
   const allData = destinationsData[language];
-  const [filterCategory, setFilterCategory] = useState('all');
+  const categories = ['all', ...new Set(allData.map(e => e.category))];
+  const regions = ['all', ...new Set(allData.map(e => e.region))];
 
   const filteredData = allData.filter(dest => {
     const matchRegion = filterRegion === 'all' || dest.region.toLowerCase() === filterRegion.toLowerCase();
     const matchCategory = filterCategory === 'all' || dest.category.toLowerCase() === filterCategory.toLowerCase();
     const matchSearch = dest.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                       dest.category.toLowerCase().includes(searchTerm.toLowerCase());
+                       dest.description.toLowerCase().includes(searchTerm.toLowerCase());
     return matchRegion && matchCategory && matchSearch;
   });
 
-  // Pagination Logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    window.scrollTo({ top: 400, behavior: 'smooth' }); // Scroll to grid start
+    window.scrollTo({ top: 500, behavior: 'smooth' });
   };
 
-  // Reset to page 1 on filter change
   const handleFilterChange = (setter, value) => {
     setter(value);
     setCurrentPage(1);
   };
 
-  const regions = ['all', ...new Set(allData.map(e => e.region))];
-  const categories = ['all', ...new Set(allData.map(e => e.category))];
-
   return (
     <div className="destinations-page">
-
-      {/* ── Hero Header ── */}
-      <section className="dest-hero-header">
-        <div className="dest-hero-banner">
-          <img src={heroBanner} alt="Destinations Wëndelu" />
-          <div className="dest-hero-overlay" />
-        </div>
-        
-        <div className="main-container">
+      {/* Banner Full Width */}
+      <section className="destinations-hero">
+        <img src={heroBanner} alt="Senegal" className="hero-banner-img" />
+        <div className="hero-overlay"></div>
+        <div className="hero-content">
           <Reveal>
-            <div className="dest-hero-text">
-              <h1>
-                {t.title} <span className="dest-title-accent">{t.titleAccent}</span>
-              </h1>
-              <p>{t.subtitle}</p>
-            </div>
+            <h1>{t.title}</h1>
+            <p>{t.subtitle}</p>
           </Reveal>
         </div>
       </section>
 
-      {/* ── Filter Bar ── */}
-      <div className="dest-filter-zone">
-        <div className="main-container">
-          <Reveal>
-            <div className="dest-filter-bar">
-
-              {/* Search compact */}
-              <div className="dest-search-wrap">
-                <Search size={16} className="dest-search-icon" />
-                <input
-                  type="text"
-                  placeholder={t.filters.search}
-                  value={searchTerm}
-                  onChange={e => {
-                    setSearchTerm(e.target.value);
-                    setCurrentPage(1);
-                  }}
-                  className="dest-search-input"
-                />
-              </div>
-
-              {/* Séparateur */}
-              <div className="dest-filter-divider" />
-
-              {/* Catégorie dropdown */}
-              <div className="dest-select-wrap compact">
-                <div className="dest-select-box">
-                  <select value={filterCategory} onChange={e => handleFilterChange(setFilterCategory, e.target.value)}>
-                    {categories.map(c => (
-                      <option key={c} value={c}>
-                        {c === 'all' ? (language === 'fr' ? 'Toutes catégories' : 'All categories') : c}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronDown size={14} />
-                </div>
-              </div>
-
-              {/* Région dropdown */}
-              <div className="dest-select-wrap compact">
-                <div className="dest-select-box">
-                  <select value={filterRegion} onChange={e => handleFilterChange(setFilterRegion, e.target.value)}>
-                    {regions.map(r => (
-                      <option key={r} value={r}>
-                        {r === 'all' ? t.filters.allRegions : r}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronDown size={14} />
-                </div>
-              </div>
-
-              <span className="dest-count">{filteredData.length} {t.results}</span>
+      <div className="main-container">
+        {/* Modern Filter Bar */}
+        <section className="destinations-controls">
+          <div className="filters-glass-bar">
+            <div className="search-premium">
+              <Search size={20} className="search-icon" />
+              <input 
+                type="text" 
+                placeholder={t.searchPlaceholder}
+                value={searchTerm}
+                onChange={(e) => handleFilterChange(setSearchTerm, e.target.value)}
+              />
             </div>
-          </Reveal>
-        </div>
-      </div>
 
-      {/* ── Grid Content ── */}
-      <div className="dest-grid-container">
-        <div className="main-container">
+            <div className="filter-select-group">
+              <div className="custom-select-wrapper">
+                <select value={filterCategory} onChange={(e) => handleFilterChange(setFilterCategory, e.target.value)}>
+                  {categories.map(c => (
+                    <option key={c} value={c}>
+                      {c === 'all' ? t.allCategories : c}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown size={16} className="select-arrow" />
+              </div>
+
+              <div className="custom-select-wrapper">
+                <select value={filterRegion} onChange={(e) => handleFilterChange(setFilterRegion, e.target.value)}>
+                  {regions.map(r => (
+                    <option key={r} value={r}>
+                      {r === 'all' ? t.allRegions : r}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown size={16} className="select-arrow" />
+              </div>
+            </div>
+          </div>
+          
+          <div className="results-badge">
+            {filteredData.length} {t.resultsFound}
+          </div>
+        </section>
+
+        {/* Grid Content */}
+        <div className="destinations-grid-wrapper">
           {filteredData.length === 0 ? (
             <div className="dest-empty">
-              <h3>{language === 'fr' ? "Aucune destination trouvée." : "No destinations found."}</h3>
+              <h3>{t.noResults}</h3>
             </div>
           ) : (
             <div className="destinations-main-grid">
@@ -195,8 +154,8 @@ const Destinations = () => {
                       <p className="dest-card-description">{dest.description}</p>
                       
                       <div className="dest-card-footer">
-                        <Link to={`/${language}/destinations/${dest.id}`} className="dest-card-btn-book" style={{ width: '100%' }}>
-                          {language === 'fr' ? 'Découvrir' : 'Discover'} <ArrowUpRight size={18} />
+                        <Link to={`/${language}/destinations/${dest.id}`} className="dest-card-btn-book">
+                          {t.cta} <ArrowUpRight size={18} />
                         </Link>
                       </div>
                     </div>
