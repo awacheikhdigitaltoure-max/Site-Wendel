@@ -203,9 +203,9 @@ const Destinations = () => {
 
                       <p className="card-dest-desc">{dest.description}</p>
                       
-                      <div className="card-footer-row">
+                      <div className="card-footer-row" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
                         <Link to={`/${language}/destinations/${dest.id}`} className="btn-discover-full">
-                          {t.cta_discover} <ArrowUpRight size={16} />
+                          {t.cta_discover}
                         </Link>
                         <Link to={`/${language}/contact`} className="btn-book-card">
                           {t.cta_book}
