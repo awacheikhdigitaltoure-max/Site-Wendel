@@ -227,9 +227,9 @@ const Experiences = () => {
                             <span className="exp-from-label">{t.stats.from}</span>
                             <div className="exp-price">{exp.price} <span>{exp.currency}</span></div>
                           </div>
-                          <button className="exp-book-btn">
+                          <Link to={`/${language}/contact`} className="exp-book-btn">
                             {t.cta}
-                          </button>
+                          </Link>
                         </div>
                       </div>
                     </div>

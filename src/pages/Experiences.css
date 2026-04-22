@@ -414,6 +414,10 @@
 }
 
 .exp-book-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   background: var(--primary-orange);
   color: white;
   padding: 14px 28px;
@@ -427,9 +431,10 @@
 }
 
 .exp-book-btn:hover {
-  background: #ff8c1a;
+  background: var(--primary-green);
+  color: white;
   transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(239, 124, 15, 0.4);
+  box-shadow: 0 6px 20px rgba(45, 126, 52, 0.3);
 }
 
 
