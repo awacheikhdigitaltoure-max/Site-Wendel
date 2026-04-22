@@ -174,41 +174,32 @@ const Destinations = () => {
             <div className="destinations-main-grid">
               {currentItems.map((dest, i) => (
                 <Reveal key={dest.id} delay={i % 4 * 0.1}>
-                  <div className="home-style-card">
-                    <div className="card-image-box">
+                  <div className="dest-home-card-grid">
+                    <div className="dest-card-image">
                       <img src={dest.image} alt={dest.title} />
-                      <div className="card-overlay-gradient"></div>
-
-                      
-                      <div className="card-hover-content">
-                        <Link to={`/${language}/destinations/${dest.id}`} className="btn-home-discover">
-                          {t.cta_discover} <ArrowUpRight size={18} />
-                        </Link>
-                      </div>
                     </div>
                     
-                    <div className="card-info-box">
-                      <div className="info-header-row">
-                        <h3 className="card-dest-title">{dest.title}</h3>
-                        <div className="card-rating">
+                    <div className="dest-card-content">
+                      <div className="dest-card-header">
+                        <h3 className="dest-card-title">{dest.title}</h3>
+                        <div className="dest-card-rating">
                           <Star size={14} fill="#FFB800" stroke="none" />
                           <span>{dest.rating}</span>
                         </div>
-
-                      </div>
-                      
-                      <div className="card-region-tag">
-                        <MapPin size={12} /> {dest.region}
                       </div>
 
-                      <p className="card-dest-desc">{dest.description}</p>
+                      <div className="dest-card-location">
+                        <MapPin size={14} /> <span>{dest.region}</span>
+                      </div>
+
+                      <p className="dest-card-description">{dest.description}</p>
                       
-                      <div className="card-footer-row" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
-                        <Link to={`/${language}/destinations/${dest.id}`} className="btn-discover-full">
-                          {t.cta_discover}
+                      <div className="dest-card-footer" style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
+                        <Link to={`/${language}/destinations/${dest.id}`} className="dest-card-btn" style={{ flex: 1 }}>
+                          {language === 'fr' ? 'Découvrir' : 'Discover'}
                         </Link>
-                        <Link to={`/${language}/contact`} className="btn-book-card">
-                          {t.cta_book}
+                        <Link to={`/${language}/contact`} className="dest-card-btn-book" style={{ flex: 1 }}>
+                          {language === 'fr' ? 'Réserver' : 'Book'}
                         </Link>
                       </div>
                     </div>
