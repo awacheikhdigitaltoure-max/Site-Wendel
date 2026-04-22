@@ -187,17 +187,13 @@ const DestinationDetail = () => {
                 </Reveal>
               )}
 
-              {/* Enhanced Visual Portfolio */}
+              {/* Enhanced Visual Portfolio - Single Image */}
               {destination.gallery && destination.gallery.length > 0 && (
                 <Reveal>
                   <div className="zen-section">
                     <h3 className="zen-section-title">{t.gallery}</h3>
-                    <div className="premium-gallery-grid">
-                      {destination.gallery.map((img, idx) => (
-                        <div key={idx} className={`gallery-shot shot-${idx % 5}`}>
-                          <img src={img} alt={`Gallery ${idx}`} loading="lazy" />
-                        </div>
-                      ))}
+                    <div className="premium-single-image">
+                      <img src={destination.gallery[0]} alt={destination.title} loading="lazy" />
                     </div>
                   </div>
                 </Reveal>
