@@ -6,9 +6,7 @@ import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
 import Pagination from '../components/Pagination';
 import heroBanner from '../assets/senegal-hero-banner.png';
-import CardImageSlider from '../components/CardImageSlider';
 import './Destinations.css';
-import '../components/CardImageSlider.css';
 
 const Destinations = () => {
   const { language } = useLanguage();
@@ -178,7 +176,7 @@ const Destinations = () => {
                 <Reveal key={dest.id} delay={i % 4 * 0.1}>
                   <div className="home-style-card">
                     <div className="card-image-box">
-                      <CardImageSlider images={dest.gallery || [dest.image]} title={dest.title} />
+                      <img src={dest.image} alt={dest.title} />
                       <div className="card-overlay-gradient"></div>
 
                       

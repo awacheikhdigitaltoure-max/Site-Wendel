@@ -20,12 +20,6 @@ import popenguine from '../assets/popenguine_cliffs.png';
 import somone from '../assets/somone_lagoon.png';
 import ndangane from '../assets/ndangane_sunset.png';
 import toubabDialaw from '../assets/toubab_dialaw.png';
-import goreePortfolio from '../assets/goree_portfolio.png';
-import lacrosePortfolio from '../assets/lacrose_portfolio.png';
-import lompoulPortfolio from '../assets/lompoul_portfolio.png';
-import stlouisPortfolio from '../assets/stlouis_portfolio.png';
-import saloumPortfolio from '../assets/saloum_portfolio.png';
-import salyPortfolio from '../assets/saly_portfolio.png';
 
 export const destinationsData = {
   fr: [
@@ -33,7 +27,7 @@ export const destinationsData = {
       id: 1, 
       title: "Île de Gorée", 
       category: "Histoire", 
-      image: goreePortfolio,
+      image: goree,
       rating: 4.8,
       reviews: 156,
       price: "15.000",
@@ -60,7 +54,7 @@ export const destinationsData = {
       id: 2, 
       title: "Saint-Louis", 
       category: "Élégance Coloniale", 
-      image: stlouisPortfolio,
+      image: stlouis,
       rating: 4.7,
       reviews: 210,
       price: "35.000",
@@ -86,7 +80,7 @@ export const destinationsData = {
       id: 10, 
       title: "Le Lac Rose", 
       category: "Incontournable", 
-      image: lacrosePortfolio,
+      image: lacrose,
       rating: 4.9,
       reviews: 320,
       price: "25.000",
@@ -112,7 +106,7 @@ export const destinationsData = {
       id: 11, 
       title: "Désert de Lompoul", 
       category: "Aventure", 
-      image: lompoulPortfolio,
+      image: lompoul,
       rating: 4.8,
       reviews: 180,
       price: "45.000",
@@ -134,7 +128,7 @@ export const destinationsData = {
       id: 3, 
       title: "Saly Portudal", 
       category: "Détente", 
-      image: salyPortfolio,
+      image: saly,
       rating: 4.6,
       reviews: 450,
       price: "12.000",
@@ -218,7 +212,7 @@ export const destinationsData = {
       id: 12, 
       title: "Delta du Saloum", 
       category: "Biodiversité", 
-      image: saloumPortfolio,
+      image: mangrove,
       rating: 4.9,
       reviews: 195,
       price: "40.000",
