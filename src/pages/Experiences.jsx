@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { experiencesData } from '../data/experiences';
-import { Star, MapPin, Clock, ChevronDown, Search, ArrowRight, Users, Sparkles } from 'lucide-react';
+import { Star, MapPin, Clock, Search, ArrowUpRight, Users, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Reveal from '../components/Reveal';
 import Pagination from '../components/Pagination';
 import heroBanner from '../assets/mangrove.png';
@@ -10,83 +11,57 @@ import './Experiences.css';
 const Experiences = () => {
   const { language } = useLanguage();
   const [filterRegion, setFilterRegion] = useState('all');
-  const [filterBudget, setFilterBudget] = useState('all');
   const [filterCategory, setFilterCategory] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
-  const [activeCard, setActiveCard] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
   const t = {
     fr: {
       title: "Expériences Authentiques",
-      subtitle: "Partez à la découverte des merveilles du Sénégal",
-      filters: {
-        region: "Région",
-        budget: "Budget",
-        category: "Type d'activité",
-        allRegions: "Toutes",
-        allBudgets: "Tous les prix",
-        allCategories: "Tous types",
-        search: "Rechercher..."
-      },
-      stats: {
-        from: "À partir de",
-        reviews: "avis"
-      },
+      subtitle: "Vivez le Sénégal de l'intérieur à travers des moments inoubliables.",
+      searchPlaceholder: "Rechercher une expérience...",
+      allCategories: "Tous types",
+      allRegions: "Toutes les régions",
+      resultsFound: "expérience(s) trouvée(s)",
+      noResults: "Aucune expérience trouvée.",
       cta: "Réserver",
-      explore: "Explorer",
-      featured: "À la une",
-      results: "expérience(s) trouvée(s)",
-      grid_title: "Toutes nos expériences",
-      newsletter_title: "Vivez l'aventure Wëndelu",
-      newsletter_desc: "Inscrivez-vous pour recevoir nos pépites de voyage et offres exclusives.",
-      subscribe: "S'abonner"
+      from: "À partir de",
+      reviews: "avis"
     },
     en: {
       title: "Authentic Experiences",
-      subtitle: "Discover the wonders of Senegal",
-      filters: {
-        region: "Region",
-        budget: "Budget",
-        category: "Type of activity",
-        allRegions: "All",
-        allBudgets: "All prices",
-        allCategories: "All types",
-        search: "Search..."
-      },
-      stats: {
-        from: "Starting at",
-        reviews: "reviews"
-      },
-      cta: "Book",
-      explore: "Explore",
-      featured: "Featured",
-      results: "experience(s) found",
-      grid_title: "All our experiences",
-      newsletter_title: "Live the Wëndelu Adventure",
-      newsletter_desc: "Sign up to receive our travel gems and exclusive offers.",
-      subscribe: "Subscribe"
+      subtitle: "Live Senegal from the inside through unforgettable moments.",
+      searchPlaceholder: "Search an experience...",
+      allCategories: "All types",
+      allRegions: "All regions",
+      resultsFound: "experience(s) found",
+      noResults: "No experiences found.",
+      cta: "Book Now",
+      from: "Starting at",
+      reviews: "reviews"
     }
   }[language];
 
   const allData = experiencesData[language];
+  const categories = ['all', ...new Set(allData.map(e => e.category))];
+  const regions = ['all', ...new Set(allData.map(e => e.region))];
+
   const filteredData = allData.filter(exp => {
     const matchRegion = filterRegion === 'all' || exp.region.toLowerCase() === filterRegion.toLowerCase();
-    const matchBudget = filterBudget === 'all' || exp.budget.toLowerCase() === filterBudget.toLowerCase();
     const matchCategory = filterCategory === 'all' || exp.category.toLowerCase() === filterCategory.toLowerCase();
-    const matchSearch = exp.title.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchRegion && matchBudget && matchCategory && matchSearch;
+    const matchSearch = exp.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                       exp.description.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchRegion && matchCategory && matchSearch;
   });
 
-  // Pagination Logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
-    window.scrollTo({ top: 400, behavior: 'smooth' });
+    window.scrollTo({ top: 500, behavior: 'smooth' });
   };
 
   const handleFilterChange = (setter, value) => {
@@ -94,159 +69,118 @@ const Experiences = () => {
     setCurrentPage(1);
   };
 
-  const regions = ['all', ...new Set(allData.map(e => e.region))];
-  const budgets = ['all', ...new Set(allData.map(e => e.budget))];
-  const categories = ['all', ...new Set(allData.map(e => e.category))];
-
   return (
-    <div className="exp-page">
-
-      {/* ── Hero Header ── */}
-      <div className="section-header">
-        <h2 className="section-title text-gradient">{t.title}</h2>
-      </div>
-      <div className="exp-hero-header">
-        <div className="exp-hero-banner">
-          <img src={heroBanner} alt="Experiences Wëndelu" />
-          <div className="exp-hero-overlay" />
-        </div>
-        
-        <div className="main-container">
+    <div className="experiences-page">
+      {/* Banner Full Width */}
+      <section className="experiences-hero">
+        <img src={heroBanner} alt="Experiences" className="hero-banner-img" />
+        <div className="hero-overlay"></div>
+        <div className="hero-content">
           <Reveal>
-            <div className="exp-hero-text">
-              <h1>
-                {t.title}
-              </h1>
-              <p>{t.subtitle}</p>
-            </div>
+            <h1>{t.title}</h1>
+            <p>{t.subtitle}</p>
           </Reveal>
         </div>
-      </div>
+      </section>
 
-      {/* ── Filter Bar ── */}
-      <div className="exp-filter-zone">
-        <div className="main-container">
-          <Reveal>
-            <div className="exp-filter-bar">
-              {/* Search */}
-              <div className="exp-search-wrap">
-                <Search size={16} className="exp-search-icon" />
-                <input
-                  type="text"
-                  placeholder={t.filters.search}
-                  value={searchTerm}
-                  onChange={e => handleFilterChange(setSearchTerm, e.target.value)}
-                  className="exp-search-input"
-                />
-              </div>
-
-              <div className="exp-filter-divider" />
-
-                {/* Selects */}
-                <div className="exp-selects">
-                  <div className="exp-select-wrap">
-                    <label className="filter-label">{t.filters.budget}</label>
-                    <div className="exp-select-box">
-                      <select value={filterBudget} onChange={e => handleFilterChange(setFilterBudget, e.target.value)}>
-                        {budgets.map(b => <option key={b} value={b}>{b === 'all' ? t.filters.allBudgets : b}</option>)}
-                      </select>
-                      <ChevronDown size={14} />
-                    </div>
-                  </div>
-
-                  <div className="exp-select-wrap">
-                    <label className="filter-label">{t.filters.region}</label>
-                    <div className="exp-select-box">
-                      <select value={filterRegion} onChange={e => handleFilterChange(setFilterRegion, e.target.value)}>
-                        {regions.map(r => <option key={r} value={r}>{r === 'all' ? t.filters.allRegions : r}</option>)}
-                      </select>
-                      <ChevronDown size={14} />
-                    </div>
-                  </div>
-
-                  <div className="exp-select-wrap">
-                    <label className="filter-label">{t.filters.category}</label>
-                    <div className="exp-select-box">
-                      <select value={filterCategory} onChange={e => handleFilterChange(setFilterCategory, e.target.value)}>
-                        {categories.map(c => <option key={c} value={c}>{c === 'all' ? t.filters.allCategories : c}</option>)}
-                      </select>
-                      <ChevronDown size={14} />
-                    </div>
-                  </div>
-                </div>
-
-              {/* Count */}
-              <span className="exp-count">{filteredData.length} {t.results}</span>
-            </div>
-          </Reveal>
-        </div>
-      </div>
-
-      {/* ── Content ── */}
-      <div className="exp-content-zone">
-        <div className="main-container">
-
-          {filteredData.length === 0 ? (
-            <div className="exp-empty">Aucune expérience ne correspond à vos critères.</div>
-          ) : (
-            <>
-              {/* Cards Grid */}
-              <div className="exp-grid">
-                {currentItems.map((exp, i) => (
-                  <Reveal key={exp.id} delay={i * 0.1}>
-                    <div
-                      className={`exp-card ${activeCard === exp.id ? 'is-active' : ''}`}
-                      onMouseEnter={() => setActiveCard(exp.id)}
-                      onMouseLeave={() => setActiveCard(null)}
-                    >
-                      <div className="exp-card-img">
-                        <img src={exp.image} alt={exp.title} />
-
-                      </div>
-                      <div className="exp-card-body">
-                        <h3 className="exp-card-title">{exp.title}</h3>
-                        
-                        <div className="exp-card-meta">
-                          <span><MapPin size={14} /> {exp.region}</span>
-                          <span><Clock size={14} /> {exp.duration}</span>
-                          <span className="exp-group-size"><Users size={14} /> {exp.groupSize}</span>
-                        </div>
-                        
-                        <p className="exp-card-desc">{exp.description}</p>
-                        
-                        <div className="exp-card-rating">
-                          <Star size={13} fill="#FFB800" strokeWidth={0} />
-                          <strong>{exp.rating}</strong>
-                          <span>({exp.reviews} {t.stats.reviews})</span>
-                        </div>
-                        
-
-                        
-                        <div className="exp-card-footer">
-                          <div className="exp-price-wrap">
-                            <span className="exp-from-label">{t.stats.from}</span>
-                            <div className="exp-price">{exp.price} <span>{exp.currency}</span></div>
-                          </div>
-                          <Link to={`/${language}/contact`} className="exp-book-btn">
-                            {t.cta}
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </Reveal>
-                ))}
-              </div>
-
-              <Pagination 
-                currentPage={currentPage}
-                totalItems={filteredData.length}
-                itemsPerPage={itemsPerPage}
-                onPageChange={handlePageChange}
+      <div className="main-container">
+        {/* Modern Filter Bar */}
+        <section className="experiences-controls">
+          <div className="filters-glass-bar">
+            <div className="search-premium">
+              <Search size={20} className="search-icon" />
+              <input 
+                type="text" 
+                placeholder={t.searchPlaceholder}
+                value={searchTerm}
+                onChange={(e) => handleFilterChange(setSearchTerm, e.target.value)}
               />
+            </div>
 
+            <div className="filter-select-group">
+              <div className="custom-select-wrapper">
+                <select value={filterCategory} onChange={(e) => handleFilterChange(setFilterCategory, e.target.value)}>
+                  {categories.map(c => (
+                    <option key={c} value={c}>
+                      {c === 'all' ? t.allCategories : c}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown size={16} className="select-arrow" />
+              </div>
 
-            </>
+              <div className="custom-select-wrapper">
+                <select value={filterRegion} onChange={(e) => handleFilterChange(setFilterRegion, e.target.value)}>
+                  {regions.map(r => (
+                    <option key={r} value={r}>
+                      {r === 'all' ? t.allRegions : r}
+                    </option>
+                  ))}
+                </select>
+                <ChevronDown size={16} className="select-arrow" />
+              </div>
+            </div>
+          </div>
+          
+          <div className="results-badge">
+            {filteredData.length} {t.resultsFound}
+          </div>
+        </section>
+
+        {/* Grid Content */}
+        <div className="experiences-grid-wrapper">
+          {filteredData.length === 0 ? (
+            <div className="exp-empty">
+              <h3>{t.noResults}</h3>
+            </div>
+          ) : (
+            <div className="experiences-main-grid">
+              {currentItems.map((exp, i) => (
+                <Reveal key={exp.id} delay={i % 4 * 0.1}>
+                  <div className="exp-premium-card">
+                    <div className="exp-card-image">
+                      <img src={exp.image} alt={exp.title} />
+                      <div className="exp-card-price-badge">
+                        <span>{t.from}</span>
+                        <strong>{exp.price}{exp.currency}</strong>
+                      </div>
+                    </div>
+                    
+                    <div className="exp-card-content">
+                      <div className="exp-card-header">
+                        <h3 className="exp-card-title">{exp.title}</h3>
+                        <div className="exp-card-rating">
+                          <Star size={14} fill="#FFB800" stroke="none" />
+                          <span>{exp.rating}</span>
+                        </div>
+                      </div>
+
+                      <div className="exp-card-meta">
+                        <div className="meta-item"><MapPin size={14} /> {exp.region}</div>
+                        <div className="meta-item"><Clock size={14} /> {exp.duration}</div>
+                        <div className="meta-item"><Users size={14} /> {exp.groupSize}</div>
+                      </div>
+
+                      <p className="exp-card-description">{exp.description}</p>
+                      
+                      <div className="exp-card-footer">
+                        <Link to={`/${language}/contact`} className="exp-card-btn-book">
+                          {t.cta} <ArrowUpRight size={18} />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           )}
+
+          <Pagination 
+            currentPage={currentPage}
+            totalItems={filteredData.length}
+            itemsPerPage={itemsPerPage}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </div>
