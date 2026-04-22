@@ -114,9 +114,12 @@ const HomeDestinationsSlider = () => {
 
                                     <p className="dest-card-description">{dest.description}</p>
                                     
-                                    <div className="dest-card-footer">
-                                        <Link to={`/${language}/destinations/${dest.id}`} className="dest-card-btn">
-                                            {language === 'fr' ? 'Découvrir' : 'Discover'} <ArrowUpRight size={18} />
+                                    <div className="dest-card-footer" style={{ display: 'flex', gap: '10px' }}>
+                                        <Link to={`/${language}/destinations/${dest.id}`} className="dest-card-btn" style={{ flex: 1 }}>
+                                            {language === 'fr' ? 'Découvrir' : 'Discover'}
+                                        </Link>
+                                        <Link to={`/${language}/contact`} className="dest-card-btn-book" style={{ flex: 1 }}>
+                                            {language === 'fr' ? 'Réserver' : 'Book'}
                                         </Link>
                                     </div>
                                 </div>

@@ -107,3 +107,38 @@
         display: none;
     }
 }
+/* Button Styles */
+.dest-card-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: #f8fafc;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.dest-card-btn-book {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: var(--primary-orange);
+    color: white;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(230, 118, 15, 0.2);
+}
+
+.dest-card-btn-book:hover {
+    background: var(--primary-green);
+    transform: translateY(-2px);
+}
